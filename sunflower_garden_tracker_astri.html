@@ -1,0 +1,2666 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sunflower Garden Discipline - Astri</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:url("C:/ENGLISH/ABSENSI/tema/SUN FLOWER 1.jpg") center/cover fixed;
+}
+
+.overlay{
+background:rgba(255,255,255,0.5);
+min-height:100vh;
+padding:30px;
+}
+
+h1{
+font-family:'Bebas Neue';
+letter-spacing:2px;
+text-align:center;
+}
+
+h2,h3{
+font-family:'Montserrat';
+text-align:center;
+}
+
+.page{display:none}
+.active{display:block}
+
+.slider{
+overflow:hidden;
+width:650px;
+margin:auto;
+}
+
+.slides{
+position:relative;
+width:650px;
+height:380px;
+}
+
+.slides img{
+width:650px;
+height:380px;
+object-fit:cover;
+border-radius:20px;
+
+opacity:0;
+position:absolute;
+transition:opacity 1s ease;
+}
+
+.slides img:first-child{
+opacity:1;
+}
+
+.quote{
+text-align:center;
+margin:25px;
+font-weight:600;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+background:#f4a300;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.day-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:10px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:14px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+cursor:pointer;
+text-align:center;
+}
+
+.locked{
+opacity:.35;
+pointer-events:none;
+}
+
+textarea{
+width:90%;
+height:120px;
+margin:auto;
+display:block;
+}
+
+.quiz{
+max-width:700px;
+margin:auto;
+}
+
+.scoreBox{
+display:block;
+width:180px;
+margin:18px auto;
+padding:14px;
+
+font-size:22px;
+font-weight:bold;
+text-align:center;
+
+background:rgba(244,163,0,0.30);
+border:2px solid rgba(244,163,0,0.6);
+border-radius:12px;
+
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.progressBox{
+max-width:600px;
+margin:20px auto;
+}
+
+.progressBar{
+height:20px;
+background:#ddd;
+border-radius:10px;
+overflow:hidden;
+}
+
+.progressFill{
+height:20px;
+background:#f4a300;
+width:0%;
+}
+
+.calendar{
+display:grid;
+grid-template-columns:repeat(7,40px);
+gap:6px;
+justify-content:center;
+margin-top:20px;
+}
+
+.dayCell{
+width:40px;
+height:40px;
+border-radius:6px;
+background:#eee;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+}
+
+.done{
+background:#f4a300;
+color:white;
+}
+
+.garden{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+margin-top:25px;
+}
+
+.plant{
+font-size:28px;
+}
+
+.moduleHeader{
+text-align:center;
+margin-bottom:30px;
+}
+
+#mainTitle{
+font-family:'Bebas Neue';
+font-size:48px;
+letter-spacing:3px;
+margin-bottom:10px;
+}
+
+.line{
+width:200px;
+height:3px;
+background:#f4a300;
+margin:10px auto 20px auto;
+border-radius:3px;
+}
+
+#babTitle{
+font-family:'Montserrat';
+font-size:24px;
+text-align:left;
+margin-left:40px;
+margin-bottom:20px;
+}
+
+.reviewTitle{
+text-align:left;
+margin-left:40px;
+margin-top:20px;
+font-size:20px;
+font-family:'Montserrat';
+}
+
+.zoom{
+transform:scale(1.15);
+}
+
+@keyframes zoomEffect{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.15);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+.activeSlide{
+opacity:1;
+animation:zoomEffect 4s ease;
+z-index:2;
+}
+
+.slides img{
+z-index:1;
+}
+
+.FRAME{
+position:relative;
+width:500px;
+height:500px;
+margin:40px auto;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.photoSlider{
+position:absolute;
+width:265px;
+height:265px;
+top:120px;
+left:125px;
+border-radius:50%;
+overflow:hidden;
+}
+
+.photoSlider img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s ease, transform 6s ease;
+}
+
+.photoSlider img.activeSlide{
+opacity:1;
+transform:scale(1.15);
+}
+
+.FRAMEIMG{
+position:absolute;
+width:500px;
+height:500px;
+top:0;
+left:0;
+pointer-events:none;
+z-index:10;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div id="intro" class="page active">
+
+<div class="FRAME">
+
+<div class="photoSlider" id="slides">
+
+<img src="tema/KDI.jpg">
+<img src="tema/kdi 2.jpg">
+<img src="tema/kdi 3.jpg">
+<img src="tema/kdi 4.jpg">
+<img src="tema/kdi 5.jpg">
+<img src="tema/kdi 6.jpg">
+<img src="tema/kdi 7.jpg">
+
+</div>
+
+<img class="FRAMEIMG" src="./tema/FRAME.png">
+
+</div>
+
+<div class="quote">
+Discipline grows like a sunflower.<br>
+Every day you study, your garden grows.
+</div>
+
+<center>
+<button onclick="openDash()">START</button>
+</center>
+
+</div>
+
+
+<div id="dash" class="page">
+
+<h1>SUNFLOWER GARDEN TRACKER</h1>
+
+<div class="progressBox">
+<div class="progressBar">
+<div class="progressFill" id="progressFill"></div>
+</div>
+<div style="text-align:center;margin-top:5px" id="progressText"></div>
+</div>
+
+<h3>Streak Calendar</h3>
+<div id="calendar" class="calendar"></div>
+
+<h3>Your Sunflower Garden</h3>
+<div id="garden" class="garden"></div>
+
+<h3>30 Day Challenge</h3>
+<div id="days" class="day-grid"></div>
+
+</div>
+
+
+<div id="dayPage" class="page">
+
+<button onclick="backDash()">⬅</button>
+
+<div class="moduleHeader">
+
+<h1 id="mainTitle"></h1>
+
+<div class="line"></div>
+
+<h2 id="babTitle"></h2>
+
+</div>
+
+<div id="subs"></div>
+
+</div>
+
+
+<div id="studyPage" class="page">
+
+<button onclick="backDay()">⬅</button>
+
+<h2 id="subTitle"></h2>
+
+<div id="scoreDisplay" class="scoreBox"></div>
+
+<h3 class="reviewTitle">Review Materi</h3>
+
+<textarea id="review" oninput="saveReview()"></textarea>
+
+<br>
+
+<button onclick="startQuiz()">Start Quiz</button>
+
+<div id="quiz"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let today = new Date().toDateString()
+let lastStudy = localStorage.getItem("lastStudy")
+
+if(lastStudy){
+let diff=(new Date(today)-new Date(lastStudy))/(1000*60*60*24)
+if(diff>1){
+alert("You skipped a day. Garden reset!")
+localStorage.clear()
+}
+}
+
+localStorage.setItem("lastStudy",today)
+
+let slideIndex=0
+let slides=document.querySelectorAll("#slides img")
+
+function showSlide(){
+
+slides.forEach(img=>{
+img.classList.remove("activeSlide")
+img.style.opacity="0"
+})
+
+slides[slideIndex].classList.add("activeSlide")
+slides[slideIndex].style.opacity="1"
+
+slideIndex++
+
+if(slideIndex>=slides.length){
+slideIndex=0
+}
+
+}
+
+showSlide()
+setInterval(showSlide,5000)
+
+function show(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById(id).classList.add("active")
+}
+
+function openDash(){
+updateProgressUI()
+drawCalendar()
+drawGarden()
+show("dash")
+}
+
+function backDash(){show("dash")}
+function backDay(){show("dayPage")}
+
+const schedule={
+
+1:{
+bab:"NOUNS",
+subs:[
+"Concrete Nouns",
+"Abstract Nouns",
+"Countable Nouns",
+"Uncountable Nouns"
+]
+},
+
+2:{
+bab:"PRONOUNS",
+subs:[
+"Personal Pronouns",
+"Demonstrative Pronouns",
+"Relative Pronouns",
+"Possessive Pronouns",
+"Reflexive Pronouns",
+"Interrogative Pronouns"
+]
+},
+
+3:{
+bab:"ADJECTIVES",
+subs:[
+"Types of Adjectives",
+"Adjective Formation",
+"Degree of Comparison",
+"Positive Degree Pattern"
+]
+},
+
+4:{
+bab:"ADVERBS",
+subs:[
+"Adverbs of Manner",
+"Adverbs of Time",
+"Adverbs of Frequency & Degree",
+"Adverbs of Place"
+]
+},
+
+5:{
+bab:"VERBS",
+subs:[
+"Finite & Non-Finite",
+"Transitive & Intransitive",
+"Regular & Irregular",
+"Auxiliary & Linking Verbs"
+]
+},
+
+6:{
+bab:"CONJUNCTIONS",
+subs:[
+"Coordinative & Subordinative",
+"Common Conjunctions",
+"Correlative Conjunctions"
+]
+},
+
+7:{
+bab:"PREPOSITIONS",
+subs:[
+"Preposition of Time",
+"Preposition of Place",
+"Preposition of Direction",
+"Preposition of Agent"
+]
+},
+
+8:{
+bab:[
+{
+title:"BAB 8 : INTERJECTIONS",
+subs:[
+"Interjections"
+]
+},
+
+{
+title:"BAB 9 : DETERMINERS",
+subs:[
+"Determiners"
+]
+},
+
+{
+title:"BAB 10 : ARTICLES",
+subs:[
+"Articles",
+"Indefinite & Zero Article"
+]
+}
+
+]
+},
+
+9:{
+bab:[
+{
+title:"BAB 1 : TENSES",
+subs:[
+"Present Tense",
+"Past Tense",
+"Future Tense",
+"Past Future Tense"
+]
+}
+]
+},
+
+10:{
+bab:[
+{
+title:"BAB 2 : WORD ORDER",
+subs:[
+"Susunan Non Phrase",
+"Penempatan Adverb"
+]
+},
+{
+title:"BAB 3 : PARTICIPLE",
+subs:[
+"Macam dan Bentuk",
+"Active Participle (V-ing)",
+"Past Participle"
+]
+}
+]
+},
+
+11:{
+bab:[
+{
+title:"BAB 4 : PASSIVE VOICE",
+subs:[
+"Penggunaan Kalimat Pasif",
+"Pasif dari Berbagai Tenses dan Modal",
+"Pasif dengan Dua Objek",
+"Pasif dalam To-Infinitive",
+"Pasif dalam Gerund",
+"Pasif dengan Impersonal It",
+"Pasif Interogative",
+"Menentukan Subjek Pasif"
+]
+}
+]
+},
+
+12:{
+bab:[
+{
+title:"BAB 5 : CONCORD",
+subs:[
+"Kesesuaian Subjek dan Predikat",
+"Kesesuaian Tenses dengan Waktu",
+"Kesesuaian Kata Ganti Orang",
+"Kesesuaian Kata Ganti Benda"
+]
+}
+]
+},
+
+13:{
+bab:[
+{
+title:"BAB 6 : MODALS",
+subs:[
+"Macam-Macam Modal"
+]
+},
+{
+title:"BAB 7 : SUBJUNCTIVE",
+subs:[
+"Wish / If Only / Would Rather",
+"As If / As Though",
+"Subjunctive Verbs"
+]
+}
+]
+},
+
+14:{
+bab:[
+{
+title:"BAB 8 : DEGREE OF COMPARISON",
+subs:[
+"Degree of Comparison",
+"Preference"
+]
+},
+{
+title:"BAB 9 : DERIVATIVES",
+subs:[
+"Macam-Macam Derivatives",
+"Jenis Kata dan Bentuknya"
+]
+}
+]
+},
+
+15:{
+bab:[
+{
+title:"BAB 10 : ADJECTIVE CLAUSE",
+subs:[
+"Jenis Relative Pronoun"
+]
+},
+{
+title:"BAB 11 : CAUSATIVE VERBS",
+subs:[
+"Causative dengan Objek Aktif",
+"Causative dengan Objek Pasif"
+]
+},
+{
+title:"BAB 12 : CONDITIONAL SENTENCES",
+subs:[
+"Bentuk Conditional Sentences",
+"Conditional Tanpa IF"
+]
+}
+]
+},
+
+16:{
+bab:[
+{
+title:"BAB 13 : GERUND & INFINITIVE",
+subs:[
+"Gerund",
+"Infinitive",
+"Bare Infinitive"
+]
+},
+{
+title:"BAB 14 : NOUN CLAUSE",
+subs:[
+"Noun Clause",
+"Direct & Indirect Speech"
+]
+},
+{
+title:"BAB 15 : ELLIPTICAL & QUESTION TAG",
+subs:[
+"Elliptical Construction",
+"Queston Tag"
+]
+}
+]
+},
+
+17:{
+bab:[
+{
+title:"GREETINGS",
+subs:[
+"Ungkapan Menyapa Orang Lain",
+"Ungkapan Menjawab Sapaan"
+]
+},
+{
+title:"PARTING",
+subs:[
+"Ungkapan Berpamitan",
+"Menjawab Orang yang Berpamitan"
+]
+},
+{
+title:"INTRODUCING YOURSELF",
+subs:[
+"Memperkenalkan Diri Sendiri",
+"Memperkenalkan Orang Lain"
+]
+}
+]
+},
+
+18:{
+bab:[
+{
+title:"THANKS",
+subs:[
+"Ungkapan Menyatakan Terimakasih",
+"Menjawab Ucapan Terimakasih"
+]
+},
+{
+title:"APOLOGIES",
+subs:[
+"Ungkapan Meminta Maaf",
+"Menjawab Permintaan Maaf"
+]
+},
+{
+title:"INVITATIONS & VISITING",
+subs:[
+"Ungkapan Mengundang",
+"Menjawab Undangan"
+]
+}
+]
+},
+
+19:{
+bab:[
+{
+title:"SHOWING SYMPATHY",
+subs:[
+"Menyatakan Simpati",
+"Menjawab Simpati"
+]
+},
+{
+title:"ASKING OPINION",
+subs:[
+"Meminta dan Memberi Pendapat",
+"Menanggapi Pendapat"
+]
+},
+{
+title:"ASKING ABOUT TIME",
+subs:[
+"Ungkapan Menanyakan Waktu"
+]
+}
+]
+},
+
+20:{
+bab:[
+{
+title:"ASKING & GIVING INFORMATIONS",
+subs:[
+"Menanyakan Informasi Sehari-hari",
+"Memberikan Informasi"
+]
+},
+{
+title:"REQUEST & OFFER",
+subs:[
+"Kata-kata Permintaan",
+"Kata-kata Penawaran",
+"Merespon Permintaan & Tawaran"
+]
+},
+{
+title:"USING 'MAY' AND 'DONT'",
+subs:[
+"Pemakaian Kata MAY",
+"Pemakaian Kata DONT"
+]
+}
+]
+},
+
+21:{
+bab:[
+{
+title:"THEMATIC VOCABULARIES",
+subs:[
+"Bilangan",
+"Bilangan Bertingkat",
+"Waktu",
+"Warna & Bentuk"
+]
+}
+]
+},
+
+22:{
+bab:[
+{
+title:"KELUARGA & RUMAH",
+subs:[
+"Anggota Keluarga",
+"Rumah",
+"Dapur",
+"Ruang Tamu",
+"Kamar Mandi"
+]
+}
+]
+},
+
+23:{
+bab:[
+{
+title:"ALAM & HEWAN",
+subs:[
+"Buah",
+"Bunga dan Pohon",
+"Hewan Jinak",
+"Hewan Liar",
+"Hewan Kecil"
+]
+}
+]
+},
+
+24:{
+bab:[
+{
+title:"HEWAN & TEKNOLOGI",
+subs:[
+"Burung",
+"Hewan Air",
+"Sekolah",
+"Komputer dan Telepon",
+"Mencari Kerja"
+]
+}
+]
+},
+
+25:{
+bab:[
+{
+title:"TEMPAT & PAKAIAN",
+subs:[
+"Ruang Kelas",
+"Kantor",
+"Toko",
+"Pakaian Pria",
+"Pakaian Wanita"
+]
+}
+]
+},
+
+26:{
+bab:[
+{
+title:"PROFESI & HIBURAN",
+subs:[
+"Salon & Kecantikan",
+"Toko Penjahit",
+"Musik dan Film",
+"Bengkel",
+"Profesi / Pekerjaan"
+]
+}
+]
+},
+
+27:{
+bab:[
+{
+title:"LINGKUNGAN",
+subs:[
+"Makanan dan Minuman",
+"Bangunan",
+"Bumi dan Alam Semesta",
+"Cuaca, Iklim, Musim",
+"Di Bandara",
+"Di Jalan"
+]
+}
+]
+},
+
+28:{
+bab:[
+{
+title:"TEMPAT UMUM",
+subs:[
+"Di Bank & Kantor Pos",
+"Di Hotel",
+"Di Rumah Sakit",
+"Tubuh Manusia",
+"Di Restoran"
+]
+}
+]
+},
+
+29:{
+bab:[
+{
+title:"EKSPRESI & AKTIVITAS",
+subs:[
+"Dokumen & Riwayat Hidup",
+"Lawan Kata",
+"Ekspresi dan Perasaan",
+"Olahraga & Bela Diri",
+"Polisi dan Tentara"
+]
+}
+]
+},
+
+30:{
+bab:[
+{
+title:"WORD LIST",
+subs:[
+"Kata Kerja Beraturan",
+"Kata Kerja Tak Beraturan",
+"Proverb (Peribahasa)",
+"Idiom",
+"Kalimat dengan Idiom"
+]
+}
+]
+},
+
+}
+
+let progress=JSON.parse(localStorage.getItem("progress")||"{}")
+
+const daysDiv=document.getElementById("days")
+
+for(let i=1;i<=30;i++){
+let d=document.createElement("div")
+d.className="card"
+
+if(false){
+d.classList.add("locked")
+}
+
+d.innerText="🌻 DAY "+i
+d.onclick=()=>openDay(i)
+daysDiv.appendChild(d)
+}
+
+function updateProgressUI(){
+
+let done=0
+
+for(let i=1;i<=30;i++){
+if(progress["day"+i]) done++
+}
+
+let percent=(done/30)*100
+
+document.getElementById("progressFill").style.width=percent+"%"
+document.getElementById("progressText").innerText=done+" / 30 days completed"
+
+}
+
+function drawCalendar(){
+
+let cal=document.getElementById("calendar")
+cal.innerHTML=""
+
+for(let i=1;i<=30;i++){
+
+let c=document.createElement("div")
+c.className="dayCell"
+
+if(progress["day"+i]){
+c.classList.add("done")
+c.innerText="🌻"
+}else{
+c.innerText=i
+}
+
+cal.appendChild(c)
+
+}
+
+}
+
+function drawGarden(){
+
+let garden=document.getElementById("garden")
+garden.innerHTML=""
+
+let done=0
+for(let i=1;i<=30;i++){
+if(progress["day"+i]) done++
+}
+
+for(let i=1;i<=done;i++){
+
+let p=document.createElement("div")
+p.className="plant"
+
+if(i<5) p.innerText="🌱"
+else if(i<10) p.innerText="🌿"
+else if(i<20) p.innerText="🌻"
+else p.innerText="🌻🌻"
+
+garden.appendChild(p)
+
+}
+
+}
+
+let currentDay
+let currentSub
+
+function openDay(day){
+
+currentDay=day
+
+if(day<=8){
+document.getElementById("mainTitle").innerText="PART OF SPEECH"
+}
+else if(day<=16){
+document.getElementById("mainTitle").innerText="GRAMMAR"
+}
+else if(day<=20){
+document.getElementById("mainTitle").innerText="CONVERSATIONS, IDIOMS, AND EXPRESSIONS"
+}
+else{
+document.getElementById("mainTitle").innerText="THEMATIC VOCABULARIES (KOSA KATA TEMATIK)"
+}
+if(Array.isArray(schedule[day].bab)){
+document.getElementById("babTitle").innerText=""
+}else{
+document.getElementById("babTitle").innerText="BAB "+day+" : "+schedule[day].bab
+}
+
+let html=""
+
+if(Array.isArray(schedule[day].bab)){
+
+schedule[day].bab.forEach((b)=>{
+
+html+=`<h3 style="text-align:left;margin-left:30px;margin-top:20px">${b.title}</h3>`
+
+b.subs.forEach((s)=>{
+
+html+=`<div class="card" onclick='openSub("${s}")'>
+${s}
+</div>`
+
+})
+
+})
+
+}else{
+
+schedule[day].subs.forEach((s,i)=>{
+
+html+=`<div class="card" onclick='openSub("${s}")'>
+${s}
+</div>`
+
+})
+
+}
+
+document.getElementById("subs").innerHTML=html
+
+show("dayPage")
+
+}
+
+function openSub(name){
+
+currentSub=name
+
+document.getElementById("subTitle").innerText=name
+
+let reviewKey="review_"+currentDay+"_"+currentSub
+let savedReview=localStorage.getItem(reviewKey)
+document.getElementById("review").value=savedReview?savedReview:""
+
+let scoreKey="score_"+currentDay+"_"+currentSub
+let savedScore=localStorage.getItem(scoreKey)
+
+if(savedScore){
+document.getElementById("scoreDisplay").innerText="Score: "+savedScore
+}else{
+document.getElementById("scoreDisplay").innerText=""
+}
+
+document.getElementById("quiz").innerHTML=""
+
+show("studyPage")
+
+}
+
+function saveReview(){
+
+let key="review_"+currentDay+"_"+currentSub
+
+localStorage.setItem(key,document.getElementById("review").value)
+
+}
+
+const bankSoal = {
+
+"DAY1_CONCRETE NOUNS":[
+{q:"Please put those _____ on the shelf.",options:["book","books","booking","booked"],a:1},
+{q:"I can see a _____ flying high in the sky.",options:["birds","bird","birding","birded"],a:1},
+{q:"The _____ is cleaning the windows right now.",options:["man","men","mans","manned"],a:0},
+{q:"My mother bought two new _____ for the kitchen.",options:["chair","chairs","chaired","chairing"],a:1},
+{q:"Look at the _____ playing in the garden.",options:["child","children","childrens","childs"],a:1}
+],
+
+"DAY1_ABSTRACT NOUNS":[
+{q:"We must value _____ above everything else.",options:["honest","honesty","honestly","honester"],a:1},
+{q:"His _____ of the subject is very impressive.",options:["know","knowledge","knowing","knowledgeable"],a:1},
+{q:"They fought for their _____ during the war.",options:["free","freedom","freely","freeing"],a:1},
+{q:"_____ is necessary for a healthy life.",options:["Happy","Happiness","Happily","Happier"],a:1},
+{q:"She has a lot of _____ in her new job.",options:["confident","confidence","confidently","confiding"],a:1}
+],
+
+"DAY1_COUNTABLE NOUNS":[
+{q:"How many _____ do you have in your bag?",options:["apple","apples","an apple","apply"],a:1},
+{q:"I have three _____ who live in London.",options:["cousin","cousins","cousining","cousined"],a:1},
+{q:"There are ten _____ in this small village.",options:["house","houses","housing","housed"],a:1},
+{q:"She bought a few _____ for her birthday party.",options:["candle","candles","candling","candled"],a:1},
+{q:"We need two _____ to complete the team.",options:["person","people","persons","peoples"],a:1}
+],
+
+"DAY1_UNCOUNTABLE NOUNS":[
+{q:"I need some _____ to finish my drawing.",options:["paper","papers","a paper","papering"],a:0},
+{q:"The _____ in this city is getting worse.",options:["pollution","pollutions","a pollution","polluted"],a:0},
+{q:"Could you give me some _____ about the flight?",options:["info","information","informations","informative"],a:1},
+{q:"He drank a lot of _____ after the marathon.",options:["water","waters","a water","watering"],a:0},
+{q:"Too much _____ is not good for your teeth.",options:["sugar","sugars","a sugar","sugaring"],a:0}
+],
+
+"DAY2_PERSONAL PRONOUNS":[
+{q:"My sister and _____ are going to visit our grandmother this weekend.",options:["me","I","my","mine"],a:1},
+{q:"The manager wants to speak with _____ regarding the project update.",options:["they","them","their","theirs"],a:1},
+{q:"Please tell _____ that the meeting has been rescheduled to 3 PM.",options:["he","his","him","himself"],a:2},
+{q:"Although the cake looked delicious, _____ tasted very salty.",options:["it","its","they","them"],a:0},
+{q:"Since we are lost, could you please help _____ find the way back?",options:["we","our","ours","us"],a:3}
+],
+
+"DAY2_DEMONSTRATIVE PRONOUNS":[
+{q:"_____ is the most beautiful painting I have ever seen in this gallery.",options:["This","These","Those","Them"],a:0},
+{q:"Do you see _____ birds sitting on the roof of that distant building?",options:["this","these","that","those"],a:3},
+{q:"_____ are the documents you requested from the archive yesterday.",options:["This","That","These","It"],a:2},
+{q:"I don't like this color; can you show me _____ one over there?",options:["this","that","these","those"],a:1},
+{q:"Among all the options presented, _____ seems to be the most viable.",options:["these","those","this","they"],a:2}
+],
+
+"DAY2_RELATIVE PRONOUNS":[
+{q:"The scientist _____ won the Nobel Prize is giving a lecture tonight.",options:["which","whom","who","whose"],a:2},
+{q:"The laptop _____ I bought last week is already malfunctioning.",options:["who","which","whom","whose"],a:1},
+{q:"This is the student _____ essay was chosen as the best in the country.",options:["who","whom","which","whose"],a:3},
+{q:"The woman _____ you met at the conference is a renowned surgeon.",options:["who","which","whom","whose"],a:2},
+{q:"I finally found the keys _____ I had been looking for all morning.",options:["who","that","whom","whose"],a:1}
+],
+
+"DAY2_POSSESSIVE PRONOUNS":[
+{q:"I’ve lost my umbrella; may I borrow _____ for a moment?",options:["your","yours","you","yourself"],a:1},
+{q:"This camera is _____, but the tripod belongs to the studio.",options:["my","mine","me","I"],a:1},
+{q:"Their house is much larger than _____, but ours has a better garden.",options:["they","them","their","theirs"],a:3},
+{q:"My car is white, and _____ is blue.",options:["her","hers","she","herself"],a:1},
+{q:"The victory was _____, as they had worked harder than any other team.",options:["theirs","their","them","they"],a:0}
+],
+
+"DAY2_REFLEXIVE PRONOUNS":[
+{q:"The little boy managed to dress _____ for the first time today.",options:["himself","herself","itself","yourself"],a:0},
+{q:"We should not blame _____ for the mistakes made by the previous team.",options:["us","our","ourselves","ourselves"],a:2},
+{q:"I taught _____ how to play the piano by watching online tutorials.",options:["me","my","myself","mine"],a:2},
+{q:"The machine will automatically shut _____ off after ten minutes of inactivity.",options:["itself","himself","yourself","themselves"],a:0},
+{q:"You and your brother must learn to behave _____ when visiting guests.",options:["yourself","yourselves","himself","themselves"],a:1}
+],
+
+"DAY2_INTERROGATIVE PRONOUNS":[
+{q:"_____ is responsible for the maintenance of this equipment?",options:["Whom","Whose","Who","Which"],a:2},
+{q:"_____ of these two candidates do you think is better for the job?",options:["Who","Which","What","Whom"],a:1},
+{q:"_____ did the committee decide during the private session?",options:["What","Which","Who","Whose"],a:0},
+{q:"_____ is this leather jacket? I found it in the hallway.",options:["Who","Whom","Whose","Which"],a:2},
+{q:"To _____ should I address this formal complaint?",options:["who","whom","whose","which"],a:1}
+],
+
+"DAY3_TYPES OF ADJECTIVES":[
+{q:"The museum features an exhibit of _____ pottery from the Ming Dynasty.",options:["ancient","ancients","anciently","antiquity"],a:0},
+{q:"We were impressed by her _____ performance on the grand piano.",options:["skillfully","skill","skillful","skilledness"],a:2},
+{q:"The _____ weather forced the organizers to cancel the outdoor concert.",options:["storm","stormy","storming","stormed"],a:1},
+{q:"He is a very _____ man who always considers other people's feelings.",options:["thought","thoughtful","thoughtfully","thoughtless"],a:1},
+{q:"Please be _____ with those glass vases; they are extremely fragile.",options:["care","carefully","careful","careless"],a:2}
+],
+
+"DAY3_ADJECTIVE FORMATION":[
+{q:"The view from the top of the mountain was absolutely _____.",options:["beauty","beautify","beautiful","beautifully"],a:2},
+{q:"Regular exercise is _____ for maintaining good physical health.",options:["benefit","beneficial","beneficially","benefiting"],a:1},
+{q:"She felt _____ after realizing she had made a mistake in the report.",options:["regret","regretful","regretfully","regrettable"],a:1},
+{q:"The children were very _____ during their first visit to the science museum.",options:["energy","energetic","energetically","energize"],a:1},
+{q:"This new software is highly _____ for small business owners.",options:["use","useful","usefully","useless"],a:1}
+],
+
+"DAY3_DEGREE OF COMPARISON":[
+{q:"This year's harvest is significantly _____ than last year's due to the rain.",options:["good","better","best","well"],a:1},
+{q:"Mount Everest is the _____ peak in the entire world.",options:["high","higher","highest","highly"],a:2},
+{q:"Traveling by plane is usually _____ than traveling by train.",options:["fast","faster","fastest","more fast"],a:1},
+{q:"Of the three sisters, Catherine is the _____ and most soft-spoken.",options:["quiet","quieter","quietest","more quiet"],a:2},
+{q:"Gold is much _____ than silver in the global market.",options:["expensive","more expensive","most expensive","expensively"],a:1}
+],
+
+"DAY3_POSITIVE DEGREE PATTERN":[
+{q:"Her English is _____ as her brother's, even though she started later.",options:["as good","so good","as well","so well"],a:0},
+{q:"This room is not _____ as the one we saw earlier this morning.",options:["so large","as larger","so larger","largest"],a:0},
+{q:"The marathon runner was not _____ as the winner of the race.",options:["as faster","so fast","fastest","more fast"],a:1},
+{q:"My new apartment is _____ as my old one, but it is much brighter.",options:["as small","so small","smaller","smallest"],a:0},
+{q:"The exam was not _____ as I had initially feared it would be.",options:["as difficult","so difficultly","as more difficult","difficultest"],a:0}
+],
+
+"DAY4_ADVERBS OF MANNER":[
+{q:"The pianist played the difficult concerto _____, earning a standing ovation from the audience.",options:["beautiful","beauty","beautifully","more beautiful"],a:2},
+{q:"Because the baby was sleeping, she entered the room very _____.",options:["quiet","quietly","quietness","more quiet"],a:1},
+{q:"Our team worked _____ to finish the project before the deadline.",options:["hard","hardly","harder","hardest"],a:0},
+{q:"He drives _____ when it is raining to avoid any potential accidents.",options:["careful","carefully","careless","more careful"],a:1},
+{q:"The soldier acted _____ during the rescue mission.",options:["brave","bravery","bravely","braver"],a:2}
+],
+
+"DAY4_ADVERBS OF TIME":[
+{q:"I have _____ finished reading the novel you lent me last week.",options:["yet","already","since","ago"],a:1},
+{q:"We haven't received any official confirmation from the head office _____.",options:["already","soon","yet","yesterday"],a:2},
+{q:"My father has been working in this company _____ 2005.",options:["for","since","ago","during"],a:1},
+{q:"The doctor will be available to see you _____ after the surgery.",options:["late","soon","before","early"],a:1},
+{q:"They moved to Jakarta five years _____.",options:["since","for","ago","before"],a:2}
+],
+
+"DAY4_ADVERBS OF FREQUENCY":[
+{q:"She _____ ever goes to the gym; she prefers exercising at home.",options:["always","usually","rarely","often"],a:2},
+{q:"The coffee was _____ hot that I had to wait ten minutes before drinking it.",options:["very","too","enough","so"],a:3},
+{q:"I _____ check my emails before I start working in the morning.",options:["always","seldom","never","rarely"],a:0},
+{q:"Is the water warm _____ for you to take a bath?",options:["too","very","enough","so"],a:2},
+{q:"He was _____ exhausted after the long hike that he fell asleep immediately.",options:["extremely","extreme","extremeness","more extreme"],a:0}
+],
+
+"DAY4_ADVERBS OF PLACE":[
+{q:"I searched _____ for my missing keys, but I still couldn't find them.",options:["nowhere","everywhere","anywhere","somewhere"],a:1},
+{q:"Please wait _____ while the manager is in a meeting.",options:["inside","outside","upstairs","nearby"],a:1},
+{q:"The children are playing _____ because it is a sunny day.",options:["indoors","outdoors","anywhere","nowhere"],a:1},
+{q:"My grandparents live _____ in a small village near the mountains.",options:["nearby","everywhere","anywhere","upstairs"],a:0},
+{q:"He looked _____, expecting to see his friend coming up the stairs.",options:["downstairs","upstairs","inside","outside"],a:1}
+],
+
+"DAY5_FINITE NONFINITE":[
+{q:"She __________ to the market every Saturday morning to buy fresh vegetables.",options:["go","goes","going","gone"],a:1},
+{q:"I enjoy __________ in the sea during the summer holidays.",options:["swim","to swim","swimming","swam"],a:2},
+{q:"They decided __________ a new car after their old one broke down.",options:["buy","buying","to buy","bought"],a:2},
+{q:"My brother __________ a letter to his friend in London yesterday.",options:["write","wrote","written","writing"],a:1},
+{q:"The man __________ next to the window is my uncle.",options:["sits","sat","sitting","is sit"],a:2}
+],
+
+"DAY5_TRANSITIVE INTRANSITIVE":[
+{q:"The chef __________ a special dessert for the guests tonight.",options:["arrived","prepared","slept","sat"],a:1},
+{q:"The sun __________ brightly in the sky today.",options:["shines","puts","makes","gives"],a:0},
+{q:"Can you please __________ the door? It’s very cold outside.",options:["stay","wait","open","go"],a:2},
+{q:"The baby __________ soundly for three hours this afternoon.",options:["took","hit","slept","brought"],a:2},
+{q:"I __________ an interesting novel last week.",options:["read","lived","fell","rose"],a:0}
+],
+
+"DAY5_REGULAR IRREGULAR":[
+{q:"She __________ her bedroom before the guests arrived.",options:["clean","cleaned","cleaning","cleans"],a:1},
+{q:"We __________ a very loud noise from the kitchen last night.",options:["hear","heard","heared","hearing"],a:1},
+{q:"He __________ the heavy boxes to the warehouse.",options:["carry","carried","carries","carrying"],a:1},
+{q:"I __________ my keys on the table, but now they are gone.",options:["put","putted","puts","putting"],a:0},
+{q:"They __________ to the music while waiting for the bus.",options:["listen","listened","listening","listens"],a:1}
+],
+
+"DAY5_AUXILIARY LINKING":[
+{q:"__________ you working on the project when I called you?",options:["Do","Are","Were","Was"],a:2},
+{q:"This homemade soup __________ delicious and very warm.",options:["tastes","tastes it","is taste","tasting"],a:0},
+{q:"She __________ not finished her homework yet.",options:["do","does","has","have"],a:2},
+{q:"The students __________ become very quiet when the teacher entered.",options:["did","were","are","became"],a:1},
+{q:"I __________ definitely join the English club next semester.",options:["will","am","have","been"],a:0}
+],
+
+// ===== DAY 6 =====
+
+"DAY6_COORDINATIVE":[
+{q:"I wanted to buy the new smartphone, _______ I didn't have enough money in my bank account.",options:["so","but","or","and"],a:1},
+{q:"We can go to the Italian restaurant for dinner, _______ we can just order pizza at home.",options:["for","yet","or","nor"],a:2},
+{q:"_______ it was raining heavily, the football match continued until the final whistle.",options:["Because","Although","Since","If"],a:1},
+{q:"Please make sure to turn off all the lights _______ you leave the office.",options:["before","unless","so that","whereas"],a:0},
+{q:"He studied very hard for the exam, _______ he managed to get the highest score in class.",options:["but","for","so","or"],a:2}
+],
+
+"DAY6_COMMON":[
+{q:"I haven't seen my cousin _______ we graduated from university five years ago.",options:["until","since","while","as"],a:1},
+{q:"You should bring an umbrella _______ it rains later this afternoon.",options:["in case","although","but","yet"],a:0},
+{q:"The children played outside _______ their mother was cooking lunch in the kitchen.",options:["before","while","because","unless"],a:1},
+{q:"He didn't go to work today _______ he was feeling a bit under the weather.",options:["so","because","although","but"],a:1},
+{q:"Wait here _______ I come back with the tickets.",options:["after","since","until","although"],a:2}
+],
+
+"DAY6_CORRELATIVE":[
+{q:"_______ my sister nor my brother is able to attend the wedding ceremony tomorrow.",options:["Either","Neither","Both","Not only"],a:1},
+{q:"He is _______ a talented musician but also a very gifted painter.",options:["neither","either","not only","both"],a:2},
+{q:"You can _______ pay the fine online now or challenge the ticket in court later.",options:["neither","either","both","whether"],a:1},
+{q:"_______ the students and the teachers were delighted with the new laboratory facilities.",options:["Not only","Either","Both","Neither"],a:2},
+{q:"I don't know _______ he will arrive on time or if he will be late again.",options:["neither","whether","not only","both"],a:1}
+],
+
+
+// ===== DAY 7 =====
+
+"DAY7_TIME":[
+{q:"The international conference is scheduled to start __________ Monday morning.",options:["in","at","on","for"],a:2},
+{q:"Most people prefer to go for a walk in the park __________ the evening.",options:["at","on","in","since"],a:2},
+{q:"We usually have a big family dinner together __________ Christmas Day.",options:["at","in","on","during"],a:2},
+{q:"The train is expected to arrive exactly __________ 10:45 AM.",options:["in","on","at","by"],a:2},
+{q:"He has been living in this apartment __________ five years now.",options:["since","for","during","until"],a:1}
+],
+
+"DAY7_PLACE":[
+{q:"The documents you are looking for are kept __________ the top drawer of the desk.",options:["on","at","in","between"],a:2},
+{q:"I will wait for you __________ the main entrance of the shopping mall.",options:["in","at","inside","under"],a:1},
+{q:"The cat is hiding __________ the sofa because it is scared of the vacuum cleaner.",options:["among","between","under","above"],a:2},
+{q:"There is a beautiful painting hanging __________ the fireplace in the living room.",options:["on","above","in","at"],a:1},
+{q:"The convenience store is located right __________ the pharmacy and the bakery.",options:["among","inside","between","under"],a:2}
+],
+
+"DAY7_DIRECTION":[
+{q:"The tourists walked __________ the tunnel to get to the other side of the mountain.",options:["across","through","into","over"],a:1},
+{q:"Please be careful when you walk __________ the busy street.",options:["through","across","along","into"],a:1},
+{q:"The cat jumped __________ the table to catch a fly.",options:["onto","into","to","towards"],a:0},
+{q:"We followed the path that leads __________ the dark forest.",options:["into","onto","at","over"],a:0},
+{q:"The airplane is currently flying __________ the Atlantic Ocean.",options:["through","over","into","onto"],a:1}
+],
+
+"DAY7_AGENT":[
+{q:"This classic novel was written __________ Charles Dickens in the 19th century.",options:["with","by","from","for"],a:1},
+{q:"You can open the locked drawer __________ this silver key.",options:["by","with","through","using"],a:1},
+{q:"The beautiful mural on the wall was painted __________ a group of local artists.",options:["by","with","of","from"],a:0},
+{q:"She prefers to cut the bread __________ a very sharp knife.",options:["by","with","in","using"],a:1},
+{q:"The house was destroyed __________ the heavy storm last night.",options:["with","by","from","for"],a:1}
+],
+
+
+// ===== DAY 8 =====
+
+"DAY8_INTERJECTIONS":[
+{q:"\"_______! That performance was absolutely breathtaking,\" the critic exclaimed.",options:["Ouch","Wow","Alas","Phew"],a:1},
+{q:"_______! I didn't see you standing there in the dark.",options:["Hurray","Oh","Yuck","Bingo"],a:1},
+{q:"_______, I've finally finished this exhausting report.",options:["Phew","Oops","Hey","Shh"],a:0},
+{q:"_______! I forgot to bring my wallet with me.",options:["Bravo","Oops","Yum","Aha"],a:1},
+{q:"_______! We won the championship in the final minute!",options:["Alas","Hurray","Ouch","Eww"],a:1}
+],
+
+"DAY8_DETERMINERS":[
+{q:"Could you pass me _______ salt, please?",options:["many","some","few","every"],a:1},
+{q:"_______ student in the class was given a new tablet.",options:["All","Many","Each","Both"],a:2},
+{q:"I have _______ friends who live in London.",options:["much","a little","several","any"],a:2},
+{q:"There isn't _______ milk left in the refrigerator.",options:["many","much","few","several"],a:1},
+{q:"_______ people believe that technology will solve all our problems.",options:["Much","Little","Many","Any"],a:2}
+],
+
+"DAY8_ARTICLES":[
+{q:"My brother is _______ engineer at a large construction firm.",options:["a","an","the","-"],a:1},
+{q:"_______ sun rises in the east and sets in the west.",options:["A","An","The","-"],a:2},
+{q:"I saw _______ incredible movie last night.",options:["a","an","the","-"],a:1},
+{q:"_______ honesty is a quality that everyone should admire.",options:["A","An","The","-"],a:3},
+{q:"Can you play _______ guitar?",options:["a","an","the","-"],a:2}
+],
+
+"DAY8_ZERO ARTICLE":[
+{q:"My sister wants to become __________ architect.",options:["a","an","the","-"],a:1},
+{q:"It was __________ honor to meet the musician.",options:["a","an","the","-"],a:1},
+{q:"Do you have __________ umbrella I could borrow?",options:["a","an","the","-"],a:1},
+{q:"He bought __________ expensive European car.",options:["a","an","the","-"],a:1},
+{q:"We usually spend __________ hour exercising.",options:["a","an","the","-"],a:1}
+],
+
+// ===== DAY 9 =====
+"DAY9_PRESENT":[
+{q:"The Earth __________ around the sun once every 365 days.",options:["revolve","revolves","revolving","is revolve"],a:1},
+{q:"Listen! Someone __________ the piano beautifully.",options:["plays","play","is playing","are playing"],a:2},
+{q:"We __________ our grandparents in the village at least once a month.",options:["visits","visit","are visiting","visiting"],a:1},
+{q:"My brother __________ usually eat breakfast before going to the office.",options:["don't","doesn't","isn't","not"],a:1},
+{q:"She __________ in the library for her final exam right now.",options:["studies","study","is studying","are studying"],a:2}
+],
+
+"DAY9_PAST":[
+{q:"I __________ my old friend at the mall last night.",options:["meet","meets","met","meeting"],a:2},
+{q:"They __________ attend the meeting yesterday.",options:["don't","doesn't","didn't","wasn't"],a:2},
+{q:"When I arrived, he __________ his car in the garage.",options:["was washing","washes","wash","were washing"],a:0},
+{q:"Two years ago, the company __________ its biggest branch.",options:["open","opens","opened","opening"],a:2},
+{q:"__________ you watch the documentary yesterday?",options:["Do","Does","Did","Were"],a:2}
+],
+
+"DAY9_FUTURE":[
+{q:"Robots __________ most manual work by 2050.",options:["do","will do","are doing","did"],a:1},
+{q:"I promise I __________ you tomorrow.",options:["call","will call","am calling","called"],a:1},
+{q:"Look at those clouds! It __________ rain soon.",options:["will","is going to","was going to","will be"],a:1},
+{q:"We __________ a farewell party next Saturday.",options:["will hold","holds","held","hold"],a:0},
+{q:"__________ you help me with these suitcases?",options:["Do","Did","Will","Are"],a:2}
+],
+
+"DAY9_PASTFUTURE":[
+{q:"I __________ come to your party yesterday if I hadn't been busy.",options:["will","would","shall","should"],a:1},
+{q:"She told me she __________ visit her aunt.",options:["will","would","is going to","can"],a:1},
+{q:"If I were you, I __________ take the job.",options:["will","would","am","shall"],a:1},
+{q:"They __________ have finished the project.",options:["will","would","shall","should"],a:1},
+{q:"He promised he __________ pay me back.",options:["will","would","is","does"],a:1}
+],
+
+// ===== DAY 10 =====
+
+"DAY10_WORDORDER":[
+{q:"She bought a __________ bag at the boutique yesterday.",options:["beautiful leather black","leather black beautiful","beautiful black leather","black leather beautiful"],a:2},
+{q:"My brother has two __________ dogs that always bark at strangers.",options:["big friendly white","friendly big white","white big friendly","friendly white big"],a:0},
+{q:"The museum displays several __________ statues from the 17th century.",options:["ancient stone Greek","Greek ancient stone","ancient Greek stone","stone ancient Greek"],a:2},
+{q:"I found a __________ box in the attic.",options:["small square wooden","wooden square small","square small wooden","wooden small square"],a:0},
+{q:"She is wearing a __________ dress to the gala dinner.",options:["silk elegant long red","elegant long red silk","red long silk elegant","long elegant red silk"],a:3}
+],
+
+"DAY10_ADVERB":[
+{q:"I __________ remember to bring my house keys before leaving.",options:["always","remember always","always remember","always to remember"],a:2},
+{q:"The children played __________ in the garden all afternoon.",options:["happily","happy","more happy","in happy"],a:0},
+{q:"She __________ finishes her work on time despite being very busy.",options:["usually","finishes usually","usually finishes","is usually"],a:2},
+{q:"They have __________ been to Europe twice this year.",options:["already","already have","have already","already been"],a:2},
+{q:"The wind blew __________ during the storm last night.",options:["violent","violently","in violent","more violent"],a:1}
+],
+
+"DAY10_PARTICIPLE_FORM":[
+{q:"The __________ sun was visible through the thick clouds.",options:["rise","rising","risen","rose"],a:1},
+{q:"The __________ window needs to be repaired immediately.",options:["break","breaking","broken","broke"],a:2},
+{q:"It was an __________ experience for everyone involved.",options:["excite","exciting","excited","excitement"],a:1},
+{q:"The __________ letter was found in the old drawer.",options:["write","writing","written","writes"],a:2},
+{q:"We saw a __________ star in the middle of the night.",options:["fall","falling","fallen","fell"],a:1}
+],
+
+"DAY10_ACTIVE_PARTICIPLE":[
+{q:"The movie we watched last night was very __________.",options:["interest","interesting","interested","interestingly"],a:1},
+{q:"__________ the news, she immediately burst into tears.",options:["Hear","Hearing","Heard","To hear"],a:1},
+{q:"The girl __________ next to the teacher is the new student.",options:["sit","sitting","sat","sits"],a:1},
+{q:"I found the long journey very __________.",options:["tire","tiring","tired","tiredly"],a:1},
+{q:"__________ for the bus, I met my old friend.",options:["Wait","Waiting","Waited","To wait"],a:1}
+],
+
+"DAY10_PAST_PARTICIPLE":[
+{q:"All the students were __________ by the teacher's explanation.",options:["confuse","confusing","confused","confusingly"],a:2},
+{q:"The __________ cake on the table was made by my grandmother.",options:["bake","baking","baked","bakes"],a:2},
+{q:"I am very __________ in learning more about ancient history.",options:["interest","interesting","interested","interestingly"],a:2},
+{q:"__________ by the loud noise, the baby started to cry.",options:["Frighten","Frightening","Frightened","To frighten"],a:2},
+{q:"The car __________ by my father is a vintage model.",options:["drive","driving","driven","drives"],a:2}
+],
+
+// ===== DAY 11 =====
+
+"DAY11_PASSIVE_BASIC":[
+{q:"The ancient temple __________ by thousands of tourists every year.",options:["visits","is visited","is visiting","visited"],a:1},
+{q:"Rice __________ in many Asian countries as a staple food.",options:["grows","is grown","growing","grown"],a:1},
+{q:"These computers __________ in Japan.",options:["were made","made","are make","making"],a:0},
+{q:"My wallet __________ while I was standing in the crowded bus.",options:["stole","was stolen","is stealing","steals"],a:1},
+{q:"The window __________ by the wind last night.",options:["broke","was broken","is broken","breaking"],a:1}
+],
+
+"DAY11_PASSIVE_TENSE":[
+{q:"The new bridge __________ by the end of next month.",options:["will finish","will be finished","is finished","was finished"],a:1},
+{q:"The report must __________ to the manager before 5 PM.",options:["be submitted","submitted","being submitted","submit"],a:0},
+{q:"A new skyscraper __________ in the city center right now.",options:["is built","is being built","was built","builds"],a:1},
+{q:"The house __________ before the family moved in.",options:["has been painted","had been painted","was painted","is painted"],a:1},
+{q:"These files can __________ by anyone who has the password.",options:["accessed","be accessed","being accessed","access"],a:1}
+],
+
+"DAY11_PASSIVE_DOUBLE_OBJECT":[
+{q:"The students __________ a difficult task by the teacher.",options:["was given","were given","are given","gave"],a:1},
+{q:"A new laptop __________ for me by my father.",options:["was bought","bought","is bought","were bought"],a:0},
+{q:"I __________ a beautiful flower by my boyfriend yesterday.",options:["was given","gave","am given","were given"],a:0},
+{q:"We __________ the way to the museum by her.",options:["showed","were shown","are shown","was shown"],a:1},
+{q:"The secret __________ to anyone yet.",options:["hasn't been told","hasn't told","isn't told","wasn't told"],a:0}
+],
+
+"DAY11_PASSIVE_TO_INF":[
+{q:"I expect the package __________ tomorrow afternoon.",options:["to deliver","to be delivered","delivered","be delivered"],a:1},
+{q:"There is a lot of work __________ before we can go home.",options:["to do","to be done","done","being done"],a:1},
+{q:"She wants __________ by everyone for her achievements.",options:["to be respected","to respect","respecting","respected"],a:0},
+{q:"The car needs __________ by a professional mechanic.",options:["to repair","to be repaired","repaired","be repaired"],a:1},
+{q:"It is important for the truth __________.",options:["to be known","to know","knowing","known"],a:0}
+],
+
+"DAY11_PASSIVE_GERUND":[
+{q:"The little boy hates __________ by his older brother.",options:["being teased","teasing","teased","to tease"],a:0},
+{q:"I don't like __________ what to do all the time.",options:["being told","telling","told","be told"],a:0},
+{q:"She is afraid of __________ by her boss.",options:["criticizing","being criticized","criticized","being criticize"],a:1},
+{q:"The cat enjoys __________ by its owner.",options:["being stroked","stroking","stroked","be stroked"],a:0},
+{q:"He narrowly escaped __________ in the accident.",options:["killing","being killed","killed","be killed"],a:1}
+],
+
+"DAY11_IMPERSONAL":[
+{q:"__________ that the world economy will recover next year.",options:["It is believed","People believe","It believes","It is believing"],a:0},
+{q:"__________ that the earth was flat in ancient times.",options:["It is thought","It was thought","It thinks","People thought"],a:1},
+{q:"__________ that the missing plane has been found.",options:["It is reported","It reported","Is reported","Its reported"],a:0},
+{q:"__________ that he is the richest man in the country.",options:["It is said","It says","Is said","Saying it"],a:0},
+{q:"__________ that smoking causes serious health problems.",options:["It is known","It knows","Knowing","Known that"],a:0}
+],
+
+"DAY11_PASSIVE_QUESTION":[
+{q:"__________ the letter __________ yesterday afternoon?",options:["Was - sent","Did - sent","Was - send","Were - sent"],a:0},
+{q:"__________ the homework __________ by the students now?",options:["Is - being done","Does - done","Is - done","Are - being done"],a:0},
+{q:"__________ the car __________ when you arrived?",options:["Was - being repaired","Did - repair","Was - repaired","Is - repaired"],a:0},
+{q:"Why __________ the meeting __________ until next week?",options:["was - postponed","did - postpone","is - postponed","were - postponed"],a:0},
+{q:"__________ your room __________ lately?",options:["Has - been cleaned","Have - cleaned","Was - cleaned","Is - cleaned"],a:0}
+],
+
+"DAY11_PASSIVE_SUBJECT":[
+{q:"__________ was built in 1889 to commemorate the French Revolution.",options:["The Eiffel Tower","Gustave Eiffel","Tourists","Paris"],a:0},
+{q:"__________ are often used in laboratories to test medicines.",options:["Scientists","White mice","Experiments","Diseases"],a:1},
+{q:"__________ has been translated into more than 300 languages.",options:["The Bible","The writer","Translators","Reading"],a:0},
+{q:"__________ were rescued from the sinking ship.",options:["The captain","All passengers","The ocean","Lifeboats"],a:1},
+{q:"__________ is being served in the dining hall right now.",options:["Dinner","The waiter","Guests","Eating"],a:0}
+],
+
+
+
+// ===== DAY 12 =====
+
+"DAY12_SUBJECT_VERB":[
+{q:"The list of successful candidates __________ been posted.",options:["have","has","is","are"],a:1},
+{q:"Statistics __________ a difficult subject for many students.",options:["is","are","being","were"],a:0},
+{q:"Either the manager or the employees __________ responsible.",options:["is","was","are","has"],a:2},
+{q:"Every student and teacher __________ required to wear a uniform.",options:["are","is","were","being"],a:1},
+{q:"Five kilometers __________ a long distance.",options:["are","were","is","being"],a:2}
+],
+
+"DAY12_TENSE_SIGNAL":[
+{q:"My father __________ to several European countries last month.",options:["goes","has gone","went","is going"],a:2},
+{q:"By the time the movie ended, we __________ all the popcorn.",options:["eat","have eaten","had eaten","are eating"],a:2},
+{q:"Science __________ that the earth revolves around the sun.",options:["proved","proves","has proved","is proving"],a:1},
+{q:"At 8 PM yesterday, I __________ my favorite TV show.",options:["watch","watched","was watching","have watched"],a:2},
+{q:"Next year, my sister __________ from the University of Indonesia.",options:["graduates","graduated","will graduate","has graduated"],a:2}
+],
+
+"DAY12_PRONOUN_AGREEMENT":[
+{q:"Every student must submit __________ homework.",options:["their","his or her","our","its"],a:1},
+{q:"The company decided to change __________ marketing strategy.",options:["its","their","his","her"],a:0},
+{q:"If anyone calls me, tell __________ I'll be back soon.",options:["him","them","her","me"],a:1},
+{q:"My friends and I went to the beach, and __________ had a great time.",options:["they","we","us","our"],a:1},
+{q:"Neither Sarah nor Maria brought __________ umbrella.",options:["their","her","its","ours"],a:1}
+],
+
+"DAY12_DETERMINER":[
+{q:"I don't like __________ kind of music.",options:["these","those","this","many"],a:2},
+{q:"There are too __________ people in this room.",options:["much","many","little","amount"],a:1},
+{q:"She bought __________ expensive furniture.",options:["many","a few","several","some"],a:3},
+{q:"Only __________ students passed the exam.",options:["a little","much","a few","any"],a:2},
+{q:"__________ criteria used were very strict.",options:["This","That","Those","Much"],a:2}
+],
+
+// ===== DAY 13 =====
+
+"DAY13_MODALS":[
+{q:"When he was younger, he __________ run a marathon in less than three hours.",options:["can","could","may","should"],a:1},
+{q:"You __________ park your car here; it is a restricted area.",options:["shouldn't","mustn't","couldn't","don't have to"],a:1},
+{q:"__________ I use your phone for a moment?",options:["Must","May","Should","Would"],a:1},
+{q:"It's getting late; we __________ start heading home.",options:["would","ought to","can","might"],a:1},
+{q:"You __________ bring a heavy jacket because it will be very cold.",options:["had better","would","could","may"],a:0}
+],
+
+"DAY13_SUBJ_WISH":[
+{q:"I wish I __________ more time yesterday.",options:["have","had","had had","would have"],a:2},
+{q:"If only she __________ here right now.",options:["is","was","were","be"],a:2},
+{q:"I would rather you __________ me the truth.",options:["tell","told","had told","telling"],a:1},
+{q:"He wishes he __________ speak French fluently.",options:["can","could","will","would"],a:1},
+{q:"If only they __________ more attention last week.",options:["paid","pay","had paid","would pay"],a:2}
+],
+
+"DAY13_SUBJ_ASIF":[
+{q:"He talks as if he __________ the owner.",options:["is","was","were","be"],a:2},
+{q:"She behaved as though nothing __________ happened.",options:["has","had","was","is"],a:1},
+{q:"They look at me as if I __________ crazy.",options:["am","was","were","been"],a:2},
+{q:"The sky looks as though it __________ going to rain.",options:["is","was","were","be"],a:0},
+{q:"He walked as if he __________ a heavy burden.",options:["carry","carries","carried","was carrying"],a:3}
+],
+
+"DAY13_SUBJ_VERB":[
+{q:"The doctor suggested that he __________ more vegetables.",options:["eats","eat","eating","to eat"],a:1},
+{q:"Our manager insisted that the report __________ submitted.",options:["is","be","was","were"],a:1},
+{q:"We recommend that every employee __________ a badge.",options:["wear","wears","wearing","to wear"],a:0},
+{q:"It is essential that she __________ here on time.",options:["is","was","be","being"],a:2},
+{q:"The judge ordered that the prisoner __________ released.",options:["is","be","was","were"],a:1}
+],
+
+
+// ===== DAY 14 =====
+
+"DAY14_COMPARISON":[
+{q:"This laptop is much __________ than the old one.",options:["fast","faster","fastest","more fast"],a:1},
+{q:"Sarah is the __________ student.",options:["clever","cleverer","cleverest","more clever"],a:2},
+{q:"Traveling by train is __________ as traveling by bus.",options:["as expensive","more expensive","most expensive","expensively"],a:0},
+{q:"The weather today is __________ than yesterday.",options:["bad","worse","worst","badder"],a:1},
+{q:"This is the __________ movie I have ever seen.",options:["more boring","most boring","as boring","boringest"],a:1}
+],
+
+"DAY14_PREFERENCE":[
+{q:"I prefer drinking coffee __________ tea.",options:["than","to","rather than","from"],a:1},
+{q:"She would rather stay at home __________ go to the party.",options:["than","to","instead","better than"],a:0},
+{q:"Most teenagers prefer __________ video games.",options:["play","playing","to play","played"],a:1},
+{q:"We would prefer to have the meeting now __________ wait.",options:["to","then","rather","more"],a:2},
+{q:"My father prefers driving a car __________ public transportation.",options:["than traveling","to traveling","better than travel","to travel"],a:1}
+],
+
+"DAY14_DERIVATIVES":[
+{q:"The __________ of the new bridge will take two years.",options:["construct","construction","constructive","constructor"],a:1},
+{q:"Her performance was truly __________.",options:["amaze","amazement","amazing","amazingly"],a:2},
+{q:"You need to __________ your password regularly.",options:["strong","strength","strengthen","strongly"],a:2},
+{q:"We need a __________ solution to the problem.",options:["create","creation","creative","creatively"],a:2},
+{q:"The boss was very __________ with the team's progress.",options:["satisfy","satisfaction","satisfied","satisfactory"],a:2}
+],
+
+"DAY14_WORD_FORM":[
+{q:"The manager spoke __________ about the company's plans.",options:["confident","confidence","confidently","confide"],a:2},
+{q:"Eating junk food can be __________ to your health.",options:["harm","harmful","harmless","harmfully"],a:1},
+{q:"We are waiting for the __________ of the results.",options:["announce","announcement","announcing","announcer"],a:1},
+{q:"Please __________ the document before sending it.",options:["bright","beauty","clarify","clear"],a:2},
+{q:"He is a very __________ businessman.",options:["success","succeed","successful","successfully"],a:2}
+],
+
+// ===== DAY 15 =====
+
+"DAY15_ADJECTIVE_CLAUSE":[
+{q:"The woman __________ lives next door is a famous scientist.",options:["whom","whose","who","which"],a:2},
+{q:"I have a friend __________ father is a pilot.",options:["who","whom","whose","which"],a:2},
+{q:"The car __________ he bought last week has broken down.",options:["who","whom","which","whose"],a:2},
+{q:"The students __________ the teacher praised were hardworking.",options:["who","whom","whose","which"],a:1},
+{q:"This is the restaurant __________ serves the best seafood.",options:["who","whose","whom","that"],a:3}
+],
+
+"DAY15_CAUSATIVE_AGENT":[
+{q:"My mother made me __________ my room.",options:["clean","to clean","cleaning","cleaned"],a:0},
+{q:"The teacher had the students __________ a 500-word essay.",options:["write","to write","writing","written"],a:0},
+{q:"I will get my brother __________ me with homework.",options:["help","to help","helping","helped"],a:1},
+{q:"The manager let the employees __________ early.",options:["leave","to leave","leaving","left"],a:0},
+{q:"She finally got the mechanic __________ her engine.",options:["fix","to fix","fixing","fixed"],a:1}
+],
+
+"DAY15_CAUSATIVE_PASSIVE":[
+{q:"I need to have my hair __________ before the ceremony.",options:["cut","to cut","cutting","cuts"],a:0},
+{q:"She will get her house __________ next summer.",options:["paint","painting","painted","to paint"],a:2},
+{q:"We should have the faucet __________ soon.",options:["repair","repaired","repairing","to repair"],a:1},
+{q:"He got his passport __________ yesterday.",options:["renew","renewing","renewed","to renew"],a:2},
+{q:"They had their television __________.",options:["fix","fixed","fixing","to fix"],a:1}
+],
+
+"DAY15_CONDITIONAL":[
+{q:"If it __________ tomorrow, we will cancel the picnic.",options:["rain","rains","rained","will rain"],a:1},
+{q:"If I __________ a million dollars, I would travel.",options:["have","had","had had","would have"],a:1},
+{q:"She __________ the exam if she had studied.",options:["would pass","will pass","would have passed","had passed"],a:2},
+{q:"If you __________ me, I would have helped.",options:["ask","asked","had asked","would ask"],a:2},
+{q:"Water boils if you __________ it to 100°C.",options:["heat","heats","heated","heating"],a:0}
+],
+
+"DAY15_CONDITIONAL_INVERSION":[
+{q:"__________ I you, I would take the job.",options:["Was","Were","Had","Should"],a:1},
+{q:"__________ he known, he would have come.",options:["Had","Were","Should","If"],a:0},
+{q:"__________ you have questions, contact us.",options:["Had","Were","Should","Would"],a:2},
+{q:"__________ the rain stop, we would walk.",options:["Were","Had","Should","Was"],a:0},
+{q:"__________ they arrived earlier, they wouldn't miss the flight.",options:["Had","Were","Should","If"],a:0}
+],
+
+
+
+// ===== DAY 16 =====
+
+"DAY16_GERUND":[
+{q:"I look forward to __________ you.",options:["meet","meets","meeting","to meet"],a:2},
+{q:"__________ is my favorite hobby.",options:["Swim","Swimming","To swimming","Swims"],a:1},
+{q:"You should avoid __________ junk food.",options:["eat","to eat","eating","eaten"],a:2},
+{q:"He is good at __________ math problems.",options:["solve","to solve","solving","solves"],a:2},
+{q:"Would you mind __________ the window?",options:["close","to close","closing","closed"],a:2}
+],
+
+"DAY16_INFINITIVE":[
+{q:"My parents promised __________ me a laptop.",options:["buy","buying","to buy","bought"],a:2},
+{q:"It is difficult __________ a new language.",options:["learn","learning","to learn","learned"],a:2},
+{q:"She decided __________ for a job.",options:["apply","applying","to apply","applied"],a:2},
+{q:"I stopped to __________ some fuel.",options:["get","to get","getting","got"],a:1},
+{q:"He seems __________ very tired.",options:["be","being","to be","been"],a:2}
+],
+
+"DAY16_BARE_INFINITIVE":[
+{q:"My boss let me __________ early yesterday.",options:["leave","to leave","leaving","left"],a:0},
+{q:"I saw the thief __________ into the house.",options:["jump","to jump","jumped","jumps"],a:0},
+{q:"Please help me __________ these boxes.",options:["carry","to carry","carrying","carried"],a:0},
+{q:"You had better __________ your doctor.",options:["consult","to consult","consulting","consulted"],a:0},
+{q:"The movie made everyone __________.",options:["cry","to cry","crying","cried"],a:0}
+],
+
+"DAY16_NOUN_CLAUSE":[
+{q:"I don't know __________ he is angry.",options:["why","that","which","what"],a:0},
+{q:"__________ she said surprised everyone.",options:["That","What","Which","Who"],a:1},
+{q:"Can you tell me __________ the post office is?",options:["where","that","what","which"],a:0},
+{q:"It is obvious __________ the economy is recovering.",options:["what","which","that","who"],a:2},
+{q:"I wonder __________ they will arrive.",options:["whether","that","what","which"],a:0}
+],
+
+"DAY16_REPORTED_SPEECH":[
+{q:"John said he __________ hungry.",options:["is","was","were","has been"],a:1},
+{q:"She asked where I __________.",options:["live","lives","lived","living"],a:2},
+{q:"My mother told me __________ the door.",options:["don't open","not to open","to not open","didn't open"],a:1},
+{q:"Mary said she __________ me the next day.",options:["will call","would call","called","calls"],a:1},
+{q:"The boss asked if I __________ my work.",options:["finished","have finished","had finished","was finishing"],a:2}
+],
+
+"DAY16_ELLIPTICAL":[
+{q:"My sister loves spicy food, and __________.",options:["so do I","so am I","I do neither","neither do I"],a:0},
+{q:"He didn't come, and __________ his brother.",options:["so did","neither did","too did","either didn't"],a:1},
+{q:"I am not ready, and she __________.",options:["isn't neither","isn't either","is too","so is"],a:1},
+{q:"They finished their project, and __________.",options:["we have too","so do we","neither have we","we haven't either"],a:0},
+{q:"She can speak French, and __________ her cousin.",options:["so can","too can","either can","neither can"],a:0}
+],
+
+"DAY16_QUESTION_TAG":[
+{q:"You are coming, __________?",options:["are you","aren't you","don't you","do you"],a:1},
+{q:"He doesn't like coffee, __________?",options:["does he","doesn't he","is he","isn't he"],a:0},
+{q:"She has finished breakfast, __________?",options:["has she","hasn't she","did she","didn't she"],a:1},
+{q:"They went to Bali last summer, __________?",options:["do they","don't they","did they","didn't they"],a:3},
+{q:"Let's go for a walk, __________?",options:["shall we","will we","don't we","do we"],a:0}
+],
+
+"DAY17_GREETINGS_A":[
+{q:"Which of the following is the most appropriate way to greet a teacher in the morning?",options:["Hey, what's up?","Good morning, Sir.","How's it going, buddy?","Yo!"],a:1},
+{q:"You haven't seen your friend for a long time. You say:",options:["Good night.","Long time no see.","Goodbye.","Nice to meet you."],a:1},
+{q:"Which greeting is considered formal?",options:["Hi there!","How do you do?","What's new?","Morning!"],a:1},
+{q:"'How have you been?' is used to ask about someone's:",options:["Name","Job","Condition over a period of time","Address"],a:2},
+{q:"To greet someone at 8:00 PM, you should say:",options:["Good night","Good morning","Good evening","Good afternoon"],a:2}
+],
+
+"DAY17_GREETINGS_B":[
+{q:"Person A: 'How are you doing?' Person B:",options:["I'm doing well, thanks.","Yes, I do.","I'm a student.","Good night."],a:0},
+{q:"If someone says 'How do you do?', the most traditional response is:",options:["I am fine.","How do you do?","Nice to see you.","Not bad."],a:1},
+{q:"Person A: 'What's up?' Person B:",options:["Not much.","I'm fine, thank you.","See you later.","Good morning."],a:0},
+{q:"Person A: 'It's a pleasure to meet you.' Person B:",options:["Me too.","Pleasure to meet you, too.","You're welcome.","I'm happy."],a:1},
+{q:"Person A: 'Nice to see you again.' Person B:",options:["Nice to see you, too.","Goodbye.","I am fine.","Thank you."],a:0}
+],
+
+"DAY17_PARTING_A":[
+{q:"Which expression is used when you are leaving someone to go to sleep?",options:["Goodbye.","Good night.","Good evening.","See you tomorrow."],a:1},
+{q:"'I'm afraid I have to go now.' This is a way to:",options:["Greet","Introduce","Say goodbye","Apologize"],a:2},
+{q:"Before hanging up the phone, you might say:",options:["Talk to you later.","How are you?","I am busy.","Who is this?"],a:0},
+{q:"If you plan to meet someone again the next day, you say:",options:["Take care.","See you tomorrow.","Have a nice trip.","Nice meeting you."],a:1},
+{q:"'Have a nice day!' is an expression used for:",options:["Introduction","Parting","Congratulating","Greeting"],a:1}
+],
+
+"DAY17_PARTING_B":[
+{q:"Person A: 'I'll see you around.' Person B:",options:["Yes, please.","Sure, see you.","Hello.","I'm fine."],a:1},
+{q:"Person A: 'Goodbye and take care.' Person B:",options:["You too.","Never mind.","No problem.","Good morning."],a:0},
+{q:"Person A: 'Have a great weekend!' Person B:",options:["I don't know.","Same to you!","I'm happy.","See you."],a:1},
+{q:"Person A: 'I've got to run. Bye!' Person B:",options:["Bye! Take it easy.","How are you?","What happened?","Thank you."],a:0},
+{q:"Person A: 'See you later.' Person B:",options:["Catch you later.","You are welcome.","Nice to meet you.","Fine, thanks."],a:0}
+],
+
+"DAY17_INTRO_SELF":[
+{q:"'Allow me to introduce myself. My name is Alex.' This is a:",options:["Formal","Informal","Rude","Friendly"],a:0},
+{q:"Which phrase is used to start an introduction?",options:["I'd like to introduce myself.","Who are you?","Tell me your name.","I am going now."],a:0},
+{q:"'Hi, I'm Maya. I'm from Indonesia.' Maya is sharing her:",options:["Hobby","Origin","Job","Family"],a:1},
+{q:"In an informal situation, you can introduce yourself by saying:",options:["My name is...","I'm...","Both a and b are correct.","May I know you?"],a:2},
+{q:"After introducing yourself, you usually say:",options:["Nice to meet you.","Goodbye.","How are you?","Thank you."],a:0}
+],
+
+"DAY17_INTRO_OTHERS":[
+{q:"'John, this is my brother, Mike.' The speaker is:",options:["Introducing himself.","Introducing someone else.","Asking for Mike's name.","Greeting John."],a:1},
+{q:"Which phrase is formal for introducing a colleague?",options:["Meet my friend, Tom.","I'd like to introduce you to Mr. Brown.","This is Tom.","Hey, this is Mr. Brown."],a:1},
+{q:"Person A: 'Let me introduce you to my sister, Clara.' Person B:",options:["Hi, Clara. Glad to meet you.","Yes, she is.","Who is she?","I'm fine."],a:0},
+{q:"'Have you met my boss, Mrs. Sarah?' This sentence is a way to:",options:["Ask for permission.","Introduce someone.","Ask about Mrs. Sarah's health.","Say goodbye."],a:1},
+{q:"To introduce two people who don't know each other, you say:",options:["A, meet B. B, meet A.","Who are you two?","Goodbye A and B.","How are A and B?"],a:0}
+],
+
+"DAY18_THANKS_A":[
+{q:"You want to thank your friend for a small favor. Which one is the most natural?",options:["I apologize.","Thanks a million!","No problem.","You're welcome."],a:1},
+{q:"Which expression is the most formal way to say thank you in a business email?",options:["Thanks a lot.","I am very grateful for your assistance.","Cheers!","I owe you one."],a:1},
+{q:"Person A: 'Here is the book you wanted to borrow.' Person B:",options:["Don't mention it.","Much appreciated.","Never mind.","My pleasure."],a:1},
+{q:"'I can't thank you enough for your kindness.' This expression shows:",options:["Shallow gratitude","Deep gratitude","A request","An apology"],a:1},
+{q:"When someone gives you a birthday gift, you say:",options:["That's very kind of you, thank you!","It's okay.","Please give it to me.","Sorry."],a:0}
+],
+
+"DAY18_THANKS_B":[
+{q:"Person A: 'Thank you so much for the ride.' Person B:",options:["Don't worry about it.","Not at all.","You're welcome.","All of the above."],a:3},
+{q:"Which response is commonly used in a professional setting after being thanked?",options:["No worries.","It was my pleasure.","Yup.","Forget it."],a:1},
+{q:"Person A: 'Thanks for helping me with the project.' Person B:",options:["I'm sorry.","Happy to help.","Please do.","Thank you too."],a:1},
+{q:"'Don't mention it' is a synonym for:",options:["You're welcome","Speak louder","Say it again","I'm busy"],a:0},
+{q:"In a very casual situation (like with a close friend), you might say:",options:["No biggie!","I am eternally grateful.","I appreciate your thanks.","Please excuse me."],a:0}
+],
+
+"DAY18_APOLOGY_A":[
+{q:"You accidentally bumped into someone on the street. You say:",options:["Pardon me!","Oh, I'm so sorry!","Watch out!","My bad."],a:1},
+{q:"Which is a formal way to apologize for being late to a meeting?",options:["Sorry I'm late.","Please accept my sincere apologies for the delay.","My mistake.","Oops!"],a:1},
+{q:"'I ______ for the misunderstanding.'",options:["apologize","excuse","regret","sorry"],a:0},
+{q:"If you want to ask someone to repeat what they said because you didn't hear it:",options:["What?","I beg your pardon?","Speak again.","I'm sorry."],a:1},
+{q:"'I'm sorry, I didn't mean to hurt your feelings.' The speaker is:",options:["Expressing regret","Asking for information","Giving an opinion","Introducing someone"],a:0}
+],
+
+"DAY18_APOLOGY_B":[
+{q:"Person A: 'I'm sorry I forgot your birthday.' Person B:",options:["Don't worry about it. It's fine.","You are welcome.","I am sorry too.","Thank you."],a:0},
+{q:"Which response is used to show that you are not angry about the mistake?",options:["Apology accepted.","No problem, these things happen.","That's okay, forget it.","All of the above."],a:3},
+{q:"Person A: 'I apologize for the noise.' Person B:",options:["Never mind.","Please do.","You're right.","I'm happy."],a:0},
+{q:"Person A: 'Pardon me for interrupting.' Person B:",options:["That's quite alright.","No, thanks.","Goodbye.","It's my pleasure."],a:0},
+{q:"If the mistake was very small and didn't bother you at all, you say:",options:["Think nothing of it.","I am very angry.","Why did you do that?","Please leave."],a:0}
+],
+
+"DAY18_INVITE_A":[
+{q:"'_____ you like to come to my graduation party?'",options:["Will","Would","Shall","Do"],a:1},
+{q:"Which one is an informal invitation?",options:["We request the pleasure of your company.","Do you want to hang out tonight?","You are cordially invited.","I invite you."],a:1},
+{q:"'Why don't you come over for dinner this weekend?' This is:",options:["A command","An invitation","A complaint","An apology"],a:1},
+{q:"To invite someone to a formal event, you might say:",options:["Come to my place.","We would be honored if you could attend.","Want to join?","See you there."],a:1},
+{q:"'Are you free this Saturday? I'm having a small gathering.' The speaker is:",options:["Checking availability before inviting","Asking for help","Complaining about Saturday","Introducing a friend"],a:0}
+],
+
+"DAY18_INVITE_B":[
+{q:"Person A: 'Would you like to join us for lunch?' Person B:",options:["I'd love to! Thank you.","No, I'm busy.","I don't like lunch.","Maybe."],a:0},
+{q:"Person A: 'Do you want to go to the cinema tonight?' Person B:",options:["Yes, please.","I'd love to, but I have to study.","Why not?","Sure."],a:1},
+{q:"Which expression is used to politely say 'no' to an invitation?",options:["I'm sorry, I can't make it.","I refuse.","I don't want to come.","Go away."],a:0},
+{q:"Person A: 'How about a coffee this afternoon?' Person B:",options:["Sounds great!","You're welcome.","I'm sorry.","No problem."],a:0},
+{q:"'Thank you for the invitation, but I'm afraid I already have plans.' This response is:",options:["Rude","Polite and clear","Informal","Angry"],a:1}
+],
+
+"DAY19_SYMPATHY_A":[
+{q:"Your friend just lost their wallet. The most appropriate expression is...",options:["Congratulations!","I'm so sorry to hear that.","That's a good idea.","Don't mention it."],a:1},
+{q:"'I know how it feels.' This expression is used to...",options:["Express joy.","Ask for help.","Show sympathy or empathy.","Give an opinion."],a:2},
+{q:"Which sympathy expression is most suitable when hearing that someone is sick?",options:["Happy to hear that.","Get well soon.","Good luck.","Nice to meet you."],a:1},
+{q:"When you say 'What a pity!', you are expressing...",options:["Excitement","Sadness or regret for someone else","Anger","Confusion"],a:1},
+{q:"Someone just failed an exam. You can say:",options:["You should be happy.","I'm sorry to hear that. Keep your chin up!","Please forgive me.","I'm glad you failed."],a:1}
+],
+
+"DAY19_SYMPATHY_B":[
+{q:"Person A: 'I'm sorry for your loss.' Person B:",options:["You are welcome.","Thank you for your support.","I don't care.","Never mind."],a:1},
+{q:"If someone says 'I hope things get better soon,' a polite response is...",options:["I hope so, too. Thanks.","No, it won't.","Why?","Forget it."],a:0},
+{q:"Person A: 'That's too bad. Are you okay?' Person B:",options:["I'm okay, thanks for asking.","I am fine, you?","I'm not okay, goodbye.","That's a great idea."],a:0},
+{q:"Person A: 'I'm so sorry to hear about your accident.' Person B:",options:["It's okay, thank you for your concern.","Congratulations.","I don't think so.","It's my pleasure."],a:0},
+{q:"A response that shows you appreciate someone's care is...",options:["It means a lot to me. Thank you.","Don't talk to me.","Shut up.","I'm sorry."],a:0}
+],
+
+"DAY19_OPINION_A":[
+{q:"Which of the following is an expression used to ask for an opinion?",options:["What do you think about this movie?","I think this movie is great.","I don't like this movie.","Can you help me?"],a:0},
+{q:"'In my opinion, the food is too salty.' This sentence indicates...",options:["Asking for an opinion.","Giving an opinion.","Refusing an opinion.","Apologizing."],a:1},
+{q:"'What's your view on the new regulation?' In this context, the word 'view' means...",options:["Scenery.","Opinion or perspective.","Screen.","Image."],a:1},
+{q:"Person A: '__________' Person B: 'I feel that we should start the project now.'",options:["When will we start?","How do you feel about this project?","Where is the project?","Who started the project?"],a:1},
+{q:"Which of the following is a formal way to give an opinion?",options:["From my point of view...","I think...","It's bad.","I don't know."],a:0}
+],
+
+"DAY19_OPINION_B":[
+{q:"Person A: 'I think smoking should be banned in public places.' Person B: (Agreeing)",options:["I totally disagree.","I couldn't agree more.","I don't think so.","That's a bad idea."],a:1},
+{q:"If you disagree with someone's opinion politely, you should say...",options:["You are wrong!","I'm afraid I disagree with you.","That's stupid.","I don't care about your opinion."],a:1},
+{q:"Person A: 'This dress looks beautiful on you.' Person B:",options:["I don't like it.","Do you really think so? Thanks!","You are ugly.","I disagree."],a:1},
+{q:"'That's exactly what I was thinking.' This expression is used to...",options:["Disagree.","Agree strongly.","Ask for an opinion.","Give a suggestion."],a:1},
+{q:"Person A: 'Digital books are better than printed books.' Person B: (Neutral)",options:["I'm not sure about that.","You are absolutely right.","No way.","I agree."],a:0}
+],
+
+"DAY19_TIME":[
+{q:"What is the most common way to ask for the time?",options:["What time is it?","Where is the time?","What is the clock?","How much is the time?"],a:0},
+{q:"If the clock shows 07:15, in English we say...",options:["It's a quarter past seven.","It's a quarter to seven.","It's seven fifteen o'clock.","It's fifteen to seven."],a:0},
+{q:"'It's half past ten' means the time is...",options:["10:15","10:30","09:30","10:45"],a:1},
+{q:"'What time does the train leave?' This question asks about...",options:["The duration of the trip.","The departure schedule.","The ticket price.","The train's name."],a:1},
+{q:"08:50 can be expressed as...",options:["Ten to nine.","Eight fifty.","Both a and b are correct.","Ten past eight."],a:2}
+],
+
+"DAY20_INFO_ASK":[
+{q:"You want to know the location of the nearest bank. You say:",options:["Where is the nearest bank?","Is there a bank?","Do you have a bank?","What is a bank?"],a:0},
+{q:"Which phrase is the most polite way to ask a stranger for information?",options:["Tell me where the station is.","Excuse me, could you tell me how to get to the station?","Hey, station where?","I want to know the station."],a:1},
+{q:"To ask about someone's occupation, you can say:",options:["What do you do?","What are you doing?","Where do you work?","a and c are correct."],a:3},
+{q:"'How much does this shirt cost?' is asking about:",options:["Quantity","Price","Size","Color"],a:1},
+{q:"If you want to know when a shop opens, you ask:",options:["What time do you open?","Is the shop open?","Why is the shop open?","Where is the shop open?"],a:0}
+],
+
+"DAY20_INFO_GIVE":[
+{q:"Person A: 'Excuse me, where is the library?' Person B:",options:["It's just around the corner, next to the park.","I don't like reading.","The library is big.","Thank you."],a:0},
+{q:"Person A: 'How can I get to the airport?' Person B:",options:["You can take the shuttle bus from here.","The airport is far.","I am going to the airport.","Have a nice flight."],a:0},
+{q:"When giving someone's phone number, you say:",options:["My number is 0812...","This is a phone.","I have a number.","Call me."],a:0},
+{q:"Person A: 'Is there a pharmacy nearby?' Person B: 'Yes,'",options:["there is one across the street.","I am a pharmacist.","you are welcome.","I'm sorry."],a:0},
+{q:"'The meeting starts at 9:00 AM in Room 302.' This sentence is:",options:["Asking for information","Giving specific information","Offering help","Making a request"],a:1}
+],
+
+"DAY20_REQUEST":[
+{q:"Which of the following is a polite request?",options:["Give me that salt!","Could you please pass me the salt?","I want the salt.","Salt, please."],a:1},
+{q:"'Would you mind ______ the door? It's very noisy outside.'",options:["close","to close","closing","closed"],a:2},
+{q:"When you ask for permission to use someone's pen, you say:",options:["Can I borrow your pen, please?","Give me your pen.","I am taking your pen.","Is this a pen?"],a:0},
+{q:"'Will you help me with these boxes?' is a:",options:["Request","Offer","Information","Prohibition"],a:0},
+{q:"To make a request more formal, you use:",options:["I want...","Give me...","I was wondering if you could...","Can you..."],a:2}
+],
+
+"DAY20_OFFER":[
+{q:"Which phrase is used to offer help to someone who looks busy?",options:["Can I give you a hand?","What are you doing?","You look tired.","Help me!"],a:0},
+{q:"'_____ you like some more tea?'",options:["Will","Would","Shall","Do"],a:1},
+{q:"You see someone struggling with a heavy bag. You say:",options:["Let me carry that for you.","That bag is heavy.","Carry your bag.","Do you have a bag?"],a:0},
+{q:"'Shall I open the window for you?' is an:",options:["Offer","Request","Order","Opinion"],a:0},
+{q:"'Can I get you something to drink?' is offering:",options:["Help","Food/Drink","Information","Money"],a:1}
+],
+
+"DAY20_RESPONSE":[
+{q:"Person A: 'Could you help me move this table?' Person B:",options:["No, I can't.","Certainly, I'd be happy to.","You are welcome.","Why?"],a:1},
+{q:"Person A: 'Can you lend me some money?' Person B:",options:["I'm sorry, I'm a bit short on cash right now.","Yes, I do.","Don't mention it.","Keep the change."],a:0},
+{q:"Person A: 'Would you like a piece of cake?' Person B:",options:["Yes, please. It looks delicious!","No, thank you.","I don't like cake.","Give it to me."],a:0},
+{q:"Person A: 'Can I help you with your homework?' Person B:",options:["No, thanks. I can manage it myself.","Yes, you are.","It's okay, thank you anyway.","a and c are correct."],a:3},
+{q:"Person A: 'Would you like me to drive you home?' Person B: 'That would be great, thanks!' This means:",options:["Refused the offer","Accepted the offer","Made a request","Gave information"],a:1}
+],
+
+"DAY20_MAY":[
+{q:"'May I come in?' is used for:",options:["Asking for permission","Giving an order","Stating a fact","Expressing a dream"],a:0},
+{q:"'It may rain this afternoon.' Here 'may' shows:",options:["Permission","Possibility","Ability","Obligation"],a:1},
+{q:"To give someone permission formally, you say:",options:["You may sit here.","Sit there!","You can't sit.","May you sit?"],a:0},
+{q:"Which one is the most polite way to ask to leave the room?",options:["I'm leaving.","May I be excused?","Can I go?","Bye!"],a:1},
+{q:"'May you have a long and happy life!' In this context 'may' is used for:",options:["Request","Wish/Hope","Possibility","Order"],a:1}
+],
+
+"DAY20_DONT":[
+{q:"'_____ touch the painting! It's very expensive.'",options:["May not","Don't","Doesn't","No"],a:1},
+{q:"'Don't' is the contraction of:",options:["Do not","Does not","Did not","Done not"],a:0},
+{q:"Which sentence is a prohibition?",options:["Don't park your car here.","I don't like apples.","They don't go to school.","She doesn't speak English."],a:0},
+{q:"To give a polite negative command, you can say:",options:["Please don't be late.","You are late.","No late!","Why are you late?"],a:0},
+{q:"'Don't forget to bring your umbrella.' This is a:",options:["Reminder/Instruction","Question","Offer","Permission"],a:0}
+],
+
+"DAY21_CARDINAL":[
+{q:"How do you write the number 48 in English?",options:["Forty-eight","Fourty-eight","Fourteen-eight","Forty-eighty"],a:0},
+{q:"What is the sum of twelve and thirteen?",options:["Twenty-three","Twenty-five","Thirty-five","Fifteen"],a:1},
+{q:"'There are one hundred and five students in the hall.' The number is...",options:["150","105","115","501"],a:1},
+{q:"Which is the correct spelling for 90?",options:["Nighty","Ninety","Nineteen","Nine-zero"],a:1},
+{q:"'A thousand' in numbers is written as...",options:["100","1,000","10,000","1,000,000"],a:1}
+],
+
+"DAY21_ORDINAL":[
+{q:"The first day of the week is Monday, and the __________ day is Wednesday.",options:["two","second","third","three"],a:2},
+{q:"My birthday is on the 22nd of October. You say it as...",options:["Twenty-two","Twenty-second","Twenty-two-nd","Second-twenty"],a:1},
+{q:"If someone wins a race, they are in __________ place.",options:["one","first","once","thirsty"],a:1},
+{q:"The number 12th is spelled as...",options:["Twelveth","Twelfth","Twelve-th","Second-tenth"],a:1},
+{q:"'The fifth month of the year is May.' The ordinal number is...",options:["5th","15th","50th","1st"],a:0}
+],
+
+"DAY21_TIME":[
+{q:"If the clock shows 08:15, we can say it is...",options:["A quarter past eight","A quarter to eight","Half past eight","Eight o'clock"],a:0},
+{q:"'It's half past six.' This means the time is...",options:["06:15","06:30","05:30","06:45"],a:1},
+{q:"What do you call a period of sixty minutes?",options:["A second","A day","An hour","A week"],a:2},
+{q:"'It's ten to five.' In numbers, this is...",options:["05:10","04:50","10:05","05:50"],a:1},
+{q:"At 12:00 in the middle of the night, we call it...",options:["Noon","Midday","Midnight","Afternoon"],a:2}
+],
+
+"DAY21_COLORS":[
+{q:"What color do you get when you mix red and white?",options:["Purple","Orange","Pink","Grey"],a:2},
+{q:"The sky is clear and __________ today.",options:["Green","Blue","Yellow","Black"],a:1},
+{q:"Grass is usually __________.",options:["Blue","Red","Green","Purple"],a:2},
+{q:"The sun often appears __________.",options:["Yellow","Black","Purple","Grey"],a:0},
+{q:"A ripe banana is usually __________.",options:["Red","Yellow","Green","Blue"],a:1}
+],
+
+"DAY21_COLOR_SHAPE":[
+{q:"A coin usually has a __________ shape.",options:["Square","Triangle","Circle","Rectangle"],a:2},
+{q:"A shape with four equal sides is called a...",options:["Square","Triangle","Oval","Star"],a:0},
+{q:"A shape with three sides is called a...",options:["Triangle","Circle","Square","Cube"],a:0},
+{q:"A shape like an egg is called an...",options:["Rectangle","Oval","Circle","Triangle"],a:1},
+{q:"A rectangle has __________ sides.",options:["3","4","5","6"],a:1}
+],
+
+"DAY22_FAMILY":[
+{q:"Your mother’s brother is your __________.",options:["Aunt","Uncle","Nephew","Brother-in-law"],a:1},
+{q:"If a couple has a female child, she is their __________.",options:["Son","Sister","Daughter","Niece"],a:2},
+{q:"Your uncle’s children are your __________.",options:["Cousins","Siblings","Grandchildren","Step-brothers"],a:0},
+{q:"A man who is married to your sister is your __________.",options:["Brother","Brother-in-law","Step-father","Father-in-law"],a:1},
+{q:"Your sister's daughter is your __________.",options:["Nephew","Niece","Cousin","Aunt"],a:1}
+],
+
+"DAY22_HOUSE":[
+{q:"The area at the top of a house, just under the roof, is called the __________.",options:["Basement","Garage","Attic","Balcony"],a:2},
+{q:"You park your car in the __________.",options:["Fence","Garage","Garden","Terrace"],a:1},
+{q:"The structure that covers the top of a house is the __________.",options:["Wall","Floor","Roof","Ceiling"],a:2},
+{q:"A small path or area covered with grass around the house is the __________.",options:["Living room","Yard","Kitchen","Hallway"],a:1},
+{q:"You use the __________ to go from the first floor to the second floor.",options:["Window","Door","Stairs","Gate"],a:2}
+],
+
+"DAY22_KITCHEN":[
+{q:"Where do you keep milk and vegetables to stay cold and fresh?",options:["Oven","Dishwasher","Refrigerator","Toaster"],a:2},
+{q:"You use a __________ to fry eggs or cook meat.",options:["Frying pan","Kettle","Blender","Plate"],a:0},
+{q:"A machine used to bake cakes or roast chicken is an __________.",options:["Sink","Oven","Mixer","Napkin"],a:1},
+{q:"The place where you wash the dirty dishes is the __________.",options:["Stove","Cupboard","Kitchen sink","Pantry"],a:2},
+{q:"Which tool do you use to cut vegetables?",options:["Fork","Spoon","Knife","Ladle"],a:2}
+],
+
+"DAY22_LIVINGROOM":[
+{q:"A comfortable, long seat for two or three people is called a __________.",options:["Bed","Sofa","Desk","Stool"],a:1},
+{q:"You usually put a __________ on the floor to make the room warmer.",options:["Curtain","Carpet","Wallpaper","Mirror"],a:1},
+{q:"The object used to cover windows for privacy is a __________.",options:["Painting","Clock","Curtain","Lamp"],a:2},
+{q:"A small table usually placed in front of the sofa is a __________.",options:["Dining table","Dressing table","Coffee table","Bedside table"],a:2},
+{q:"You can hang a __________ on the wall to see your reflection.",options:["Television","Picture","Mirror","Shelf"],a:2}
+],
+
+"DAY22_BATHROOM":[
+{q:"You use __________ to wash your hair.",options:["Soap","Shampoo","Toothpaste","Lotion"],a:1},
+{q:"After taking a bath, you use a __________ to dry your skin.",options:["Blanket","Towel","Tissue","Mat"],a:1},
+{q:"You use a __________ and toothpaste to clean your teeth.",options:["Hairbrush","Comb","Toothbrush","Razor"],a:2},
+{q:"The large container that you fill with water to sit in and wash yourself is a __________.",options:["Bathtub","Shower","Toilet","Bucket"],a:0},
+{q:"To check if your hair is neat, you look into the __________.",options:["Sink","Shower curtain","Bathroom mirror","Soap dish"],a:2}
+],
+
+"DAY23_FRUITS":[
+{q:"Which fruit is known for having its seeds on the outside?",options:["Apple","Strawberry","Watermelon","Mango"],a:1},
+{q:"This fruit has a thick, prickly skin and is often called the 'king of fruits' in Asia.",options:["Pineapple","Jackfruit","Durian","Dragon fruit"],a:2},
+{q:"What do you call a dried grape?",options:["Prune","Raisin","Fig","Date"],a:1},
+{q:"Which fruit is technically a berry and has a green interior?",options:["Pear","Avocado","Peach","Plum"],a:1},
+{q:"A __________ is a citrus fruit smaller and sweeter than an orange.",options:["Lemon","Lime","Tangerine","Grapefruit"],a:2}
+],
+
+"DAY23_FLOWERS":[
+{q:"The __________ is a bright yellow flower that always faces the sun.",options:["Tulip","Sunflower","Daisy","Orchid"],a:1},
+{q:"What part of the tree carries water from the roots to the leaves?",options:["Branch","Bark","Trunk","Seed"],a:2},
+{q:"Which tree stays green all year round?",options:["Oak","Maple","Pine","Cherry blossom"],a:2},
+{q:"The colorful parts of a flower that attract bees are called __________.",options:["Thorns","Stems","Petals","Roots"],a:2},
+{q:"A __________ is often a symbol of love.",options:["Lily","Rose","Lavender","Jasmine"],a:1}
+],
+
+"DAY23_TAME":[
+{q:"Which animal is often kept on a farm for its wool?",options:["Horse","Sheep","Pig","Goat"],a:1},
+{q:"A __________ is a tame bird kept for eggs and meat.",options:["Eagle","Owl","Chicken","Parrot"],a:2},
+{q:"Which animal is known as 'man's best friend'?",options:["Cat","Rabbit","Dog","Hamster"],a:2},
+{q:"A large tame animal used for riding or pulling carts is a __________.",options:["Donkey","Horse","Cow","a and b are correct"],a:3},
+{q:"What do you call a young cat?",options:["Puppy","Kitten","Calf","Lamb"],a:1}
+],
+
+"DAY23_WILD":[
+{q:"Which wild animal is the tallest in the world?",options:["Elephant","Giraffe","Hippo","Kangaroo"],a:1},
+{q:"A __________ is a large striped cat that lives in the jungle.",options:["Lion","Leopard","Tiger","Cheetah"],a:2},
+{q:"Which of these is a flightless bird that lives in cold climates?",options:["Ostrich","Penguin","Peacock","Flamingo"],a:1},
+{q:"A large reptile with sharp teeth that lives in swamps is a __________.",options:["Snake","Crocodile","Lizard","Turtle"],a:1},
+{q:"Which wild animal carries its baby in a pouch?",options:["Koala","Gorilla","Kangaroo","Zebra"],a:2}
+],
+
+"DAY23_SMALL":[
+{q:"Which small animal transforms from a caterpillar into a beautiful winged insect?",options:["Bee","Butterfly","Dragonfly","Moth"],a:1},
+{q:"A __________ is a small insect known for working in colonies.",options:["Ant","Beetle","Cricket","Fly"],a:0},
+{q:"Which small animal has a hard shell and moves very slowly?",options:["Snail","Worm","Grasshopper","Ladybug"],a:0},
+{q:"An insect that glows in the dark is a __________.",options:["Mosquito","Firefly","Cockroach","Wasp"],a:1},
+{q:"How many legs does a spider have?",options:["Six","Eight","Ten","Twelve"],a:1}
+],
+
+"DAY24_BIRDS":[
+{q:"Which bird is known for its ability to mimic human speech?",options:["Eagle","Parrot","Owl","Sparrow"],a:1},
+{q:"The _________ is a bird of prey known for its sharp eyesight and powerful talons.",options:["Pigeon","Eagle","Penguin","Swan"],a:1},
+{q:"Which bird is a symbol of peace and often carries messages in stories?",options:["Crow","Dove","Peacock","Woodpecker"],a:1},
+{q:"An _________ is a bird that is active at night and can turn its head almost 270 degrees.",options:["Owl","Ostrich","Hummingbird","Canary"],a:0},
+{q:"What is the largest bird in the world that cannot fly but can run very fast?",options:["Flamingo","Ostrich","Turkey","Pelican"],a:1}
+],
+
+"DAY24_WATER":[
+{q:"Which of these is a mammal that lives in the ocean and is known for its intelligence?",options:["Shark","Dolphin","Octopus","Crab"],a:1},
+{q:"A _________ is a large sea creature with eight long arms.",options:["Whale","Squid","Octopus","Jellyfish"],a:2},
+{q:"Which water animal has a hard shell and can live both on land and in water?",options:["Fish","Turtle","Seahorse","Starfish"],a:1},
+{q:"The _________ is the largest animal ever known to have lived on Earth.",options:["Great White Shark","Blue Whale","Giant Squid","Walrus"],a:1},
+{q:"What do fish use to breathe underwater?",options:["Lungs","Gills","Fins","Scales"],a:1}
+],
+
+"DAY24_SCHOOL":[
+{q:"The person in charge of a school is called the _________.",options:["Teacher","Principal","Student","Librarian"],a:1},
+{q:"A _________ is a place in school where students can borrow books.",options:["Canteen","Laboratory","Library","Gym"],a:2},
+{q:"What do you call the break time between lessons when students eat?",options:["Homework","Recess","Semester","Graduation"],a:1},
+{q:"A _________ is a piece of equipment used to show images or slides on a screen.",options:["Projector","Compass","Protractor","Stapler"],a:0},
+{q:"Students who complete their studies and receive a diploma are called _________.",options:["Freshmen","Graduates","Tutors","Candidates"],a:1}
+],
+
+"DAY24_COMPUTER":[
+{q:"The physical parts of a computer are called _________.",options:["Software","Hardware","Malware","Firmware"],a:1},
+{q:"To move the cursor on a computer screen, you usually use a _________.",options:["Keyboard","Monitor","Mouse","Printer"],a:2},
+{q:"A _________ phone is a portable telephone that can make calls over a radio frequency.",options:["Landline","Mobile","Payphone","Static"],a:1},
+{q:"What do you call the secret code used to access your computer or phone?",options:["Username","Link","Password","Browser"],a:2},
+{q:"To save your digital work so you don't lose it, you click the _________ button.",options:["Delete","Save","Refresh","Exit"],a:1}
+],
+
+"DAY24_JOB":[
+{q:"A document that lists your education and work experience is called a _________.",options:["Receipt","Resume (CV)","Passport","Contract"],a:1},
+{q:"An _________ is a formal meeting where an employer asks questions to a job seeker.",options:["Interview","Application","Promotion","Resignation"],a:0},
+{q:"A person who applies for a job is called an _________.",options:["Employer","Applicant","Employee","Manager"],a:1},
+{q:"When a company wants to hire new people, they post a job _________.",options:["Advertisement","Complaint","Review","Manual"],a:0},
+{q:"The money you earn monthly from your job is called your _________.",options:["Tax","Salary","Debt","Budget"],a:1}
+],
+
+"DAY25_CLASSROOM":[
+{q:"The teacher writes on the _________ with a marker or chalk.",options:["Desk","Whiteboard","Map","Locker"],a:1},
+{q:"You use an _________ to remove pencil marks from your paper.",options:["Eraser","Ruler","Sharpener","Glue"],a:0},
+{q:"A _________ is used to keep all your loose papers together.",options:["Notebook","Folder","Dictionary","Globe"],a:1},
+{q:"Where do students sit during a lesson?",options:["At their desks","On the floor","On the shelf","In the cupboard"],a:0},
+{q:"You use a _________ to draw straight lines.",options:["Compass","Ruler","Crayon","Pen"],a:1}
+],
+
+"DAY25_OFFICE":[
+{q:"A machine used to make paper copies of documents is a _________.",options:["Scanner","Photocopy machine","Shredder","Fax"],a:1},
+{q:"Items like pens, paper, and envelopes are called _________.",options:["Furniture","Stationery","Groceries","Gadgets"],a:1},
+{q:"A _________ is used to join pieces of paper together with a small metal wire.",options:["Stapler","Scissors","Paperclip","Puncher"],a:0},
+{q:"The area at the entrance of an office where visitors are greeted is the _________.",options:["Cubicle","Reception","Warehouse","Pantry"],a:1},
+{q:"To keep track of important dates and meetings, office workers use a _________.",options:["Calculator","Calendar","Ledger","Map"],a:1}
+],
+
+"DAY25_SHOP":[
+{q:"The person you pay your money to in a shop is the _________.",options:["Customer","Cashier","Manager","Security"],a:1},
+{q:"A _________ is a small piece of paper that shows you have paid for something.",options:["Bill","Receipt","Coupon","Label"],a:1},
+{q:"If a product costs less than usual, it is on _________.",options:["Sale","Debt","Credit","Loan"],a:0},
+{q:"You put your items in a shopping _________ while walking around a supermarket.",options:["Box","Trolley","Pocket","Shelf"],a:1},
+{q:"A _________ is a place where you can try on clothes before buying them.",options:["Fitting room","Warehouse","Counter","Aisle"],a:0}
+],
+
+"DAY25_MEN":[
+{q:"Men usually wear a _________ around their neck with a formal shirt.",options:["Scarf","Tie","Belt","Necklace"],a:1},
+{q:"A formal set of clothes consisting of a jacket and trousers is a _________.",options:["Suit","Pajamas","Tracksuit","Uniform"],a:0},
+{q:"Men wear a _________ to keep their trousers up.",options:["Tie","Belt","Suspenders","Ribbon"],a:1},
+{q:"A _________ is a short-sleeved shirt with a collar and a few buttons.",options:["T-shirt","Polo shirt","Vest","Sweater"],a:1},
+{q:"Men wear _________ under their trousers.",options:["Socks","Underwear","Shorts","Leggings"],a:1}
+],
+
+"DAY25_WOMEN":[
+{q:"A _________ is a one-piece garment that covers the body and hangs down over the legs.",options:["Blouse","Dress","Skirt","Tunic"],a:1},
+{q:"Women often carry their personal items in a _________.",options:["Wallet","Handbag","Suitcase","Briefcase"],a:1},
+{q:"A piece of clothing that hangs from the waist and covers the legs is a _________.",options:["Skirt","Blouse","Cardigan","Gown"],a:0},
+{q:"Women wear _________ on their feet, which can have high or low heels.",options:["Sneakers","Shoes","Boots","Sandals"],a:1},
+{q:"A _________ is a type of shirt for women, often made of light fabric.",options:["Jersey","Blouse","Tank top","Hoodie"],a:1}
+],
+
+"DAY26_SALON":[
+{q:"A person who specializes in cutting and styling hair is a _________.",options:["Butcher","Hairstylist","Tailor","Plumber"],a:1},
+{q:"You go to a salon to get a _________ if you want your fingernails cleaned and polished.",options:["Pedicure","Facial","Manicure","Massage"],a:2},
+{q:"A _________ is a substance used to wash and clean the hair.",options:["Lotion","Shampoo","Conditioner","Serum"],a:1},
+{q:"If you want to change the color of your hair, you ask for a hair _________.",options:["Cut","Trim","Dye","Perm"],a:2},
+{q:"A tool used to dry wet hair quickly using hot air is a _________.",options:["Straightener","Curling iron","Hairdryer","Brush"],a:2}
+],
+
+"DAY26_TAILOR":[
+{q:"A _________ is a person who makes, repairs, or alters clothing.",options:["Cobbler","Tailor","Carpenter","Mason"],a:1},
+{q:"You use a _________ and thread to sew pieces of fabric together by hand.",options:["Needle","Scissors","Ruler","Hammer"],a:0},
+{q:"A long, flexible tool used to measure a person's body for clothes is a _________.",options:["Yardstick","Measuring tape","Scale","Compass"],a:1},
+{q:"The material used to make clothes, such as cotton or silk, is called _________.",options:["Leather","Plastic","Fabric","Paper"],a:2},
+{q:"A _________ machine is a mechanical device used to join fabric with stitches.",options:["Knitting","Sewing","Washing","Printing"],a:1}
+],
+
+"DAY26_MUSIC":[
+{q:"The _________ is the person who directs the actors and the technical crew in a movie.",options:["Producer","Director","Scriptwriter","Editor"],a:1},
+{q:"A group of people who play musical instruments together, led by a conductor, is an _________.",options:["Audience","Orchestra","Choir","Band"],a:1},
+{q:"The written text of a play, movie, or broadcast is called a _________.",options:["Script","Novel","Lyric","Review"],a:0},
+{q:"A movie that is intended to be funny and make the audience laugh is a _________.",options:["Thriller","Horror","Comedy","Documentary"],a:2},
+{q:"The _________ is the music written specifically for a movie.",options:["Soundtrack","Theme","Chorus","Verse"],a:0}
+],
+
+"DAY26_WORKSHOP":[
+{q:"A _________ is a person who repairs and maintains car engines and other machinery.",options:["Pilot","Mechanic","Electrician","Welder"],a:1},
+{q:"A tool used for tightening or loosening nuts and bolts is a _________.",options:["Screwdriver","Wrench","Saw","Pliers"],a:1},
+{q:"You use a _________ to lift a car off the ground to change a tire.",options:["Crane","Jack","Ladder","Pulley"],a:1},
+{q:"A _________ is a tool used for turning screws.",options:["Hammer","Screwdriver","Drill","Chisel"],a:1},
+{q:"The _________ is the part of the car that provides the power for movement.",options:["Brake","Engine","Exhaust","Radiator"],a:1}
+],
+
+"DAY26_PROFESSION":[
+{q:"A person who designs buildings and oversees their construction is an _________.",options:["Engineer","Architect","Contractor","Draftsman"],a:1},
+{q:"A _________ is a person whose job is to put out fires and rescue people.",options:["Policeman","Firefighter","Soldier","Guard"],a:1},
+{q:"Someone who flies an airplane is a _________.",options:["Captain","Pilot","Steward","Navigator"],a:1},
+{q:"A person who treats people's teeth and gums is a _________.",options:["Surgeon","Dentist","Nurse","Pharmacist"],a:1},
+{q:"A _________ writes news stories for newspapers, magazines, or news websites.",options:["Journalist","Author","Poet","Editor"],a:0}
+],
+
+"DAY27_FOOD":[
+{q:"Food that is prepared and served very quickly, like burgers and fries, is _________.",options:["Organic food","Fast food","Gourmet","Frozen food"],a:1},
+{q:"A _________ is a list of the food and drinks available in a restaurant.",options:["Bill","Receipt","Menu","Order"],a:2},
+{q:"Water that has no bubbles or gas in it is called _________ water.",options:["Sparkling","Still","Tap","Mineral"],a:1},
+{q:"A _________ is a small amount of food eaten between main meals.",options:["Dessert","Snack","Appetizer","Main course"],a:1},
+{q:"Bread that has been browned by radiant heat is called _________.",options:["Dough","Toast","Pastry","Bun"],a:1}
+],
+
+"DAY27_BUILDINGS":[
+{q:"A very tall building with many stories is called a _________.",options:["Cottage","Skyscraper","Bungalow","Cabin"],a:1},
+{q:"A _________ is a place where historical, scientific, or artistic objects are kept.",options:["Library","Museum","Theater","Gallery"],a:1},
+{q:"A large building where goods are manufactured or assembled by machine is a _________.",options:["Warehouse","Factory","Mall","Workshop"],a:1},
+{q:"A _________ is a building where religious services for Christians are held.",options:["Mosque","Church","Temple","Pagoda"],a:1},
+{q:"A place where people go to watch movies on a large screen is a _________.",options:["Stadium","Cinema","Concert hall","Studio"],a:1}
+],
+
+"DAY27_EARTH":[
+{q:"The _________ is the path that a planet takes around the sun.",options:["Axis","Orbit","Gravity","Atmosphere"],a:1},
+{q:"A large body of salt water that covers most of the Earth's surface is an _________.",options:["Ocean","Lake","River","Pond"],a:0},
+{q:"The _________ is the layer of gases surrounding the Earth.",options:["Biosphere","Atmosphere","Hydrosphere","Crust"],a:1},
+{q:"An _________ is a person who travels in a spacecraft into outer space.",options:["Astronomer","Astronaut","Astrologer","Pilot"],a:1},
+{q:"The sun and all the planets that move around it is called the _________.",options:["Galaxy","Solar System","Universe","Nebula"],a:1}
+],
+
+"DAY27_WEATHER":[
+{q:"A period of very dry weather when there is not enough water is a _________.",options:["Flood","Drought","Storm","Breeze"],a:1},
+{q:"In _________, the leaves of many trees change color and fall to the ground.",options:["Spring","Summer","Autumn","Winter"],a:2},
+{q:"The _________ is the average weather conditions in a place over a long period.",options:["Forecast","Climate","Humidity","Temperature"],a:1},
+{q:"A flash of bright light in the sky during a storm is _________.",options:["Thunder","Lightning","Fog","Mist"],a:1},
+{q:"When the temperature is below 0°C, water turns into _________.",options:["Rain","Ice","Steam","Dew"],a:1}
+],
+
+"DAY27_AIRPORT":[
+{q:"A _________ is the document that allows you to get on the plane.",options:["Passport","Boarding pass","Visa","Receipt"],a:1},
+{q:"The area where you go to wait for your flight is the _________.",options:["Departure lounge","Arrival hall","Baggage claim","Runway"],a:0},
+{q:"When the plane leaves the ground and starts to fly, it is called _________.",options:["Landing","Take-off","Checking-in","Boarding"],a:1},
+{q:"The _________ is the long strip of ground where airplanes take off and land.",options:["Terminal","Gate","Runway","Hangar"],a:2},
+{q:"A _________ flight is a flight that goes from one country to another.",options:["Domestic","International","Direct","Connecting"],a:1}
+],
+
+"DAY27_ROAD":[
+{q:"A _________ is a place where three or more roads meet.",options:["Sidewalk","Intersection","Lane","Shoulder"],a:1},
+{q:"The part of the road where people walk is the _________.",options:["Highway","Pavement","Curb","Gutter"],a:1},
+{q:"A set of colored lights that controls the flow of vehicles is a _________.",options:["Street light","Traffic light","Headlight","Signpost"],a:1},
+{q:"When there are too many cars on the road and they move very slowly, it is a _________.",options:["Speed limit","Traffic jam","Roadwork","Carpool"],a:1},
+{q:"A _________ is a person who is walking in the street rather than traveling in a vehicle.",options:["Driver","Pedestrian","Passenger","Cyclist"],a:1}
+],
+
+"DAY28_BANK":[
+{q:"A person who works behind the counter in a bank and handles your money is a _________.",options:["Manager","Teller","Security guard","Accountant"],a:1},
+{q:"You use an _________ to withdraw cash from your bank account using a plastic card.",options:["ATM","GPS","ID","SMS"],a:0},
+{q:"To send a letter to another country, you need to put an international _________ on the envelope.",options:["Sticker","Stamp","Label","Ticket"],a:1},
+{q:"A _________ is a small book used to record all your bank transactions.",options:["Notebook","Passbook","Textbook","Diary"],a:1},
+{q:"If you want to send a heavy package, the postal worker will _________ it first.",options:["Measure","Weigh","Count","Wrap"],a:1}
+],
+
+"DAY28_HOTEL":[
+{q:"The area where you go to get your room key and sign in is the _________.",options:["Kitchen","Reception","Gym","Laundry"],a:1},
+{q:"A _________ is a person who helps guests with their luggage at a hotel.",options:["Chef","Bellboy","Waiter","Lifeguard"],a:1},
+{q:"If you want your breakfast brought to your room, you call for _________.",options:["Housekeeping","Room service","Maintenance","Concierge"],a:1},
+{q:"When you leave the hotel and pay your bill, you are _________.",options:["Checking in","Checking out","Booking","Canceling"],a:1},
+{q:"A room that is intended for two people and has one large bed is a _________ room.",options:["Single","Double","Triple","Suite"],a:1}
+],
+
+"DAY28_HOSPITAL":[
+{q:"A _________ is a person who is receiving medical treatment from a doctor.",options:["Client","Patient","Customer","Guest"],a:1},
+{q:"An _________ is a special vehicle used to take sick people to the hospital.",options:["Ambulance","Fire truck","Taxi","Bus"],a:0},
+{q:"The _________ room is where doctors perform medical operations.",options:["Waiting","Operating","Emergency","Recovery"],a:1},
+{q:"A _________ is a written message from a doctor to get medicine.",options:["Receipt","Prescription","Description","Permission"],a:1},
+{q:"A medical professional who assists doctors and takes care of patients is a _________.",options:["Scientist","Nurse","Pilot","Architect"],a:1}
+],
+
+"DAY28_BODY":[
+{q:"The _________ is the organ that pumps blood throughout your body.",options:["Lung","Heart","Liver","Stomach"],a:1},
+{q:"The hard structure that supports the body is the _________.",options:["Muscle","Skin","Skeleton","Nerve"],a:2},
+{q:"We use our _________ to breathe oxygen.",options:["Kidneys","Lungs","Intestines","Brain"],a:1},
+{q:"The _________ controls all thoughts and movements.",options:["Heart","Brain","Spine","Skull"],a:1},
+{q:"The largest organ covering the body is the _________.",options:["Liver","Skin","Lung","Brain"],a:1}
+],
+
+"DAY28_RESTAURANT":[
+{q:"The _________ is the person who serves food and drinks to customers.",options:["Chef","Waiter/Waitress","Manager","Cashier"],a:1},
+{q:"A small amount of food eaten before the main course is an _________.",options:["Dessert","Appetizer","Snack","Side dish"],a:1},
+{q:"If you want to make sure you have a table, you make a _________.",options:["Reservation","Order","Complaint","Payment"],a:0},
+{q:"After eating, you ask for the _________ to see how much to pay.",options:["Menu","Receipt","Bill","Coupon"],a:2},
+{q:"Extra money given to the waiter for good service is a _________.",options:["Tax","Tip","Discount","Change"],a:1}
+],
+
+"DAY29_DOCUMENT":[
+{q:"A _________ is an official document that allows you to travel abroad.",options:["ID card","Passport","License","Certificate"],a:1},
+{q:"Your _________ includes education and work experience.",options:["Diary","Resume (CV)","Magazine","Brochure"],a:1},
+{q:"A document from a school showing you finished a course is a _________.",options:["Receipt","Certificate","Ticket","Menu"],a:1},
+{q:"Before driving a car, you must have a driver's _________.",options:["Permit","License","Contract","Policy"],a:1},
+{q:"To open a bank account you need a form of _________.",options:["Advertisement","Identification","Invitation","Greeting"],a:1}
+],
+
+"DAY29_OPPOSITE":[
+{q:"What is the opposite of 'Generous'?",options:["Kind","Stingy","Brave","Happy"],a:1},
+{q:"The opposite of 'Difficult' is _________.",options:["Hard","Easy","Simple","b and c are correct"],a:3},
+{q:"What is the antonym of 'Arrive'?",options:["Come","Stay","Depart","Reach"],a:2},
+{q:"The opposite of 'Deep' is _________.",options:["Low","Shallow","High","Wide"],a:1},
+{q:"What is the opposite of 'Temporary'?",options:["Short","Permanent","Brief","Modern"],a:1}
+],
+
+"DAY29_EXPRESSIONS":[
+{q:"If you are very happy you might have a big _________ on your face.",options:["Frown","Smile","Tear","Scar"],a:1},
+{q:"When you feel 'Exhausted' you are very _________.",options:["Angry","Tired","Excited","Sad"],a:1},
+{q:"To move your head up and down to say yes is to _________.",options:["Shake","Nod","Bow","Wave"],a:1},
+{q:"Someone who is arrogant thinks they are _________ than others.",options:["Better","Worse","Smaller","Kinder"],a:0},
+{q:"When you feel anxious you are feeling _________.",options:["Happy","Worried","Bored","Brave"],a:1}
+],
+
+"DAY29_SPORT":[
+{q:"_________ is a sport where two people fight using their fists.",options:["Karate","Boxing","Soccer","Tennis"],a:1},
+{q:"A person who trains and leads a sports team is a _________.",options:["Player","Referee","Coach","Fan"],a:2},
+{q:"_________ is a Japanese martial art using opponent energy.",options:["Judo","Kung fu","Taekwondo","Fencing"],a:0},
+{q:"In basketball you score by throwing the ball through the _________.",options:["Goal","Net","Hoop","Hole"],a:2},
+{q:"A _________ ensures the rules of a game are followed.",options:["Captain","Referee","Spectator","Opponent"],a:1}
+],
+
+"DAY29_SECURITY":[
+{q:"The _________ maintains public order and safety.",options:["Army","Police","Navy","Air Force"],a:1},
+{q:"A person who serves in the army is called a _________.",options:["Detective","Soldier","Lawyer","Judge"],a:1},
+{q:"When police catch a criminal they _________ them.",options:["Release","Arrest","Reward","Ignore"],a:1},
+{q:"A high ranking officer is often called a _________.",options:["Private","Captain","Sergeant","Corporal"],a:1},
+{q:"A special suit worn by police or army is a _________.",options:["Costume","Uniform","Pajamas","Casual wear"],a:1}
+],
+
+"DAY30_REGULAR":[
+{q:"What is the past form (V2) of the verb 'Cancel'?",options:["Cancelling","Cancelled","Cancels","Cancelt"],a:1},
+{q:"The V3 (Past Participle) form of 'Prepare' is...",options:["Prepared","Prepares","Preparing","Prepart"],a:0},
+{q:"Which of these is a regular verb?",options:["Sleep","Write","Dance","Buy"],a:2},
+{q:"They __________ the mountain last summer. (V2 of Climb)",options:["Clumb","Climbed","Climbing","Climbs"],a:1},
+{q:"The verb 'Fix' changes to __________ in the past tense.",options:["Fixt","Fixed","Fixen","Fixing"],a:1}
+],
+
+"DAY30_IRREGULAR":[
+{q:"What is the V2 (Past Simple) of the verb 'Drink'?",options:["Drinked","Drunk","Drank","Drinks"],a:2},
+{q:"The Past Participle (V3) of the verb 'Go' is...",options:["Went","Goed","Gone","Going"],a:2},
+{q:"Which set of irregular verbs is correct (V1-V2-V3)?",options:["Sing-Sang-Sung","Sing-Singed-Sung","Sing-Sang-Singed","Sing-Song-Sung"],a:0},
+{q:"I have __________ my keys in the car. (V3 of Leave)",options:["Leaved","Left","Lefted","Leaving"],a:1},
+{q:"What is the past form (V2) of 'Ride'?",options:["Rided","Rid","Rode","Road"],a:2}
+],
+
+"DAY30_PROVERB":[
+{q:"A __________ in time saves nine.",options:["Stitch","Minute","Word","Action"],a:0},
+{q:"Birds of a feather __________ together.",options:["Fly","Sing","Nest","Flock"],a:3},
+{q:"Don't count your __________ before they hatch.",options:["Eggs","Chickens","Money","Ducks"],a:1},
+{q:"Every cloud has a silver __________.",options:["Rain","Lining","Sky","Star"],a:1},
+{q:"Where there is a __________, there is a way.",options:["Map","Road","Will","Hope"],a:2}
+],
+
+"DAY30_IDIOM":[
+{q:"The idiom 'To spill the beans' means...",options:["To cook dinner","To tell a secret","To drop food","To be messy"],a:1},
+{q:"What does 'Piece of cake' mean?",options:["A delicious food","A very easy task","A birthday gift","A small portion"],a:1},
+{q:"If someone is 'In the same boat', it means they are...",options:["Traveling together","In the same situation","Good at swimming","Wealthy"],a:1},
+{q:"Cost an arm and a leg means something is...",options:["Very cheap","Dangerous","Very expensive","Painful"],a:2},
+{q:"What does the idiom 'Break the ice' mean?",options:["To start a conversation","To feel cold","To destroy something","To win a game"],a:0}
+],
+
+"DAY30_IDIOM_SENTENCE":[
+{q:"I’m sorry, I can’t go out tonight, I’m feeling a bit under the weather. This means:",options:["It is raining","I am busy","I am feeling sick","I am tired"],a:2},
+{q:"I’ve been studying for hours, it’s time to call it a day. This means:",options:["To name the day","To stop working","To start over","To wake up"],a:1},
+{q:"You should take what he says with a grain of salt. This means:",options:["To cook with salt","To not believe completely","To be angry","To listen carefully"],a:1},
+{q:"Let's get the ball rolling on this new project. This means:",options:["To play sports","To start something","To finish a task","To lose control"],a:1},
+{q:"The news of the wedding came out of the blue. This means:",options:["It was expected","It was very sudden/unexpected","It was sad","It was at sea"],a:1}
+],
+
+}
+function makeQuestions(topic){
+
+if(currentDay==1 && currentSub=="Concrete Nouns") return bankSoal["DAY1_CONCRETE NOUNS"]
+if(currentDay==1 && currentSub=="Abstract Nouns") return bankSoal["DAY1_ABSTRACT NOUNS"]
+if(currentDay==1 && currentSub=="Countable Nouns") return bankSoal["DAY1_COUNTABLE NOUNS"]
+if(currentDay==1 && currentSub=="Uncountable Nouns") return bankSoal["DAY1_UNCOUNTABLE NOUNS"]
+
+if(currentDay==2 && currentSub=="Personal Pronouns") return bankSoal["DAY2_PERSONAL PRONOUNS"]
+if(currentDay==2 && currentSub=="Demonstrative Pronouns") return bankSoal["DAY2_DEMONSTRATIVE PRONOUNS"]
+if(currentDay==2 && currentSub=="Relative Pronouns") return bankSoal["DAY2_RELATIVE PRONOUNS"]
+if(currentDay==2 && currentSub=="Possessive Pronouns") return bankSoal["DAY2_POSSESSIVE PRONOUNS"]
+if(currentDay==2 && currentSub=="Reflexive Pronouns") return bankSoal["DAY2_REFLEXIVE PRONOUNS"]
+if(currentDay==2 && currentSub=="Interrogative Pronouns") return bankSoal["DAY2_INTERROGATIVE PRONOUNS"]
+
+if(currentDay==3 && currentSub=="Types of Adjectives") return bankSoal["DAY3_TYPES OF ADJECTIVES"]
+if(currentDay==3 && currentSub=="Adjective Formation") return bankSoal["DAY3_ADJECTIVE FORMATION"]
+if(currentDay==3 && currentSub=="Degree of Comparison") return bankSoal["DAY3_DEGREE OF COMPARISON"]
+if(currentDay==3 && currentSub=="Positive Degree Pattern") return bankSoal["DAY3_POSITIVE DEGREE"]
+
+if(currentDay==4 && currentSub=="Adverbs of Manner") return bankSoal["DAY4_ADVERBS OF MANNER"]
+if(currentDay==4 && currentSub=="Adverbs of Time") return bankSoal["DAY4_ADVERBS OF TIME"]
+if(currentDay==4 && currentSub=="Adverbs of Frequency & Degree") return bankSoal["DAY4_ADVERBS OF FREQUENCY"]
+if(currentDay==4 && currentSub=="Adverbs of Place") return bankSoal["DAY4_ADVERBS OF PLACE"]
+
+if(currentDay==5 && currentSub=="Finite & Non-Finite") return bankSoal["DAY5_FINITE NONFINITE"]
+if(currentDay==5 && currentSub=="Transitive & Intransitive") return bankSoal["DAY5_TRANSITIVE INTRANSITIVE"]
+if(currentDay==5 && currentSub=="Regular & Irregular") return bankSoal["DAY5_REGULAR IRREGULAR"]
+if(currentDay==5 && currentSub=="Auxiliary & Linking Verbs") return bankSoal["DAY5_AUXILIARY LINKING"]
+
+// DAY 6
+if(currentDay==6 && currentSub=="Coordinative & Subordinative") return bankSoal["DAY6_COORDINATIVE"]
+if(currentDay==6 && currentSub=="Common Conjunctions") return bankSoal["DAY6_COMMON"]
+if(currentDay==6 && currentSub=="Correlative Conjunctions") return bankSoal["DAY6_CORRELATIVE"]
+
+// DAY 7
+if(currentDay==7 && currentSub=="Preposition of Time") return bankSoal["DAY7_TIME"]
+if(currentDay==7 && currentSub=="Preposition of Place") return bankSoal["DAY7_PLACE"]
+if(currentDay==7 && currentSub=="Preposition of Direction") return bankSoal["DAY7_DIRECTION"]
+if(currentDay==7 && currentSub=="Preposition of Agent") return bankSoal["DAY7_AGENT"]
+
+// DAY 8
+if(currentDay==8 && currentSub=="Interjections") return bankSoal["DAY8_INTERJECTIONS"]
+if(currentDay==8 && currentSub=="Determiners") return bankSoal["DAY8_DETERMINERS"]
+if(currentDay==8 && currentSub=="Articles") return bankSoal["DAY8_ARTICLES"]
+if(currentDay==8 && currentSub=="Indefinite & Zero Article") return bankSoal["DAY8_ZERO ARTICLE"]
+
+// DAY 9
+if(currentDay==9 && currentSub=="Present Tense") return bankSoal["DAY9_PRESENT"]
+if(currentDay==9 && currentSub=="Past Tense") return bankSoal["DAY9_PAST"]
+if(currentDay==9 && currentSub=="Future Tense") return bankSoal["DAY9_FUTURE"]
+if(currentDay==9 && currentSub=="Past Future Tense") return bankSoal["DAY9_PASTFUTURE"]
+
+// DAY 10
+if(currentDay==10 && currentSub=="Susunan Non Phrase") return bankSoal["DAY10_WORDORDER"]
+if(currentDay==10 && currentSub=="Penempatan Adverb") return bankSoal["DAY10_ADVERB"]
+if(currentDay==10 && currentSub=="Macam dan Bentuk") return bankSoal["DAY10_PARTICIPLE_FORM"]
+if(currentDay==10 && currentSub=="Active Participle (V-ing)") return bankSoal["DAY10_ACTIVE_PARTICIPLE"]
+if(currentDay==10 && currentSub=="Past Participle") return bankSoal["DAY10_PAST_PARTICIPLE"]
+
+
+// DAY 11
+if(currentDay==11 && currentSub=="Penggunaan Kalimat Pasif") return bankSoal["DAY11_PASSIVE_BASIC"]
+if(currentDay==11 && currentSub=="Pasif dari Berbagai Tenses dan Modal") return bankSoal["DAY11_PASSIVE_TENSE"]
+if(currentDay==11 && currentSub=="Pasif dengan Dua Objek") return bankSoal["DAY11_PASSIVE_DOUBLE_OBJECT"]
+if(currentDay==11 && currentSub=="Pasif dalam To-Infinitive") return bankSoal["DAY11_PASSIVE_TO_INF"]
+if(currentDay==11 && currentSub=="Pasif dalam Gerund") return bankSoal["DAY11_PASSIVE_GERUND"]
+if(currentDay==11 && currentSub=="Pasif dengan Impersonal It") return bankSoal["DAY11_IMPERSONAL"]
+if(currentDay==11 && currentSub=="Pasif Interogative") return bankSoal["DAY11_PASSIVE_QUESTION"]
+if(currentDay==11 && currentSub=="Menentukan Subjek Pasif") return bankSoal["DAY11_PASSIVE_SUBJECT"]
+
+
+// DAY 12
+if(currentDay==12 && currentSub=="Kesesuaian Subjek dan Predikat") return bankSoal["DAY12_SUBJECT_VERB"]
+if(currentDay==12 && currentSub=="Kesesuaian Tenses dengan Waktu") return bankSoal["DAY12_TENSE_SIGNAL"]
+if(currentDay==12 && currentSub=="Kesesuaian Kata Ganti Orang") return bankSoal["DAY12_PRONOUN_AGREEMENT"]
+if(currentDay==12 && currentSub=="Kesesuaian Kata Ganti Benda") return bankSoal["DAY12_DETERMINER"]
+
+
+// DAY 13
+if(currentDay==13 && currentSub=="Macam-Macam Modal") return bankSoal["DAY13_MODALS"]
+if(currentDay==13 && currentSub=="Wish / If Only / Would Rather") return bankSoal["DAY13_SUBJ_WISH"]
+if(currentDay==13 && currentSub=="As If / As Though") return bankSoal["DAY13_SUBJ_ASIF"]
+if(currentDay==13 && currentSub=="Subjunctive Verbs") return bankSoal["DAY13_SUBJ_VERB"]
+
+// DAY 14
+if(currentDay==14 && currentSub=="Degree of Comparison") return bankSoal["DAY14_COMPARISON"]
+if(currentDay==14 && currentSub=="Preference") return bankSoal["DAY14_PREFERENCE"]
+if(currentDay==14 && currentSub=="Macam-Macam Derivatives") return bankSoal["DAY14_DERIVATIVES"]
+if(currentDay==14 && currentSub=="Jenis Kata dan Bentuknya") return bankSoal["DAY14_WORD_FORM"]
+
+// DAY 15
+if(currentDay==15 && currentSub=="Jenis Relative Pronoun") return bankSoal["DAY15_ADJECTIVE_CLAUSE"]
+if(currentDay==15 && currentSub=="Causative dengan Objek Aktif") return bankSoal["DAY15_CAUSATIVE_AGENT"]
+if(currentDay==15 && currentSub=="Causative dengan Objek Pasif") return bankSoal["DAY15_CAUSATIVE_PASSIVE"]
+if(currentDay==15 && currentSub=="Bentuk Conditional Sentences") return bankSoal["DAY15_CONDITIONAL"]
+if(currentDay==15 && currentSub=="Conditional Tanpa IF") return bankSoal["DAY15_CONDITIONAL_INVERSION"]
+
+// DAY 16
+if(currentDay==16 && currentSub=="Gerund") return bankSoal["DAY16_GERUND"]
+if(currentDay==16 && currentSub=="Infinitive") return bankSoal["DAY16_INFINITIVE"]
+if(currentDay==16 && currentSub=="Bare Infinitive") return bankSoal["DAY16_BARE_INFINITIVE"]
+if(currentDay==16 && currentSub=="Noun Clause") return bankSoal["DAY16_NOUN_CLAUSE"]
+if(currentDay==16 && currentSub=="Direct & Indirect Speech") return bankSoal["DAY16_REPORTED_SPEECH"]
+if(currentDay==16 && currentSub=="Elliptical Construction") return bankSoal["DAY16_ELLIPTICAL"]
+if(currentDay==16 && currentSub=="Queston Tag") return bankSoal["DAY16_QUESTION_TAG"]
+
+// DAY 17
+if(currentDay==17 && currentSub=="Ungkapan Menyapa Orang Lain") return bankSoal["DAY17_GREETINGS_A"]
+if(currentDay==17 && currentSub=="Ungkapan Menjawab Sapaan") return bankSoal["DAY17_GREETINGS_B"]
+if(currentDay==17 && currentSub=="Ungkapan Berpamitan") return bankSoal["DAY17_PARTING_A"]
+if(currentDay==17 && currentSub=="Menjawab Orang Berpamitan") return bankSoal["DAY17_PARTING_B"]
+if(currentDay==17 && currentSub=="Memperkenalkan Diri") return bankSoal["DAY17_INTRO_SELF"]
+if(currentDay==17 && currentSub=="Memperkenalkan Orang Lain") return bankSoal["DAY17_INTRO_OTHERS"]
+
+// DAY 18
+if(currentDay==18 && currentSub=="Ungkapan Terima Kasih") return bankSoal["DAY18_THANKS_A"]
+if(currentDay==18 && currentSub=="Menjawab Terima Kasih") return bankSoal["DAY18_THANKS_B"]
+if(currentDay==18 && currentSub=="Meminta Maaf") return bankSoal["DAY18_APOLOGY_A"]
+if(currentDay==18 && currentSub=="Menjawab Permintaan Maaf") return bankSoal["DAY18_APOLOGY_B"]
+if(currentDay==18 && currentSub=="Mengundang Orang") return bankSoal["DAY18_INVITE_A"]
+if(currentDay==18 && currentSub=="Menjawab Undangan") return bankSoal["DAY18_INVITE_B"]
+
+// ===== DAY 19 =====
+
+if(currentDay==19 && currentSub=="Menyatakan Simpati") return bankSoal["DAY19_SYMPATHY_A"]
+if(currentDay==19 && currentSub=="Menjawab Simpati") return bankSoal["DAY19_SYMPATHY_B"]
+
+if(currentDay==19 && currentSub=="Meminta dan Memberi Pendapat") return bankSoal["DAY19_OPINION_A"]
+if(currentDay==19 && currentSub=="Menanggapi Pendapat") return bankSoal["DAY19_OPINION_B"]
+
+if(currentDay==19 && currentSub=="Ungkapan Menanyakan Waktu") return bankSoal["DAY19_TIME"]
+
+
+// ===== DAY 20 =====
+
+if(currentDay==20 && currentSub=="Menanyakan Informasi Sehari-hari") return bankSoal["DAY20_INFO_ASK"]
+if(currentDay==20 && currentSub=="Memberikan Informasi") return bankSoal["DAY20_INFO_GIVE"]
+
+if(currentDay==20 && currentSub=="Kata-kata Permintaan") return bankSoal["DAY20_REQUEST"]
+if(currentDay==20 && currentSub=="Kata-kata Penawaran") return bankSoal["DAY20_OFFER"]
+if(currentDay==20 && currentSub=="Merespon Permintaan & Tawaran") return bankSoal["DAY20_RESPONSE"]
+
+if(currentDay==20 && currentSub=="Pemakaian Kata MAY") return bankSoal["DAY20_MAY"]
+if(currentDay==20 && currentSub=="Pemakaian Kata DONT") return bankSoal["DAY20_DONT"]
+
+// DAY 21
+if(currentDay==21 && currentSub=="Bilangan") return bankSoal["DAY21_CARDINAL"]
+if(currentDay==21 && currentSub=="Bilangan Bertingkat") return bankSoal["DAY21_ORDINAL"]
+if(currentDay==21 && currentSub=="Waktu") return bankSoal["DAY21_TIME"]
+if(currentDay==21 && currentSub=="Warna & Bentuk") return bankSoal["DAY21_COLOR_SHAPE"]
+
+// DAY 22
+if(currentDay==22 && currentSub=="Anggota Keluarga") return bankSoal["DAY22_FAMILY"]
+if(currentDay==22 && currentSub=="Rumah") return bankSoal["DAY22_HOUSE"]
+if(currentDay==22 && currentSub=="Dapur") return bankSoal["DAY22_KITCHEN"]
+if(currentDay==22 && currentSub=="Ruang Tamu") return bankSoal["DAY22_LIVINGROOM"]
+if(currentDay==22 && currentSub=="Kamar Mandi") return bankSoal["DAY22_BATHROOM"]
+
+// DAY 23
+if(currentDay==23 && currentSub=="Buah") return bankSoal["DAY23_FRUITS"]
+if(currentDay==23 && currentSub=="Bunga dan Pohon") return bankSoal["DAY23_FLOWERS"]
+if(currentDay==23 && currentSub=="Hewan Jinak") return bankSoal["DAY23_TAME"]
+if(currentDay==23 && currentSub=="Hewan Liar") return bankSoal["DAY23_WILD"]
+if(currentDay==23 && currentSub=="Hewan Kecil") return bankSoal["DAY23_SMALL"]
+
+
+// ===== DAY 24 =====
+if(currentDay==24 && currentSub=="Burung") return bankSoal["DAY24_BIRDS"]
+if(currentDay==24 && currentSub=="Hewan Air") return bankSoal["DAY24_WATER"]
+if(currentDay==24 && currentSub=="Sekolah") return bankSoal["DAY24_SCHOOL"]
+if(currentDay==24 && currentSub=="Komputer dan Telepon") return bankSoal["DAY24_TECH"]
+if(currentDay==24 && currentSub=="Mencari Kerja") return bankSoal["DAY24_JOB"]
+
+// ===== DAY 25 =====
+if(currentDay==25 && currentSub=="Ruang Kelas") return bankSoal["DAY25_CLASSROOM"]
+if(currentDay==25 && currentSub=="Kantor") return bankSoal["DAY25_OFFICE"]
+if(currentDay==25 && currentSub=="Toko") return bankSoal["DAY25_SHOP"]
+if(currentDay==25 && currentSub=="Pakaian Pria") return bankSoal["DAY25_MEN"]
+if(currentDay==25 && currentSub=="Pakaian Wanita") return bankSoal["DAY25_WOMEN"]
+
+
+// DAY 26
+if(currentDay==26 && currentSub=="Salon & Beauty") return bankSoal["DAY26_SALON"]
+if(currentDay==26 && currentSub=="Tailor Shop") return bankSoal["DAY26_TAILOR"]
+if(currentDay==26 && currentSub=="Music and Film") return bankSoal["DAY26_MUSIC"]
+if(currentDay==26 && currentSub=="Workshop") return bankSoal["DAY26_WORKSHOP"]
+if(currentDay==26 && currentSub=="Professions") return bankSoal["DAY26_PROFESSION"]
+
+// DAY 27
+if(currentDay==27 && currentSub=="Food and Drink") return bankSoal["DAY27_FOOD"]
+if(currentDay==27 && currentSub=="Buildings") return bankSoal["DAY27_BUILDING"]
+if(currentDay==27 && currentSub=="Earth and Universe") return bankSoal["DAY27_EARTH"]
+if(currentDay==27 && currentSub=="Weather and Seasons") return bankSoal["DAY27_WEATHER"]
+if(currentDay==27 && currentSub=="At the Airport") return bankSoal["DAY27_AIRPORT"]
+if(currentDay==27 && currentSub=="On the Road") return bankSoal["DAY27_ROAD"]
+
+// ===== DAY 28 =====
+if(currentDay==28 && currentSub=="Di Bank & Kantor Pos") return bankSoal["DAY28_BANK"]
+if(currentDay==28 && currentSub=="Di Hotel") return bankSoal["DAY28_HOTEL"]
+if(currentDay==28 && currentSub=="Di Rumah Sakit") return bankSoal["DAY28_HOSPITAL"]
+if(currentDay==28 && currentSub=="Tubuh Manusia") return bankSoal["DAY28_BODY"]
+if(currentDay==28 && currentSub=="Di Restoran") return bankSoal["DAY28_RESTAURANT"]
+
+// ===== DAY 29 =====
+if(currentDay==29 && currentSub=="Dokumen & Riwayat Hidup") return bankSoal["DAY29_DOCUMENT"]
+if(currentDay==29 && currentSub=="Lawan Kata") return bankSoal["DAY29_OPPOSITE"]
+if(currentDay==29 && currentSub=="Ekspresi dan Perasaan") return bankSoal["DAY29_EXPRESSIONS"]
+if(currentDay==29 && currentSub=="Olahraga & Bela Diri") return bankSoal["DAY29_SPORT"]
+if(currentDay==29 && currentSub=="Polisi dan Tentara") return bankSoal["DAY29_SECURITY"]
+
+// ===== DAY 30 =====
+if(currentDay==30 && currentSub=="Kata Kerja Beraturan") return bankSoal["DAY30_REGULAR"]
+if(currentDay==30 && currentSub=="Kata Kerja Tak Beraturan") return bankSoal["DAY30_IRREGULAR"]
+if(currentDay==30 && currentSub=="Proverb (Peribahasa)") return bankSoal["DAY30_PROVERB"]
+if(currentDay==30 && currentSub=="Idiom") return bankSoal["DAY30_IDIOM"]
+if(currentDay==30 && currentSub=="Kalimat dengan Idiom") return bankSoal["DAY30_IDIOM_SENTENCE"]
+
+return [
+{q:"Question not set",options:["A","B","C","D"],a:0}
+]
+
+}
+let qs
+
+function startQuiz(){
+
+if(document.getElementById("review").value.trim()==""){
+alert("Isi dulu review materi kamu!")
+return
+}
+
+qs=makeQuestions(currentSub)
+
+let html="<div class='quiz'>"
+
+qs.forEach((q,i)=>{
+
+html+="<p><b>"+(i+1)+". "+q.q+"</b></p>"
+
+q.options.forEach((op,j)=>{
+
+html+="<label><input type='radio' name='q"+i+"' value='"+j+"'> "+op+"</label><br>"
+
+})
+
+})
+
+html+="<br><button onclick='submitQuiz()'>Submit</button>"
+
+document.getElementById("quiz").innerHTML=html
+
+}
+
+function submitQuiz(){
+
+let score=0
+
+qs.forEach((q,i)=>{
+
+let ans=document.querySelector('input[name="q'+i+'"]:checked')
+
+if(ans && parseInt(ans.value)==q.a){
+score++
+}
+
+})
+
+let percent=(score/5)*100
+
+document.getElementById("scoreDisplay").innerText="Score: "+percent
+
+let scoreKey="score_"+currentDay+"_"+currentSub
+localStorage.setItem(scoreKey,percent)
+
+if(percent>=80){
+
+alert("Great! Kamu sudah paham materi ini 🌻")
+
+}else{
+
+alert("😢 Sayang sekali, kamu belum begitu paham materi ini. Coba pelajari lagi ya!")
+
+}
+
+// tetap simpan progress supaya bisa lanjut
+progress["d"+currentDay+"s"+currentSub]=true
+
+if(schedule[currentDay].subs.length-1==currentSub){
+progress["day"+currentDay]=true
+}
+
+localStorage.setItem("progress",JSON.stringify(progress))
+
+updateProgressUI()
+drawCalendar()
+drawGarden()
+
+openDay(currentDay)
+
+}
+
+</script>
+
+</body>
+</html>
