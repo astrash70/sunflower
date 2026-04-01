@@ -6,12 +6,14 @@
 <title>Sunflower Garden Discipline - Astri</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:url("SUN FLOWER 1.jpg") center/cover fixed;
+background:url("C:/ENGLISH/ABSENSI/tema/SUN FLOWER 1.jpg") center/cover fixed;
 }
 
 .overlay{
@@ -22,7 +24,7 @@ padding:30px;
 
 h1{
 font-family:'Bebas Neue';
-letter-spacing:2px;
+letter-spacing:7px;
 text-align:center;
 }
 
@@ -31,7 +33,10 @@ font-family:'Montserrat';
 text-align:center;
 }
 
-.page{display:none}
+.page{
+display:none;
+position:relative;
+}
 .active{display:block}
 
 .slider{
@@ -79,19 +84,21 @@ cursor:pointer;
 
 .day-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:10px;
-max-width:900px;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); /* dari 120 → 150 */
+gap:15px;
+max-width:1100px;  /* dari 900 → 1100 */
 margin:auto;
 }
 
 .card{
 background:white;
-padding:14px;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,0.2);
+padding:20px;            /* dari 14 → 20 */
+border-radius:14px;
+box-shadow:0 5px 15px rgba(0,0,0,0.25);
 cursor:pointer;
 text-align:center;
+font-size:18px;          /* tambah */
+font-weight:600;
 }
 
 .locked{
@@ -146,30 +153,6 @@ background:#f4a300;
 width:0%;
 }
 
-.calendar{
-display:grid;
-grid-template-columns:repeat(7,40px);
-gap:6px;
-justify-content:center;
-margin-top:20px;
-}
-
-.dayCell{
-width:40px;
-height:40px;
-border-radius:6px;
-background:#eee;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:18px;
-}
-
-.done{
-background:#f4a300;
-color:white;
-}
-
 .garden{
 display:flex;
 justify-content:center;
@@ -189,7 +172,7 @@ margin-bottom:30px;
 
 #mainTitle{
 font-family:'Bebas Neue';
-font-size:48px;
+font-size:55px;
 letter-spacing:3px;
 margin-bottom:10px;
 }
@@ -292,6 +275,127 @@ pointer-events:none;
 z-index:10;
 }
 
+.mainQuote{
+font-family: 'Anton', sans-serif;
+font-size: 50px;
+font-weight: 900;
+letter-spacing: 2px;
+text-align: center;
+line-height: 1.1;
+color: #1a1a1a;
+text-transform: uppercase;
+text-shadow: 3px 3px 12px rgba(0,0,0,0.25);
+}
+
+.subQuote{
+font-family: 'Roboto', serif;
+font-size: 28px;
+font-weight: 1000;
+text-align: center;
+line-height: 1.2;
+color: #333;
+max-width: 980px;
+margin: 25px auto;
+}
+
+.resetBtn{
+position:absolute;
+top:20px;
+right:25px;
+
+width:45px;
+height:45px;
+
+border-radius:50%;
+border:none;
+
+background:#f4a300;
+color:white;
+
+font-size:22px;
+cursor:pointer;
+
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.resetBtn:hover{
+transform:rotate(180deg) scale(1.1);
+}
+
+#examTitle{
+  font-family:'Bebas Neue';
+  font-size:48px;
+  letter-spacing:4px;
+  text-align:center;
+  color:#111;
+  text-shadow:2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.start-exam-btn {
+  width: 510px;
+  cursor: pointer;
+  transition: 0.25s;
+  display: block;
+  margin: 20px auto;
+}
+
+.start-exam-btn:hover {
+  transform: scale(1.1);
+}
+
+/* versi LOCK */
+.start-exam-btn.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
+
+.bab-title {
+  text-align: left;
+  margin-left: 30px;
+  margin-top: 25px;
+
+  font-size: 26px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+  color: #111;
+}
+
+.menuContainer{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:50px;
+margin-top:50px;
+flex-wrap:wrap;
+}
+
+.menuIcon{
+width:820px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.menuIcon:hover{
+transform:scale(1.1);
+}
+
+h1{
+font-size:60px;
+letter-spacing:4px;
+}
+
+.card:hover{
+transform:scale(1.08);
+transition:0.2s;
+}
+
+.card{
+backdrop-filter: blur(5px);
+}
+
 </style>
 </head>
 
@@ -305,23 +409,42 @@ z-index:10;
 
 <div class="photoSlider" id="slides">
 
-<img src=" KDI.jpg">
-<img src=" kdi 2.jpg">
-<img src=" kdi 3.jpg">
-<img src=" kdi 4.jpg">
-<img src=" kdi 5.jpg">
-<img src=" kdi 6.jpg">
-<img src=" kdi 7.jpg">
+<img src="tema/KDI.jpg">
+<img src="tema/kdi 2.jpg">
+<img src="tema/kdi 3.jpg">
+<img src="tema/kdi 4.jpg">
+<img src="tema/kdi 5.jpg">
+<img src="tema/kdi 6.jpg">
+<img src="tema/kdi 7.jpg">
+<img src="tema/kdi 8.jpg">
+<img src="tema/kdi 9.jpg">
+<img src="tema/kdi 10.jpg">
+<img src="tema/kdi 11.jpg">
+<img src="tema/kdi 12.jpg">
+<img src="tema/kdi 13.jpg">
+<img src="tema/kdi 14.jpg">
+<img src="tema/kdi 15.jpg">
+<img src="tema/kdi 16.jpg">
+<img src="tema/kdi 17.jpg">
 
 </div>
 
-<img class="FRAMEIMG" src="FRAME.png">
+<img class="FRAMEIMG" src="./tema/FRAME.png">
 
 </div>
 
 <div class="quote">
-Discipline grows like a sunflower.<br>
-Every day you study, your garden grows.
+
+<div class="mainQuote">
+"LET’S HUSTLE HARD TILL WE SHINE LIKE SUNFLOWERS"
+</div>
+
+<div class="subQuote">
+It’s not gonna be easy, pasti banyak luka yang ga keliatan juga inside.<br>
+But hey, please keep fighting. Jangan nyerah before you see the final resul,<br>
+Let’s meet that beautiful destiny Tuhan udah siapin buat lo 💫 진짜 기다려.
+</div>
+
 </div>
 
 <center>
@@ -330,8 +453,54 @@ Every day you study, your garden grows.
 
 </div>
 
+<!-- MENU PILIH -->
+<div id="menuPage" class="page">
+
+<h1 style="
+text-align:center;
+font-size:48px;
+letter-spacing:3px;
+margin-top:40px;
+">
+"SEMANGAT BELAJAR QUEEN"
+</h1>
+<div style="text-align:center; margin-top:40px;">
+
+<div class="menuContainer">
+
+<img src="tema/grammar.png" onclick="openGrammar()" class="menuIcon">
+
+<img src="tema/vocabularry.png" onclick="openVocab()" class="menuIcon">
+
+</div>
+
+</div>
+
+</div>
 
 <div id="dash" class="page">
+
+    <button onclick="backToMenu()" style="
+position:absolute;
+top:20px;
+left:25px;
+
+width:45px;
+height:45px;
+
+border-radius:50%;
+border:none;
+
+background:#333;
+color:white;
+
+font-size:20px;
+cursor:pointer;
+">
+⬅
+</button>
+
+<button class="resetBtn" onclick="resetAll()">⟳</button>
 
 <h1>SUNFLOWER GARDEN TRACKER</h1>
 
@@ -339,16 +508,12 @@ Every day you study, your garden grows.
 <div class="progressBar">
 <div class="progressFill" id="progressFill"></div>
 </div>
-<div style="text-align:center;margin-top:5px" id="progressText"></div>
+<div style="text-align:center;margin-top:10px" id="progressText"></div>
 </div>
 
-<h3>Streak Calendar</h3>
-<div id="calendar" class="calendar"></div>
 
-<h3>Your Sunflower Garden</h3>
 <div id="garden" class="garden"></div>
 
-<h3>30 Day Challenge</h3>
 <div id="days" class="day-grid"></div>
 
 </div>
@@ -356,11 +521,13 @@ Every day you study, your garden grows.
 
 <div id="dayPage" class="page">
 
-<button onclick="backDash()">⬅</button>
+<button onclick="goBack()">⬅</button>
 
 <div class="moduleHeader">
 
 <h1 id="mainTitle"></h1>
+
+<div id="avgScore" style="margin-top:10px; font-size:18px; font-weight:600;"></div>
 
 <div class="line"></div>
 
@@ -393,12 +560,57 @@ Every day you study, your garden grows.
 
 </div>
 
+
+<!-- 🔥 INI DI LUAR studyPage (PENTING BANGET) -->
+<div id="examPage" class="page">
+
+<button onclick="goBack()">⬅</button>
+
+<h2 id="examTitle">WEEKLY EXAM</h2>
+<div id="examTop" style="text-align:center; margin:20px 0;">
+
+  <div id="Montserrat" style="
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+    font-size:28px;
+    font-weight:bold;
+  ">
+    ⏱ <span id="timer">60:00</span>
+  </div>
+
+  <br><br>
+
+  <button id="startBtn" onclick="startExamTimer()">▶ START EXAM</button>
+
+</div>
+
+<div id="examContainer"></div>
+
+</div>
+
 </div>
 
 <script>
 
+// START DATE (UNTUK TIME LOCK)
+if(!localStorage.getItem("startDate")){
+localStorage.setItem("startDate", new Date().toDateString())
+}
 let today = new Date().toDateString()
 let lastStudy = localStorage.getItem("lastStudy")
+
+function getUnlockedDay(){
+
+let start = new Date(localStorage.getItem("startDate"))
+let now = new Date()
+
+let diff = Math.floor((now - start)/(1000*60*60*24))
+
+return diff + 1
+}
 
 if(lastStudy){
 let diff=(new Date(today)-new Date(lastStudy))/(1000*60*60*24)
@@ -440,10 +652,7 @@ document.getElementById(id).classList.add("active")
 }
 
 function openDash(){
-updateProgressUI()
-drawCalendar()
-drawGarden()
-show("dash")
+show("menuPage")
 }
 
 function backDash(){show("dash")}
@@ -965,16 +1174,27 @@ let progress=JSON.parse(localStorage.getItem("progress")||"{}")
 
 const daysDiv=document.getElementById("days")
 
+let unlockedDay = getUnlockedDay()
 for(let i=1;i<=30;i++){
 let d=document.createElement("div")
 d.className="card"
 
-if(false){
+// LOCK DAY
+if(i > 1 && !progress["day"+(i-1)]){
+d.classList.add("locked")
+}
+
+// LOCK TIME
+if(i > unlockedDay){
 d.classList.add("locked")
 }
 
 d.innerText="🌻 DAY "+i
+
+if(!d.classList.contains("locked")){
 d.onclick=()=>openDay(i)
+}
+
 daysDiv.appendChild(d)
 }
 
@@ -990,29 +1210,6 @@ let percent=(done/30)*100
 
 document.getElementById("progressFill").style.width=percent+"%"
 document.getElementById("progressText").innerText=done+" / 30 days completed"
-
-}
-
-function drawCalendar(){
-
-let cal=document.getElementById("calendar")
-cal.innerHTML=""
-
-for(let i=1;i<=30;i++){
-
-let c=document.createElement("div")
-c.className="dayCell"
-
-if(progress["day"+i]){
-c.classList.add("done")
-c.innerText="🌻"
-}else{
-c.innerText=i
-}
-
-cal.appendChild(c)
-
-}
 
 }
 
@@ -1045,10 +1242,421 @@ garden.appendChild(p)
 let currentDay
 let currentSub
 
+function getSticker(score){
+
+if(score === null) return null  // ❗ belum ngerjain → ga ada stiker
+
+score = parseInt(score)
+
+if(score >= 100) return "100.png"
+if(score >= 80) return "80.png"
+if(score >= 60) return "60.png"
+if(score >= 40) return "40.png"
+if(score >= 20) return "20.png"
+
+return "0.png" // nilai 0 beneran
+}
+
+function calculateAverage(day){
+
+let scores = []
+
+let data = schedule[day]
+
+// kalau ada BAB
+if(Array.isArray(data.bab)){
+data.bab.forEach(b=>{
+b.subs.forEach(s=>{
+let val = localStorage.getItem("score_"+day+"_"+s)
+if(val !== null){
+scores.push(parseInt(val))
+}
+})
+})
+}else{
+// kalau normal
+data.subs.forEach(s=>{
+let val = localStorage.getItem("score_"+day+"_"+s)
+if(val !== null){
+scores.push(parseInt(val))
+}
+})
+}
+
+if(scores.length === 0) return "-"
+
+let total = scores.reduce((a,b)=>a+b,0)
+return Math.round(total / scores.length)
+}
+
+function checkWeeklyExam(){
+
+let doneDays = []
+
+for(let i=1;i<=30;i++){
+if(progress["day"+i]){
+doneDays.push(i)
+}
+}
+
+// WEEK 1
+if(progress["day7"] && !localStorage.getItem("exam_7")){
+localStorage.setItem("exam_7","done")
+startExam(1,7)
+return
+}
+
+// WEEK 2
+if(progress["day14"] && !localStorage.getItem("exam_14")){
+localStorage.setItem("exam_14","done")
+startExam(8,14)
+return
+}
+
+// WEEK 3
+if(progress["day21"] && !localStorage.getItem("exam_21")){
+localStorage.setItem("exam_21","done")
+startExam(15,21)
+return
+}
+
+// WEEK 4
+if(progress["day28"] && !localStorage.getItem("exam_28")){
+localStorage.setItem("exam_28","done")
+startExam(22,28)
+return
+}
+
+// FINAL
+if(progress["day30"] && !localStorage.getItem("exam_30")){
+localStorage.setItem("exam_30","done")
+startExam(1,30)
+return
+}
+
+}
+
+function startExam(startDay,endDay){
+
+examStarted = false
+
+if(startDay === 1 && endDay === 30){
+  time = 7200
+  currentExamType = "final"
+}else{
+  time = 3600
+  currentExamType = "week"
+}
+
+let title = ""
+
+if(startDay === 1 && endDay === 7){
+  title = "FIRST WEEK OF EXAM"
+}
+else if(startDay === 8 && endDay === 14){
+  title = "SECOND WEEK OF EXAM"
+}
+else if(startDay === 15 && endDay === 21){
+  title = "THIRD WEEK OF EXAM"
+}
+else if(startDay === 22 && endDay === 28){
+  title = "FOURTH WEEK OF EXAM"
+}
+else if(startDay === 1 && endDay === 30){
+  title = "FINAL EXAM"
+}
+
+show("examPage")
+
+document.getElementById("examTitle").innerText = title
+
+localStorage.setItem("examRange", JSON.stringify({
+start:startDay,
+end:endDay
+}))
+
+
+let m = Math.floor(time/60)
+let s = time % 60
+
+document.getElementById("timer").innerText =
+m + ":" + (s<10?"0"+s:s)
+
+loadExamQuestions(startDay,endDay)
+}
+
+function startExamTimer(){
+
+if(examStarted) return
+examStarted = true
+
+document.getElementById("startBtn").style.display = "none"
+
+interval = setInterval(()=>{
+
+time--
+
+let m = Math.floor(time/60)
+let s = time % 60
+
+document.getElementById("timer").innerText =
+m+":"+(s<10?"0"+s:s)
+
+if(time <= 0){
+clearInterval(interval)
+alert("Waktu habis!")
+submitExam()
+}
+
+},1000)
+
+}
+
+const WEEKLY = [
+{q:"Sample weekly question", options:["A","B","C","D"], a:0}
+];
+
+function loadExamQuestions(start,end){
+
+let container = document.getElementById("examContainer")
+container.innerHTML = ""
+
+let data = []
+
+// FINAL
+if(start === 1 && end === 30){
+data = Object.values(bankSoal).flat().slice(0,150)
+}
+
+// WEEK 1
+else if(start === 1 && end === 7){
+data = examQuestions.WEEK1
+}
+
+// WEEK 2
+else if(start === 8 && end === 14){
+data = examQuestions.WEEK2
+}
+
+// WEEK 3
+else if(start === 15 && end === 21){
+data = examQuestions.WEEK3
+}
+
+// WEEK 4
+else if(start === 22 && end === 28){
+data = examQuestions.WEEK4
+}
+
+// render
+data.forEach((q,i)=>{
+let html = `
+<div id="question-${i}" style="margin-bottom:20px; padding:15px; background:white; border-radius:10px;">
+<p><b>${i+1}. ${q.q}</b></p>
+${q.options.map((opt,idx)=>`
+<label>
+<input type="radio" name="q${i}" value="${idx}" onchange="clearHighlight(${i})">
+${opt}
+</label><br>
+`).join("")}
+</div>
+`
+container.innerHTML += html
+})
+
+container.innerHTML += `<button onclick="submitExam()">Submit</button>`
+}
+
+function markDayComplete(day){
+
+let data = schedule[day]
+let totalSubs = 0
+let doneSubs = 0
+
+if(Array.isArray(data.bab)){
+data.bab.forEach(b=>{
+b.subs.forEach(s=>{
+totalSubs++
+if(localStorage.getItem("score_"+day+"_"+s)){
+doneSubs++
+}
+})
+})
+}else{
+data.subs.forEach(s=>{
+totalSubs++
+if(localStorage.getItem("score_"+day+"_"+s)){
+doneSubs++
+}
+})
+}
+
+if(doneSubs === totalSubs){
+progress["day"+day] = true
+localStorage.setItem("progress", JSON.stringify(progress))
+
+// 🔥 TRIGGER EXAM
+checkWeeklyExam()
+}
+}
+
+function submitExam(){
+
+let range = JSON.parse(localStorage.getItem("examRange"))
+let data = []
+
+// ambil data sesuai exam
+if(range.start === 1 && range.end === 30){
+data = Object.values(bankSoal).flat().slice(0,150)
+}
+else if(range.start === 1){
+data = Object.values(bankSoal).flat().slice(0,20)
+}
+else if(range.start === 8){
+data = Object.values(bankSoal).flat().slice(20,40)
+}
+else if(range.start === 15){
+data = Object.values(bankSoal).flat().slice(40,60)
+}
+else if(range.start === 22){
+data = Object.values(bankSoal).flat().slice(60,80)
+}
+
+// ✅ BARU CEK JAWABAN
+let firstUnansweredIndex = -1
+
+data.forEach((q,i)=>{
+  let selected = document.querySelector(`input[name="q${i}"]:checked`)
+  
+  if(!selected && firstUnansweredIndex === -1){
+    firstUnansweredIndex = i
+  }
+})
+
+if(firstUnansweredIndex !== -1){
+
+  alert("Masih ada soal yang belum dijawab!")
+
+  let el = document.getElementById(`question-${firstUnansweredIndex}`)
+
+  el.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  })
+
+  // kasih highlight
+  el.style.border = "3px solid red"
+  el.style.background = "#ffe6e6"
+
+  return
+}
+
+// HITUNG SCORE
+let score = 0
+
+data.forEach((q,i)=>{
+  let selected = document.querySelector(`input[name="q${i}"]:checked`)
+  if(parseInt(selected.value) === q.a){
+    score++
+  }
+})
+
+let finalScore = Math.round((score/data.length)*100)
+
+clearInterval(interval)
+interval = null
+examStarted = false
+
+showResultPopup(finalScore)
+
+}
+
+function showResultPopup(score){
+
+let message = ""
+
+if(score <= 50){
+  message = "❌ FAIL"
+}
+else if(score <= 89){
+  message = "👍 GOOD"
+}
+else{
+  message = "🔥 WAUUUU"
+}
+
+let popup = `
+<div id="popupResult" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+">
+
+  <div style="
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+  ">
+    <h2>RESULT</h2>
+    <h1>${score}</h1>
+    <p>${message}</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
+</div>
+`
+
+document.body.insertAdjacentHTML("beforeend", popup)
+}
+
+function closePopup(){
+document.getElementById("popupResult").remove()
+show("dash")
+}
+
+function isDayCompleted(day){
+
+let data = schedule[day]
+let total = 0
+let done = 0
+
+if(Array.isArray(data.bab)){
+  data.bab.forEach(b=>{
+    b.subs.forEach(s=>{
+      total++
+      if(localStorage.getItem("score_"+day+"_"+s)){
+        done++
+      }
+    })
+  })
+}else{
+  data.subs.forEach(s=>{
+    total++
+    if(localStorage.getItem("score_"+day+"_"+s)){
+      done++
+    }
+  })
+}
+
+return total === done
+}
+
 function openDay(day){
 
 currentDay=day
 
+let avg = calculateAverage(day)
+
+document.getElementById("avgScore").innerText =
+avg === "-" ? "" : "Average Score : " + avg
 if(day<=8){
 document.getElementById("mainTitle").innerText="PART OF SPEECH"
 }
@@ -1073,13 +1681,32 @@ if(Array.isArray(schedule[day].bab)){
 
 schedule[day].bab.forEach((b)=>{
 
-html+=`<h3 style="text-align:left;margin-left:30px;margin-top:20px">${b.title}</h3>`
+html+=`<h3 class="bab-title">${b.title}</h3>`
 
 b.subs.forEach((s)=>{
 
-html+=`<div class="card" onclick='openSub("${s}")'>
+let scoreKey = "score_"+day+"_"+s
+let score = localStorage.getItem(scoreKey)
+
+let sticker = getSticker(score)
+
+html+=`
+<div class="card" onclick='openSub("${s}")'>
+
+<div style="display:flex; align-items:center; justify-content:space-between">
+
+<div style="flex:1; text-align:center; font-size:21px; font-weight:500;">
 ${s}
-</div>`
+</div>
+
+<div>
+${sticker ? `<img src="tema/${sticker}" width="40">` : ""}
+</div>
+
+</div>
+
+</div>
+`
 
 })
 
@@ -1089,15 +1716,84 @@ ${s}
 
 schedule[day].subs.forEach((s,i)=>{
 
-html+=`<div class="card" onclick='openSub("${s}")'>
+let prevSub = schedule[day].subs[i-1]
+let locked = false
+
+if(i > 0){
+let prevKey = "score_"+day+"_"+prevSub
+if(!localStorage.getItem(prevKey)){
+locked = true
+}
+}
+
+let scoreKey = "score_"+day+"_"+s
+let score = localStorage.getItem(scoreKey)
+
+let sticker = getSticker(score)
+
+html+=`
+<div class="card" onclick='openSub("${s}")'>
+
+<div style="display:flex; align-items:center; justify-content:space-between">
+
+<div style="flex:1; text-align:Center; font-size:21px; font-weight:500;">
 ${s}
-</div>`
+</div>
+
+<div>
+<img src="tema/${sticker}" width="40">
+</div>
+
+</div>
+
+</div>
+`
 
 })
 
 }
 
 document.getElementById("subs").innerHTML=html
+
+// 🔥 EXAM BUTTON
+let examButton = ""
+
+if(day === 7){
+examButton = isDayCompleted(7)
+? `<img src="tema/WEEK 1.png" class="start-exam-btn" onclick="startExam(1,7)">`
+: `<img src="tema/WEEK 1.png" class="start-exam-btn locked">`
+}
+
+else if(day === 14){
+examButton = isDayCompleted(14)
+? `<img src="tema/WEEK 2.png" class="start-exam-btn" onclick="startExam(8,14)">`
+: `<img src="tema/WEEK 2.png" class="start-exam-btn locked">`
+}
+
+else if(day === 21){
+examButton = isDayCompleted(21)
+? `<img src="tema/WEEK 3.png" class="start-exam-btn" onclick="startExam(15,21)">`
+: `<img src="tema/WEEK 3.png" class="start-exam-btn locked">`
+}
+
+else if(day === 28){
+examButton = isDayCompleted(28)
+? `<img src="tema/WEEK 4.png" class="start-exam-btn" onclick="startExam(22,28)">`
+: `<img src="tema/WEEK 4.png" class="start-exam-btn locked">`
+}
+
+else if(day === 30){
+examButton = isDayCompleted(30)
+? `<img src="tema/FINAL.png" class="start-exam-btn" onclick="startExam(1,30)">`
+: `<img src="tema/FINAL.png" class="start-exam-btn locked">`
+}
+
+// taro di bawah
+document.getElementById("subs").innerHTML += `
+<div style="text-align:center; margin-top:30px;">
+${examButton}
+</div>
+`
 
 show("dayPage")
 
@@ -2359,6 +3055,653 @@ const bankSoal = {
 ],
 
 }
+
+const examQuestions = {
+WEEK1: [
+
+{q:"Which word is a concrete noun?",options:["Happiness","Table","Freedom","Love"],a:1},
+{q:"Which is an abstract noun?",options:["Chair","Pencil","Beauty","Apple"],a:2},
+{q:"Identify the countable noun:",options:["Water","Rice","Book","Sugar"],a:2},
+{q:"Which is uncountable?",options:["Car","Milk","Dog","Pen"],a:1},
+{q:"She has a lot of ___",options:["informations","information","informationses","inform"],a:1},
+{q:"Which sentence is correct?",options:["I have many money","I have much money","I have many moneys","I have much moneys"],a:1},
+{q:"Which noun is concrete?",options:["Honesty","Courage","Phone","Fear"],a:2},
+{q:"Which is abstract?",options:["Teacher","Sadness","Bottle","Laptop"],a:1},
+{q:"Choose the correct:",options:["Two rice","Two rices","Two bowls of rice","Two rice bowls"],a:2},
+{q:"Which is countable?",options:["Bread","Advice","Idea","Information"],a:2},
+{q:"I need some ___",options:["advices","advice","adviceses","advising"],a:1},
+{q:"Which is NOT concrete?",options:["Tree","Car","Happiness","House"],a:2},
+{q:"Which is correct?",options:["Many water","Much water","Many waters","Much waters"],a:1},
+{q:"Which is countable?",options:["Sand","Air","Chair","Oil"],a:2},
+{q:"Which noun is abstract?",options:["Love","Phone","Table","Book"],a:0},
+
+{q:"___ is my friend.",options:["He","Him","His","Himself"],a:0},
+{q:"This book is ___.",options:["me","mine","I","myself"],a:1},
+{q:"Which is demonstrative pronoun?",options:["He","This","Who","My"],a:1},
+{q:"The boy ___ is running is my brother.",options:["which","who","where","what"],a:1},
+{q:"She hurt ___.",options:["she","her","herself","hers"],a:2},
+{q:"___ is your name?",options:["What","Which","Who","Whose"],a:0},
+{q:"Those are ___ books.",options:["my","mine","me","I"],a:0},
+{q:"___ are playing football.",options:["Them","They","Their","Theirs"],a:1},
+{q:"This is ___ car.",options:["me","mine","my","I"],a:2},
+{q:"Which is reflexive pronoun?",options:["Himself","Him","His","He"],a:0},
+{q:"___ is that?",options:["Who","Which","Where","Why"],a:0},
+{q:"The girl ___ I met is kind.",options:["who","whose","which","what"],a:0},
+{q:"That bag is ___.",options:["her","hers","she","herself"],a:1},
+{q:"___ are my shoes.",options:["This","That","These","It"],a:2},
+{q:"He did it by ___.",options:["him","himself","his","he"],a:1},
+
+{q:"Which is an adjective?",options:["Run","Happy","Quickly","Eat"],a:1},
+{q:"She is ___ than me.",options:["tall","taller","tallest","more tall"],a:1},
+{q:"This is the ___ building.",options:["tall","taller","tallest","more tall"],a:2},
+{q:"Which is correct?",options:["beautifuller","more beautiful","beautifulest","most beautifuler"],a:1},
+{q:"He is very ___.",options:["happily","happy","happiness","happier"],a:1},
+{q:"Comparative of good is:",options:["gooder","more good","better","best"],a:2},
+{q:"Superlative of bad:",options:["worse","worst","badder","more bad"],a:1},
+{q:"This is ___ than that.",options:["cheap","cheaper","cheapest","more cheap"],a:1},
+{q:"She is the ___ girl.",options:["smart","smarter","smartest","more smart"],a:2},
+{q:"Which is correct?",options:["more fast","faster","fastestly","fastly"],a:1},
+{q:"He is as ___ as me.",options:["tall","taller","tallest","more tall"],a:0},
+{q:"This is the ___ movie.",options:["interesting","more interesting","most interesting","interest"],a:2},
+{q:"Which is adjective?",options:["Beauty","Beautiful","Beautify","Beaut"],a:1},
+{q:"She looks ___.",options:["nicely","nice","niceness","nicerly"],a:1},
+{q:"This problem is ___.",options:["difficulty","difficult","difficultly","difficulties"],a:1},
+
+{q:"Which is adverb of manner?",options:["Quickly","Yesterday","Here","Often"],a:0},
+{q:"She sings ___.",options:["beautiful","beautifully","beauty","beautify"],a:1},
+{q:"Adverb of time:",options:["Slowly","Yesterday","Very","Here"],a:1},
+{q:"I will go ___.",options:["now","slow","very","big"],a:0},
+{q:"Adverb of frequency:",options:["Always","Fast","Big","Now"],a:0},
+{q:"He ___ goes to school.",options:["always","quick","big","happy"],a:0},
+{q:"Adverb of place:",options:["Here","Often","Very","Quickly"],a:0},
+{q:"She is ___ tired.",options:["very","fast","here","yesterday"],a:0},
+{q:"Which is adverb?",options:["Happy","Happiness","Happily","Happier"],a:2},
+{q:"Come ___.",options:["quick","quickly","quicker","quickest"],a:1},
+{q:"I saw him ___.",options:["yesterday","quick","very","tall"],a:0},
+{q:"He runs ___.",options:["fast","fastly","fasterly","fastestly"],a:0},
+{q:"She lives ___.",options:["here","very","always","slow"],a:0},
+{q:"They are ___ busy.",options:["very","here","now","often"],a:0},
+{q:"I ___ eat rice.",options:["always","here","quick","big"],a:0},
+
+{q:"Which is a verb?",options:["Run","Table","Happy","Fast"],a:0},
+{q:"She ___ a book.",options:["read","reads","reading","reader"],a:1},
+{q:"Which is transitive verb?",options:["Sleep","Eat","Arrive","Go"],a:1},
+{q:"Which is intransitive?",options:["Eat","Kick","Sleep","Write"],a:2},
+{q:"Past form of go:",options:["goed","went","gone","going"],a:1},
+{q:"She ___ playing.",options:["is","are","am","be"],a:0},
+{q:"They ___ football.",options:["plays","play","playing","played"],a:1},
+{q:"He ___ eaten.",options:["has","have","is","are"],a:0},
+{q:"Which is auxiliary verb?",options:["Run","Eat","Is","Book"],a:2},
+{q:"I ___ happy.",options:["am","is","are","be"],a:0},
+{q:"Verb 3 of take:",options:["took","taken","take","taking"],a:1},
+{q:"She ___ cooking.",options:["is","are","am","be"],a:0},
+{q:"We ___ to school yesterday.",options:["go","went","goes","going"],a:1},
+{q:"He ___ a car.",options:["have","has","having","hading"],a:1},
+{q:"Which is main verb?",options:["Is","Are","Run","Was"],a:2},
+
+{q:"I like tea ___ coffee.",options:["and","but","or","because"],a:0},
+{q:"I am tired ___ I sleep.",options:["and","so","because","or"],a:1},
+{q:"Which is subordinating conjunction?",options:["And","But","Because","Or"],a:2},
+{q:"She is poor ___ happy.",options:["and","but","or","so"],a:1},
+{q:"You can choose tea ___ coffee.",options:["and","but","or","so"],a:2},
+{q:"___ he is rich, he is unhappy.",options:["Although","And","Or","So"],a:0},
+{q:"Paired conjunction:",options:["And","Either...or","But","So"],a:1},
+{q:"___ you or me?",options:["Either","Both","And","So"],a:0},
+{q:"I study ___ I pass.",options:["so","because","or","and"],a:0},
+{q:"She came ___ she was invited.",options:["because","and","or","but"],a:0},
+{q:"He is tall ___ strong.",options:["and","but","or","so"],a:0},
+{q:"I was late ___ traffic.",options:["because","because of","and","but"],a:1},
+{q:"___ he is sick, he goes.",options:["Although","And","Or","So"],a:0},
+{q:"Not only ___ also.",options:["and","but","or","so"],a:1},
+{q:"She is tired ___ she continues.",options:["but","and","or","so"],a:0},
+
+{q:"I wake up ___ 7 AM.",options:["at","on","in","by"],a:0},
+{q:"I was born ___ 2005.",options:["at","on","in","by"],a:2},
+{q:"The book is ___ the table.",options:["in","on","at","by"],a:1},
+{q:"She is ___ the room.",options:["in","on","at","by"],a:0},
+{q:"He goes ___ school.",options:["to","in","at","on"],a:0},
+{q:"The cat is ___ the box.",options:["in","on","at","by"],a:0},
+{q:"We meet ___ Monday.",options:["at","on","in","by"],a:1},
+{q:"She is ___ home.",options:["at","on","in","by"],a:0},
+{q:"He walks ___ the park.",options:["to","in","on","at"],a:0},
+{q:"The dog runs ___ the house.",options:["into","in","at","on"],a:0}
+
+],
+
+WEEK2: [
+
+{q:"Which interjection expresses surprise?",options:["Wow","Ouch","Alas","Hey"],a:0},
+{q:"'Ouch!' is used when...",options:["happy","in pain","excited","angry"],a:1},
+{q:"___! That was amazing.",options:["Alas","Wow","Oops","Oh no"],a:1},
+{q:"'Alas!' expresses...",options:["sadness","joy","anger","excitement"],a:0},
+{q:"Which is NOT an interjection?",options:["Wow","Oh","Book","Oops"],a:2},
+{q:"___! I forgot my keys.",options:["Oops","Wow","Alas","Hey"],a:0},
+{q:"___! That hurts!",options:["Wow","Ouch","Alas","Oh"],a:1},
+{q:"___! We won the game!",options:["Alas","Wow","Ouch","Oh no"],a:1},
+{q:"This is ___ book I told you about.",options:["a","an","the","—"],a:2},
+{q:"I saw ___ elephant.",options:["a","an","the","—"],a:1},
+{q:"She likes ___ milk.",options:["a","an","the","—"],a:3},
+{q:"___ sun rises in the east.",options:["A","An","The","—"],a:2},
+{q:"Which is a determiner?",options:["run","quickly","some","eat"],a:2},
+{q:"I have ___ apples.",options:["many","run","eat","go"],a:0},
+{q:"Which is possessive determiner?",options:["my","run","fast","go"],a:0},
+{q:"Give me ___ water.",options:["many","some","run","eat"],a:1},
+{q:"This is ___ best movie.",options:["a","an","the","—"],a:2},
+{q:"She bought ___ umbrella.",options:["a","an","the","—"],a:1},
+{q:"I love ___ music.",options:["a","an","the","—"],a:3},
+{q:"Which is demonstrative determiner?",options:["this","run","eat","fast"],a:0},
+
+{q:"She ___ every day.",options:["eat","eats","ate","eating"],a:1},
+{q:"They ___ football yesterday.",options:["play","played","playing","plays"],a:1},
+{q:"I ___ go tomorrow.",options:["will","did","does","doing"],a:0},
+{q:"He ___ watching TV now.",options:["is","was","were","be"],a:0},
+{q:"We ___ dinner when he arrived.",options:["eat","ate","were eating","eats"],a:2},
+{q:"She ___ finished her work.",options:["has","have","had","is"],a:0},
+{q:"I ___ a letter now.",options:["write","writes","am writing","wrote"],a:2},
+{q:"They ___ to Bali last year.",options:["go","went","goes","going"],a:1},
+{q:"He ___ study tonight.",options:["will","did","does","is"],a:0},
+{q:"I thought he ___ come.",options:["will","would","is","did"],a:1},
+{q:"She ___ here since morning.",options:["is","was","has been","had"],a:2},
+{q:"We ___ finished before you came.",options:["have","had","are","were"],a:1},
+{q:"He ___ playing when I saw him.",options:["is","was","were","be"],a:1},
+{q:"They ___ not come yesterday.",options:["do","did","did not","does"],a:2},
+{q:"I ___ see you tomorrow.",options:["will","did","was","had"],a:0},
+{q:"She ___ cooking when I arrived.",options:["is","was","were","be"],a:1},
+{q:"He ___ finished his homework.",options:["has","have","is","do"],a:0},
+{q:"They ___ playing now.",options:["is","are","was","be"],a:1},
+{q:"I ___ a book yesterday.",options:["read","reads","reading","reads"],a:0},
+{q:"She ___ go if she had time.",options:["will","would","did","does"],a:1},
+
+{q:"Correct sentence:",options:["She always eats breakfast","Always she eats breakfast","Eats she always breakfast","She eats breakfast always"],a:0},
+{q:"He ___ quickly runs.",options:["correct","incorrect","both","none"],a:1},
+{q:"Correct:",options:["She runs quickly","She quickly runs","both correct","none"],a:2},
+{q:"Running water is...",options:["past participle","present participle","noun","verb"],a:1},
+{q:"Broken glass is...",options:["present participle","past participle","noun","adverb"],a:1},
+{q:"The ___ boy is crying.",options:["break","broken","breaking","breaks"],a:2},
+{q:"The ___ window is dirty.",options:["break","broken","breaking","breaks"],a:1},
+{q:"She is ___ TV.",options:["watch","watching","watched","watches"],a:1},
+{q:"The ___ man is my father.",options:["sit","sitting","sat","sits"],a:1},
+{q:"The ___ cake tastes good.",options:["bake","baked","baking","bakes"],a:1},
+{q:"Correct word order:",options:["He often goes there","Often he goes there","He goes often there","Goes he often there"],a:0},
+{q:"She ___ never late.",options:["is","was","are","be"],a:0},
+{q:"I ___ always happy.",options:["am","is","are","be"],a:0},
+{q:"The ___ car is expensive.",options:["damage","damaged","damaging","damages"],a:1},
+{q:"The ___ girl is singing.",options:["dance","dancing","danced","dances"],a:1},
+{q:"He ___ quickly finished.",options:["correct","incorrect","both","none"],a:1},
+{q:"She sings ___ beautifully.",options:["very","too","so","quite"],a:0},
+{q:"I saw him ___ away.",options:["run","running","ran","runs"],a:1},
+{q:"The ___ food smells good.",options:["cook","cooked","cooking","cooks"],a:1},
+{q:"He is ___ a letter.",options:["write","writing","wrote","writes"],a:1},
+
+{q:"She writes a letter →",options:["A letter writes by her","A letter is written by her","A letter writing","A letter wrote"],a:1},
+{q:"They built a house →",options:["A house built","A house was built","A house is built","A house building"],a:1},
+{q:"He eats rice →",options:["Rice eaten","Rice is eaten","Rice eat","Rice eats"],a:1},
+{q:"She will clean the room →",options:["Room cleaned","Room will be cleaned","Room clean","Room cleaning"],a:1},
+{q:"We are watching TV →",options:["TV is watched","TV being watched","TV is being watched","TV watch"],a:2},
+{q:"He has finished the work →",options:["Work finished","Work has been finished","Work finish","Work finishing"],a:1},
+{q:"They gave me a book →",options:["I was given a book","A book gave me","I give book","Book given"],a:0},
+{q:"She is making cake →",options:["Cake is made","Cake is being made","Cake made","Cake making"],a:1},
+{q:"People say he is smart →",options:["It is said he is smart","People said smart","Said he smart","Say people smart"],a:0},
+{q:"Is he writing a letter? →",options:["Is letter written?","Is letter being written?","Letter is written?","Writing letter?"],a:1},
+{q:"They repair the car →",options:["Car repaired","Car is repaired","Car repairing","Car repair"],a:1},
+{q:"She cleaned the room →",options:["Room cleaned","Room was cleaned","Room cleaning","Room clean"],a:1},
+{q:"He will finish it →",options:["It finished","It will be finished","It finishing","It finish"],a:1},
+{q:"She has written a letter →",options:["Letter written","Letter has been written","Letter writing","Letter write"],a:1},
+{q:"They are cleaning the house →",options:["House cleaned","House is being cleaned","House cleaning","House clean"],a:1},
+{q:"He gave her a gift →",options:["She was given a gift","She give gift","Gift gave","Gift giving"],a:0},
+{q:"People know him →",options:["He is known","He known","Known he","Know he"],a:0},
+{q:"They make cakes →",options:["Cakes are made","Cakes made","Cakes making","Cakes make"],a:0},
+{q:"She had finished it →",options:["It finished","It had been finished","It finishing","It finish"],a:1},
+{q:"They are repairing the road →",options:["Road repaired","Road is being repaired","Road repairing","Road repair"],a:1},
+
+{q:"She ___ (agree) with me.",options:["agree","agrees","agreeing","agreed"],a:1},
+{q:"They ___ yesterday.",options:["go","went","goes","going"],a:1},
+{q:"If I ___ you, I would go.",options:["am","was","were","be"],a:2},
+{q:"I wish I ___ rich.",options:["am","was","were","be"],a:2},
+{q:"He speaks as if he ___ everything.",options:["know","knows","knew","knowing"],a:2},
+{q:"You ___ study harder.",options:["can","should","may","might"],a:1},
+{q:"She ___ swim very well.",options:["can","must","should","may"],a:0},
+{q:"This book is ___ than that one.",options:["good","better","best","more good"],a:1},
+{q:"He is the ___ student.",options:["good","better","best","more"],a:2},
+{q:"I prefer tea ___ coffee.",options:["than","to","from","with"],a:1},
+{q:"Happiness is...",options:["verb","noun","adjective","adverb"],a:1},
+{q:"Quickly is...",options:["noun","verb","adjective","adverb"],a:3},
+{q:"Teacher is...",options:["verb","noun","adjective","adverb"],a:1},
+{q:"She ___ always late.",options:["is","are","was","be"],a:0},
+{q:"They ___ playing.",options:["is","are","was","be"],a:1},
+{q:"He ___ go now.",options:["can","could","may","might"],a:0},
+{q:"If only I ___ there.",options:["am","was","were","be"],a:2},
+{q:"This is ___ interesting book.",options:["a","an","the","—"],a:1},
+{q:"She runs ___ fast.",options:["very","too","so","enough"],a:0},
+{q:"He is ___ tallest boy.",options:["a","an","the","—"],a:2}
+
+],
+
+WEEK3: [
+
+{q:"The man ___ is talking to you is my teacher.",options:["which","who","whose","whom"],a:1},
+{q:"The book ___ I borrowed is interesting.",options:["who","whose","which","whom"],a:2},
+{q:"The girl ___ father is a doctor is my friend.",options:["who","whom","whose","which"],a:2},
+{q:"The house ___ we live in is big.",options:["who","which","whose","whom"],a:1},
+{q:"The boy ___ you met yesterday is my cousin.",options:["who","whose","which","whom"],a:0},
+{q:"This is the teacher ___ teaches English.",options:["which","who","whom","whose"],a:1},
+{q:"The car ___ color is red is mine.",options:["which","whose","who","whom"],a:1},
+{q:"The people ___ live here are friendly.",options:["which","whose","who","whom"],a:2},
+{q:"The movie ___ we watched was boring.",options:["who","whom","which","whose"],a:2},
+{q:"The man ___ car was stolen is angry.",options:["who","whose","whom","which"],a:1},
+
+{q:"I had my brother ___ my car.",options:["fix","fixed","fixing","fixes"],a:0},
+{q:"She got her hair ___.",options:["cut","cuts","cutting","to cut"],a:0},
+{q:"They made me ___ the work.",options:["to do","do","doing","did"],a:1},
+{q:"I had the mechanic ___ my bike.",options:["repaired","repair","repairing","repairs"],a:1},
+{q:"She got the teacher ___ her homework.",options:["explain","explained","explaining","explains"],a:0},
+{q:"I had my house ___.",options:["paint","painted","painting","paints"],a:1},
+{q:"The teacher made us ___ silently.",options:["to sit","sit","sitting","sat"],a:1},
+{q:"He had his assistant ___ the report.",options:["write","written","writing","writes"],a:0},
+{q:"I got my phone ___.",options:["fix","fixed","fixing","fixes"],a:1},
+{q:"She made me ___ sorry.",options:["feel","to feel","feeling","felt"],a:0},
+
+{q:"If I study, I ___ pass.",options:["will","would","did","was"],a:0},
+{q:"If I were you, I ___ go.",options:["will","would","am","was"],a:1},
+{q:"If she had studied, she ___ passed.",options:["will","would have","would","has"],a:1},
+{q:"If it rains, we ___ stay home.",options:["would","will","did","have"],a:1},
+{q:"If I knew, I ___ tell you.",options:["will","would","did","have"],a:1},
+{q:"If he had money, he ___ buy it.",options:["will","would","did","has"],a:1},
+{q:"If they had left earlier, they ___ arrived on time.",options:["will","would have","would","did"],a:1},
+{q:"If I see him, I ___ tell him.",options:["would","will","did","have"],a:1},
+{q:"If she were rich, she ___ travel.",options:["will","would","did","has"],a:1},
+{q:"If you heat water, it ___.",options:["boils","would boil","boiled","has boiled"],a:0},
+
+{q:"I enjoy ___ books.",options:["read","reading","to read","reads"],a:1},
+{q:"She decided ___ early.",options:["leaving","leave","to leave","leaves"],a:2},
+{q:"He avoids ___ late.",options:["come","coming","to come","came"],a:1},
+{q:"I want ___ a doctor.",options:["be","being","to be","been"],a:2},
+{q:"They stopped ___ football.",options:["play","playing","to play","played"],a:1},
+{q:"She plans ___ abroad.",options:["going","go","to go","goes"],a:2},
+{q:"I like ___ music.",options:["listen","listening","to listening","listens"],a:1},
+{q:"He hopes ___ soon.",options:["graduate","graduating","to graduate","graduates"],a:2},
+{q:"They finished ___ homework.",options:["do","doing","to do","did"],a:1},
+{q:"She agreed ___ me.",options:["help","helping","to help","helped"],a:2},
+
+{q:"I know ___ he is.",options:["what","that","which","whose"],a:0},
+{q:"She said ___ she was tired.",options:["what","that","which","who"],a:1},
+{q:"He asked ___ I was okay.",options:["what","if","which","who"],a:1},
+{q:"I wonder ___ she lives.",options:["what","where","which","who"],a:1},
+{q:"She said she ___ happy.",options:["is","was","were","be"],a:1},
+{q:"He said he ___ tired.",options:["is","was","were","be"],a:1},
+{q:"They said they ___ coming.",options:["are","were","is","be"],a:1},
+{q:"She asked where I ___.",options:["live","lived","living","lives"],a:1},
+{q:"He asked what I ___.",options:["do","did","doing","does"],a:1},
+{q:"She said she ___ busy.",options:["is","was","were","be"],a:1},
+
+{q:"I like coffee, and she ___.",options:["do","does","too","did"],a:1},
+{q:"He is happy, ___?",options:["is he","isn’t he","does he","doesn’t he"],a:1},
+{q:"They can swim, ___?",options:["can they","can’t they","do they","don’t they"],a:1},
+{q:"She doesn’t like it, ___?",options:["does she","doesn’t she","is she","isn’t she"],a:0},
+{q:"I am late, ___?",options:["am I","aren’t I","do I","don’t I"],a:1},
+{q:"He has finished, ___?",options:["hasn’t he","has he","does he","did he"],a:0},
+{q:"You are coming, ___?",options:["aren’t you","are you","do you","did you"],a:0},
+{q:"She can’t drive, ___?",options:["can she","can’t she","does she","did she"],a:0},
+{q:"We should go, ___?",options:["shouldn’t we","should we","do we","did we"],a:0},
+{q:"He will come, ___?",options:["won’t he","will he","does he","did he"],a:0},
+
+{q:"Good morning! → Response:",options:["Bye","Good morning","Sorry","Thanks"],a:1},
+{q:"How are you?",options:["I’m fine","Goodbye","Sorry","Welcome"],a:0},
+{q:"See you!",options:["Bye","Thanks","Sorry","Hello"],a:0},
+{q:"Introducing yourself:",options:["I am John","Goodbye","Sorry","Thanks"],a:0},
+{q:"Introducing others:",options:["This is my friend","Goodbye","Sorry","Thanks"],a:0},
+{q:"Thanking:",options:["Thank you","Sorry","Hello","Bye"],a:0},
+{q:"Response to thanks:",options:["You’re welcome","Sorry","Bye","Hello"],a:0},
+{q:"Apology:",options:["I’m sorry","Thank you","Bye","Hello"],a:0},
+{q:"Response apology:",options:["It’s okay","Goodbye","Thanks","Hello"],a:0},
+{q:"Invitation:",options:["Would you like to come?","Sorry","Thanks","Bye"],a:0},
+
+{q:"Accept invitation:",options:["Sure","Sorry","No","Bye"],a:0},
+{q:"Sympathy:",options:["I’m sorry to hear that","Goodbye","Thanks","Hello"],a:0},
+{q:"Opinion:",options:["I think","Sorry","Bye","Thanks"],a:0},
+{q:"Agree:",options:["I agree","Sorry","No","Bye"],a:0},
+{q:"Asking time:",options:["What time is it?","Sorry","Bye","Thanks"],a:0},
+{q:"Asking info:",options:["Where are you?","Sorry","Bye","Thanks"],a:0},
+{q:"Giving info:",options:["I live here","Sorry","Bye","Thanks"],a:0},
+{q:"Request:",options:["Can you help me?","Sorry","Bye","Thanks"],a:0},
+{q:"Offer:",options:["May I help you?","Sorry","Bye","Thanks"],a:0},
+{q:"Respond offer:",options:["Yes, please","Sorry","Bye","Thanks"],a:0},
+
+{q:"One =",options:["satu","dua","tiga","empat"],a:0},
+{q:"Second =",options:["pertama","kedua","ketiga","keempat"],a:1},
+{q:"Blue =",options:["merah","biru","hijau","kuning"],a:1},
+{q:"Circle =",options:["lingkaran","kotak","segitiga","garis"],a:0},
+{q:"Square =",options:["lingkaran","persegi","segitiga","garis"],a:1},
+{q:"Monday =",options:["Senin","Selasa","Rabu","Kamis"],a:0},
+{q:"Red =",options:["merah","biru","hijau","hitam"],a:0},
+{q:"Triangle =",options:["segitiga","lingkaran","kotak","garis"],a:0},
+{q:"Third =",options:["ketiga","kedua","pertama","keempat"],a:0},
+{q:"Ten =",options:["sepuluh","sembilan","delapan","tujuh"],a:0},
+
+{q:"Yellow =",options:["kuning","merah","biru","hitam"],a:0},
+{q:"Friday =",options:["Jumat","Sabtu","Minggu","Senin"],a:0},
+{q:"Fifth =",options:["kelima","keempat","ketiga","kedua"],a:0},
+{q:"Green =",options:["hijau","merah","biru","hitam"],a:0},
+{q:"Sunday =",options:["Minggu","Senin","Selasa","Rabu"],a:0},
+{q:"First =",options:["pertama","kedua","ketiga","keempat"],a:0},
+{q:"Black =",options:["hitam","putih","merah","biru"],a:0},
+{q:"Time =",options:["waktu","warna","bentuk","angka"],a:0},
+{q:"Shape =",options:["bentuk","warna","waktu","angka"],a:0},
+{q:"Number =",options:["angka","warna","bentuk","waktu"],a:0}
+
+],
+
+WEEK4: [
+
+{q:"What do you call your father's brother?",options:["Cousin","Uncle","Nephew","Grandfather"],a:1},
+{q:"My mother’s daughter is my …",options:["Aunt","Sister","Cousin","Niece"],a:1},
+{q:"The place where we sleep is called …",options:["Kitchen","Bathroom","Bedroom","Living room"],a:2},
+{q:"Where do we cook food?",options:["Bedroom","Kitchen","Garage","Garden"],a:1},
+{q:"A sofa is usually found in the …",options:["Bathroom","Kitchen","Living room","Bedroom"],a:2},
+{q:"We take a shower in the …",options:["Bedroom","Bathroom","Kitchen","Dining room"],a:1},
+{q:"My father's father is my …",options:["Uncle","Grandfather","Brother","Cousin"],a:1},
+{q:"The sink is usually in the …",options:["Bedroom","Kitchen","Garage","Yard"],a:1},
+{q:"A toilet is found in the …",options:["Bathroom","Kitchen","Bedroom","Garden"],a:0},
+{q:"The place for guests to sit is the …",options:["Kitchen","Bedroom","Living room","Bathroom"],a:2},
+
+{q:"Apple, banana, and mango are …",options:["Flowers","Fruits","Vegetables","Trees"],a:1},
+{q:"A rose is a type of …",options:["Fruit","Tree","Flower","Animal"],a:2},
+{q:"A dog is a … animal",options:["Wild","Domestic","Dangerous","Small"],a:1},
+{q:"A lion is a … animal",options:["Domestic","Wild","Pet","Small"],a:1},
+{q:"An ant is a … animal",options:["Big","Small","Wild","Pet"],a:1},
+{q:"Which one is a tree?",options:["Rose","Mango tree","Grass","Tulip"],a:1},
+{q:"A cat is usually kept as a …",options:["Wild animal","Pet","Dangerous animal","Farm tool"],a:1},
+{q:"Tiger lives in the …",options:["House","Forest","River","School"],a:1},
+{q:"Which one is NOT a fruit?",options:["Apple","Banana","Carrot","Mango"],a:2},
+{q:"Bees are considered …",options:["Big animals","Small animals","Wild animals","Pets"],a:1},
+
+{q:"An eagle is a …",options:["Fish","Bird","Mammal","Reptile"],a:1},
+{q:"A shark lives in the …",options:["Forest","Air","Water","Land"],a:2},
+{q:"Students study in a …",options:["Office","School","Market","Hospital"],a:1},
+{q:"A laptop is a …",options:["Animal","Computer","Phone","Book"],a:1},
+{q:"We use a phone to …",options:["Cook","Call","Sleep","Eat"],a:1},
+{q:"A teacher works in a …",options:["Hospital","School","Bank","Market"],a:1},
+{q:"To apply for a job, you need a …",options:["Recipe","Resume","Map","Ticket"],a:1},
+{q:"A fish is a …",options:["Bird","Land animal","Water animal","Insect"],a:2},
+{q:"A classroom is part of a …",options:["House","School","Office","Shop"],a:1},
+{q:"Sending email is done using a …",options:["Book","Computer","Chair","Car"],a:1},
+
+{q:"Students sit in the …",options:["Office","Classroom","Market","Kitchen"],a:1},
+{q:"A manager works in an …",options:["Office","School","Park","Hospital"],a:0},
+{q:"You buy things in a …",options:["School","Shop","Office","House"],a:1},
+{q:"A shirt is usually worn by …",options:["Women only","Men","Babies","Animals"],a:1},
+{q:"A dress is worn by …",options:["Men","Women","Children","Workers"],a:1},
+{q:"A tie is part of … clothing",options:["Casual","Formal","Sport","Sleep"],a:1},
+{q:"Jeans are …",options:["Shoes","Pants","Shirts","Hats"],a:1},
+{q:"A classroom has …",options:["Beds","Desks","Stoves","Showers"],a:1},
+{q:"A shop sells …",options:["Students","Goods","Teachers","Books only"],a:1},
+{q:"A skirt is worn by …",options:["Men","Women","Teachers","Drivers"],a:1},
+
+{q:"A salon is for …",options:["Repairing cars","Beauty treatment","Cooking food","Studying"],a:1},
+{q:"A tailor works with …",options:["Food","Clothes","Cars","Books"],a:1},
+{q:"A mechanic works in a …",options:["Salon","School","Workshop","Office"],a:2},
+{q:"Music is something we …",options:["See","Hear","Eat","Touch"],a:1},
+{q:"A movie is something we …",options:["Hear","See","Smell","Taste"],a:1},
+{q:"A doctor is a …",options:["Job","Place","Animal","Tool"],a:0},
+{q:"A barber cuts …",options:["Clothes","Hair","Food","Paper"],a:1},
+{q:"A singer works in …",options:["Music","School","Bank","Hospital"],a:0},
+{q:"A driver drives a …",options:["Book","Car","Phone","House"],a:1},
+{q:"A teacher teaches …",options:["Food","Students","Animals","Cars"],a:1},
+
+{q:"Rice is a …",options:["Drink","Food","Animal","Tool"],a:1},
+{q:"Water is a …",options:["Food","Drink","Tool","Animal"],a:1},
+{q:"A building is a …",options:["Animal","Structure","Food","Tool"],a:1},
+{q:"Earth is a …",options:["Star","Planet","Moon","Sun"],a:1},
+{q:"The sun is a …",options:["Planet","Star","Moon","Cloud"],a:1},
+{q:"Rain is a type of …",options:["Weather","Animal","Food","Tool"],a:0},
+{q:"Snow happens in …",options:["Summer","Winter","Spring","Autumn"],a:1},
+{q:"At the airport, we take a …",options:["Bus","Plane","Bike","Train"],a:1},
+{q:"Cars move on the …",options:["River","Road","Air","Sky"],a:1},
+{q:"A driver stops at a …",options:["Tree","Traffic light","Book","Chair"],a:1},
+
+{q:"Money is kept in a …",options:["School","Bank","Market","Park"],a:1},
+{q:"Letters are sent at the …",options:["Bank","Post office","School","Office"],a:1},
+{q:"Guests stay in a …",options:["Hotel","School","Hospital","Office"],a:0},
+{q:"Sick people go to the …",options:["Hotel","Hospital","School","Bank"],a:1},
+{q:"The heart is an …",options:["Bone","Organ","Muscle","Tool"],a:1},
+{q:"We eat in a …",options:["Bank","Restaurant","School","Office"],a:1},
+{q:"A doctor works in a …",options:["Hotel","Hospital","Bank","Shop"],a:1},
+{q:"A waiter works in a …",options:["School","Restaurant","Bank","Hospital"],a:1},
+{q:"A skeleton is part of the …",options:["Skin","Body","Hair","Clothes"],a:1},
+{q:"The brain is in the …",options:["Arm","Head","Leg","Hand"],a:1},
+
+{q:"Resume is a …",options:["Food","Document","Animal","Place"],a:1},
+{q:"Opposite of “big” is …",options:["Tall","Small","Long","Wide"],a:1},
+{q:"Opposite of “happy” is …",options:["Sad","Angry","Tired","Hungry"],a:0},
+{q:"Smiling shows …",options:["Anger","Happiness","Fear","Sadness"],a:1},
+{q:"Crying shows …",options:["Joy","Sadness","Excitement","Energy"],a:1},
+{q:"Running is a …",options:["Feeling","Action","Object","Place"],a:1},
+{q:"Football is a …",options:["Sport","Food","Animal","Tool"],a:0},
+{q:"Karate is a …",options:["Dance","Sport","Game","Art"],a:1},
+{q:"A soldier works in the …",options:["School","Army","Bank","Shop"],a:1},
+{q:"A police officer keeps …",options:["Money","Order","Food","Books"],a:1},
+{q:"Opposite of “fast” is …",options:["Quick","Slow","Run","Stop"],a:1},
+{q:"Laughing shows …",options:["Sadness","Happiness","Anger","Fear"],a:1},
+{q:"A judge works in …",options:["Court","School","Hospital","Market"],a:0},
+{q:"A boxer does …",options:["Sport","Cooking","Teaching","Driving"],a:0},
+{q:"Angry means …",options:["Happy","Mad","Calm","Excited"],a:1},
+
+{q:"Walk – Walked is …",options:["Irregular","Regular","Verb 3","Noun"],a:1},
+{q:"Go – Went is …",options:["Regular","Irregular","Noun","Adjective"],a:1},
+{q:"Eat – Ate – Eaten is …",options:["Regular","Irregular","Noun","Verb 1"],a:1},
+{q:"“Break a leg” means …",options:["Get hurt","Good luck","Run fast","Stop"],a:1},
+{q:"“Piece of cake” means …",options:["Food","Easy","Hard","Expensive"],a:1},
+{q:"“Hit the books” means …",options:["Throw books","Study","Read slowly","Sleep"],a:1},
+{q:"“Once in a blue moon” means …",options:["Often","Rarely","Always","Never"],a:1},
+{q:"“Time is money” means …",options:["Time is free","Time is valuable","Money is time","Time is slow"],a:1},
+{q:"She kicked the bucket means …",options:["She ran","She died","She jumped","She fell"],a:1},
+{q:"“Under the weather” means …",options:["Happy","Sick","Angry","Strong"],a:1},
+{q:"Write – Wrote – Written is …",options:["Regular","Irregular","Noun","Adjective"],a:1},
+{q:"“Spill the beans” means …",options:["Cook","Reveal secret","Eat","Drop food"],a:1},
+{q:"Play – Played is …",options:["Irregular","Regular","Verb 3","Noun"],a:1},
+{q:"“Bite the bullet” means …",options:["Eat something","Face difficulty","Run away","Sleep"],a:1},
+{q:"“Actions speak louder than words” means …",options:["Talk more","Do more","Sleep more","Eat more"],a:1}
+
+],
+
+}
+
+const FINAL = [
+// paste soal final lo disini
+
+{q:"Which sentence contains an abstract noun?",options:["The chair is broken","She showed kindness","The dog runs","He opened the door"],answer:"She showed kindness"},
+{q:"Which of the following is uncountable?",options:["Idea","Bottle","Rice","Pen"],answer:"Rice"},
+{q:"Choose the correct countable noun:",options:["Advice","Luggage","Chair","Information"],answer:"Chair"},
+{q:"Identify the concrete noun:",options:["Freedom","Anger","Table","Love"],answer:"Table"},
+{q:"Which sentence uses noun correctly?",options:["She has many furnitures","She has much furniture","She has many furniture","She has furniture many"],answer:"She has much furniture"},
+
+{q:"Each student must bring ___ book.",options:["their","his or her","them","they"],answer:"his or her"},
+{q:"Identify personal pronoun:",options:["This","Who","They","Which"],answer:"They"},
+{q:"Which is a demonstrative pronoun?",options:["Him","That","Whose","Myself"],answer:"That"},
+{q:"The girl ___ is singing is my sister.",options:["which","whose","who","where"],answer:"who"},
+{q:"This house is ___.",options:["my","mine","me","I"],answer:"mine"},
+
+{q:"Identify reflexive pronoun:",options:["Yourself","Them","Who","That"],answer:"Yourself"},
+{q:"Which is interrogative pronoun?",options:["Those","Whom","Him","Its"],answer:"Whom"},
+{q:"Choose correct adjective form:",options:["beautifuller","more beautiful","beautifullest","most beautifuller"],answer:"more beautiful"},
+{q:"This is the ___ book I’ve ever read.",options:["more interesting","most interesting","interesting","interest"],answer:"most interesting"},
+{q:"Identify adjective:",options:["Quickly","Happiness","Tall","Run"],answer:"Tall"},
+
+{q:"Which is derived adjective?",options:["Care","Careful","Carefully","Caring"],answer:"Careful"},
+{q:"He is ___ than his friend.",options:["smart","smarter","smartest","smartly"],answer:"smarter"},
+{q:"Which is superlative?",options:["good","better","best","well"],answer:"best"},
+{q:"Identify incorrect adjective use:",options:["very happy","extremely cold","too enough","quite big"],answer:"too enough"},
+{q:"She is ___ intelligent to solve it.",options:["enough","too","so","very"],answer:"too"},
+
+{q:"Which is adverb of manner?",options:["Quickly","Yesterday","Here","Often"],answer:"Quickly"},
+{q:"He runs very ___.",options:["quick","quickly","quicker","quickness"],answer:"quickly"},
+{q:"Identify adverb of time:",options:["Now","Very","Quickly","Happy"],answer:"Now"},
+{q:"She sings ___.",options:["beautiful","beautifully","beauty","beautify"],answer:"beautifully"},
+{q:"Which is adverb of frequency?",options:["Always","Now","Fast","Here"],answer:"Always"},
+
+{q:"He ___ goes to school.",options:["always","quick","big","happy"],answer:"always"},
+{q:"Adverb of place:",options:["Here","Often","Very","Quickly"],answer:"Here"},
+{q:"She is ___ tired.",options:["very","fast","here","yesterday"],answer:"very"},
+{q:"Which is adverb?",options:["Happy","Happiness","Happily","Happier"],answer:"Happily"},
+{q:"Come ___.",options:["quick","quickly","quicker","quickest"],answer:"quickly"},
+
+{q:"Which is a verb?",options:["Run","Table","Happy","Fast"],answer:"Run"},
+{q:"She ___ a book.",options:["read","reads","reading","reader"],answer:"reads"},
+{q:"Which is transitive verb?",options:["Sleep","Eat","Arrive","Go"],answer:"Eat"},
+{q:"Which is intransitive?",options:["Eat","Kick","Sleep","Write"],answer:"Sleep"},
+{q:"Past form of go:",options:["goed","went","gone","going"],answer:"went"},
+
+{q:"She ___ playing.",options:["is","are","am","be"],answer:"is"},
+{q:"They ___ football.",options:["plays","play","playing","played"],answer:"play"},
+{q:"He ___ eaten.",options:["has","have","is","are"],answer:"has"},
+{q:"Which is auxiliary verb?",options:["Run","Eat","Is","Book"],answer:"Is"},
+{q:"I ___ happy.",options:["am","is","are","be"],answer:"am"},
+
+{q:"Verb 3 of take:",options:["took","taken","take","taking"],answer:"taken"},
+{q:"She ___ cooking.",options:["is","are","am","be"],answer:"is"},
+{q:"We ___ to school yesterday.",options:["go","went","goes","going"],answer:"went"},
+{q:"He ___ a car.",options:["have","has","having","hading"],answer:"has"},
+{q:"Which is main verb?",options:["Is","Are","Run","Was"],answer:"Run"},
+
+{q:"I like tea ___ coffee.",options:["and","but","or","because"],answer:"and"},
+{q:"I am tired ___ I sleep.",options:["and","so","because","or"],answer:"so"},
+{q:"Which is subordinating conjunction?",options:["And","But","Because","Or"],answer:"Because"},
+{q:"She is poor ___ happy.",options:["and","but","or","so"],answer:"but"},
+{q:"You can choose tea ___ coffee.",options:["and","but","or","so"],answer:"or"}
+
+,
+
+{q:"___ he is rich, he is unhappy.",options:["Although","And","Or","So"],answer:"Although"},
+{q:"Paired conjunction:",options:["And","Either...or","But","So"],answer:"Either...or"},
+{q:"___ you or me?",options:["Either","Both","And","So"],answer:"Either"},
+{q:"I study ___ I pass.",options:["so","because","or","and"],answer:"so"},
+{q:"She came ___ she was invited.",options:["because","and","or","but"],answer:"because"},
+
+{q:"He is tall ___ strong.",options:["and","but","or","so"],answer:"and"},
+{q:"I was late ___ traffic.",options:["because","because of","and","but"],answer:"because of"},
+{q:"___ he is sick, he goes.",options:["Although","And","Or","So"],answer:"Although"},
+{q:"Not only... ___ also.",options:["and","but","or","so"],answer:"but"},
+{q:"She is tired ___ she continues.",options:["but","and","or","so"],answer:"but"},
+
+{q:"I wake up ___ 7 AM.",options:["at","on","in","by"],answer:"at"},
+{q:"I was born ___ 2005.",options:["at","on","in","by"],answer:"in"},
+{q:"The book is ___ the table.",options:["in","on","at","by"],answer:"on"},
+{q:"She is ___ the room.",options:["in","on","at","by"],answer:"in"},
+{q:"He goes ___ school.",options:["to","in","at","on"],answer:"to"},
+
+{q:"The cat is ___ the box.",options:["in","on","at","by"],answer:"in"},
+{q:"We meet ___ Monday.",options:["at","on","in","by"],answer:"on"},
+{q:"She is ___ home.",options:["at","on","in","by"],answer:"at"},
+{q:"He walks ___ the park.",options:["to","in","on","at"],answer:"to"},
+{q:"The dog runs ___ the house.",options:["into","in","at","on"],answer:"into"},
+
+{q:"Choose correct sentence:",options:["She go to school","She goes to school","She going school","She gone school"],answer:"She goes to school"},
+{q:"They ___ playing football.",options:["is","are","am","be"],answer:"are"},
+{q:"He ___ a book now.",options:["read","reads","is reading","reading"],answer:"is reading"},
+{q:"We ___ dinner yesterday.",options:["have","had","has","having"],answer:"had"},
+{q:"She ___ never seen it.",options:["have","has","had","having"],answer:"has"},
+
+{q:"Which is present perfect?",options:["I eat","I ate","I have eaten","I eating"],answer:"I have eaten"},
+{q:"Choose correct:",options:["He don’t like","He doesn’t like","He not like","He no like"],answer:"He doesn’t like"},
+{q:"They ___ to school every day.",options:["go","goes","going","gone"],answer:"go"},
+{q:"She ___ cooking when I arrived.",options:["is","was","were","be"],answer:"was"},
+{q:"We ___ finished the work.",options:["have","has","had","having"],answer:"have"},
+
+{q:"If I ___ you, I would go.",options:["am","was","were","be"],answer:"were"},
+{q:"She ___ if she studied.",options:["pass","would pass","passes","passing"],answer:"would pass"},
+{q:"Which is conditional?",options:["I go","If I go","I going","I went"],answer:"If I go"},
+{q:"If it rains, I ___ stay.",options:["will","would","am","be"],answer:"will"},
+{q:"If I had money, I ___ buy it.",options:["will","would","am","buy"],answer:"would"},
+
+{q:"Which is passive?",options:["He eats","He is eaten","He was eaten","He eating"],answer:"He was eaten"},
+{q:"The book ___ by her.",options:["write","written","was written","writing"],answer:"was written"},
+{q:"They ___ invited.",options:["are","is","am","be"],answer:"are"},
+{q:"The cake ___ eaten.",options:["is","are","am","be"],answer:"is"},
+{q:"Which is passive?",options:["She writes","She is writing","She is written","She wrote"],answer:"She is written"},
+
+{q:"Which is correct order?",options:["I only eat rice","Only I eat rice","I eat only rice","Rice only I eat"],answer:"I only eat rice"},
+{q:"He speaks ___.",options:["fluent","fluently","fluency","fluentness"],answer:"fluently"},
+{q:"She is ___ girl.",options:["a","an","the","-"],answer:"a"},
+{q:"I saw ___ elephant.",options:["a","an","the","-"],answer:"an"},
+{q:"___ sun rises in the east.",options:["A","An","The","-"],answer:"The"}
+
+,
+
+{q:"If she ___ earlier, she would have passed",options:["studies","studied","had studied","studying"],answer:"had studied"},
+{q:"I wish I ___ taller.",options:["am","was","were","be"],answer:"were"},
+{q:"He acts as if he ___ everything.",options:["knows","knew","knowing","know"],answer:"knew"},
+{q:"I’d rather you ___ now.",options:["go","went","gone","going"],answer:"went"},
+{q:"It is high time we ___.",options:["go","went","gone","going"],answer:"went"},
+
+{q:"She suggested he ___ early.",options:["goes","go","went","going"],answer:"go"},
+{q:"Identify passive:",options:["They clean it","It is cleaned","Cleaning","Clean"],answer:"It is cleaned"},
+{q:"The work ___ by him.",options:["is done","did","doing","done"],answer:"is done"},
+{q:"He made me ___.",options:["to cry","cry","crying","cried"],answer:"cry"},
+{q:"I saw him ___.",options:["run","running","ran","runs"],answer:"running"},
+
+{q:"She had her car ___.",options:["fix","fixed","fixing","fixes"],answer:"fixed"},
+{q:"Identify gerund:",options:["to eat","eating","eat","ate"],answer:"eating"},
+{q:"Identify infinitive:",options:["to eat","eating","eat","ate"],answer:"to eat"},
+{q:"I enjoy ___.",options:["read","reading","to read","reads"],answer:"reading"},
+{q:"He decided ___.",options:["leave","leaving","to leave","left"],answer:"to leave"},
+
+{q:"She stopped ___.",options:["smoking","smoke","smoked","to smoked"],answer:"smoking"},
+{q:"He denied ___ it.",options:["do","doing","did","done"],answer:"doing"},
+{q:"She admitted ___.",options:["cheat","cheating","cheated","cheats"],answer:"cheating"},
+{q:"Avoid ___ mistakes.",options:["make","making","made","makes"],answer:"making"},
+{q:"He is used to ___ early.",options:["wake","waking","woke","wakes"],answer:"waking"},
+
+{q:"She is accustomed to ___.",options:["work","working","worked","works"],answer:"working"},
+{q:"He prevented me from ___.",options:["go","going","went","goes"],answer:"going"},
+{q:"I regret ___ that.",options:["say","saying","said","says"],answer:"saying"},
+{q:"Try ___ again.",options:["do","doing","did","done"],answer:"doing"},
+{q:"She forgot ___ the door.",options:["lock","locking","locked","locks"],answer:"to lock"},
+
+{q:"Remember ___ it.",options:["do","doing","did","done"],answer:"doing"},
+{q:"Mind ___ the window.",options:["close","closing","closed","closes"],answer:"closing"},
+{q:"Keep ___.",options:["try","trying","tried","tries"],answer:"trying"},
+{q:"Consider ___ it.",options:["do","doing","did","done"],answer:"doing"},
+{q:"Break the ice means:",options:["destroy","start conversation","fight","run"],answer:"start conversation"},
+
+{q:"Piece of cake means:",options:["difficult","easy","big","sweet"],answer:"easy"},
+{q:"Hit the sack means:",options:["hit","sleep","run","jump"],answer:"sleep"},
+{q:"Under the weather means:",options:["happy","sick","angry","tired"],answer:"sick"},
+{q:"Spill the beans means:",options:["cook","reveal secret","eat","throw"],answer:"reveal secret"},
+{q:"Opposite of increase:",options:["rise","grow","decrease","build"],answer:"decrease"},
+
+{q:"Synonym of rapid:",options:["slow","fast","weak","low"],answer:"fast"},
+{q:"Engineer is:",options:["place","job","object","animal"],answer:"job"},
+{q:"Wardrobe relates to:",options:["clothes","food","car","school"],answer:"clothes"},
+{q:"Pharmacy relates to:",options:["medicine","food","clothes","books"],answer:"medicine"},
+{q:"Laptop is:",options:["animal","device","place","job"],answer:"device"},
+
+{q:"Pilot works in:",options:["hospital","airport","school","office"],answer:"airport"},
+{q:"Chef works in:",options:["hospital","kitchen","bank","school"],answer:"kitchen"},
+{q:"Tailor works with:",options:["cars","clothes","books","food"],answer:"clothes"},
+{q:"Teacher works at:",options:["bank","school","hospital","office"],answer:"school"},
+{q:"Forest relates to:",options:["city","nature","ocean","building"],answer:"nature"},
+
+{q:"Ocean is:",options:["land","water","sky","fire"],answer:"water"},
+{q:"Cloudy relates to:",options:["weather","food","job","place"],answer:"weather"},
+{q:"Resume relates to:",options:["job","school","food","sport"],answer:"job"},
+{q:"Gym relates to:",options:["study","sport","food","job"],answer:"sport"},
+{q:"Referee is in:",options:["sport","school","hospital","office"],answer:"sport"},
+
+{q:"Army relates to:",options:["police","military","school","job"],answer:"military"},
+{q:"Detective works in:",options:["school","police","hospital","bank"],answer:"police"},
+{q:"Honesty is:",options:["object","abstract noun","place","job"],answer:"abstract noun"},
+{q:"Bravery is:",options:["object","abstract noun","place","job"],answer:"abstract noun"},
+{q:"Furniture is:",options:["countable","uncountable","both","none"],answer:"uncountable"},
+
+{q:"Advice is:",options:["countable","uncountable","both","none"],answer:"uncountable"},
+{q:"Information is:",options:["countable","uncountable","both","none"],answer:"uncountable"},
+{q:"Equipment is:",options:["countable","uncountable","both","none"],answer:"uncountable"},
+{q:"Luggage is:",options:["countable","uncountable","both","none"],answer:"uncountable"}
+
+]
+
+
+
 function makeQuestions(topic){
 
 if(currentDay==1 && currentSub=="Concrete Nouns") return bankSoal["DAY1_CONCRETE NOUNS"]
@@ -2376,7 +3719,7 @@ if(currentDay==2 && currentSub=="Interrogative Pronouns") return bankSoal["DAY2_
 if(currentDay==3 && currentSub=="Types of Adjectives") return bankSoal["DAY3_TYPES OF ADJECTIVES"]
 if(currentDay==3 && currentSub=="Adjective Formation") return bankSoal["DAY3_ADJECTIVE FORMATION"]
 if(currentDay==3 && currentSub=="Degree of Comparison") return bankSoal["DAY3_DEGREE OF COMPARISON"]
-if(currentDay==3 && currentSub=="Positive Degree Pattern") return bankSoal["DAY3_POSITIVE DEGREE"]
+if(currentDay==3 && currentSub=="Positive Degree Pattern") return bankSoal["DAY3_POSITIVE DEGREE PATTERN"]
 
 if(currentDay==4 && currentSub=="Adverbs of Manner") return bankSoal["DAY4_ADVERBS OF MANNER"]
 if(currentDay==4 && currentSub=="Adverbs of Time") return bankSoal["DAY4_ADVERBS OF TIME"]
@@ -2634,30 +3977,140 @@ let scoreKey="score_"+currentDay+"_"+currentSub
 localStorage.setItem(scoreKey,percent)
 
 if(percent>=80){
-
 alert("Great! Kamu sudah paham materi ini 🌻")
-
 }else{
-
 alert("😢 Sayang sekali, kamu belum begitu paham materi ini. Coba pelajari lagi ya!")
-
 }
 
-// tetap simpan progress supaya bisa lanjut
+// simpan progress sub
 progress["d"+currentDay+"s"+currentSub]=true
-
-if(schedule[currentDay].subs.length-1==currentSub){
-progress["day"+currentDay]=true
-}
-
 localStorage.setItem("progress",JSON.stringify(progress))
 
+// 🔥 WAJIB DI SINI
+markDayComplete(currentDay)
+
+// update UI SEKALI AJA
 updateProgressUI()
-drawCalendar()
 drawGarden()
 
 openDay(currentDay)
 
+}
+
+function markDayComplete(day){
+
+let data = schedule[day]
+let totalSubs = 0
+let doneSubs = 0
+
+if(Array.isArray(data.bab)){
+data.bab.forEach(b=>{
+b.subs.forEach(s=>{
+totalSubs++
+if(localStorage.getItem("score_"+day+"_"+s)){
+doneSubs++
+}
+})
+})
+}else{
+data.subs.forEach(s=>{
+totalSubs++
+if(localStorage.getItem("score_"+day+"_"+s)){
+doneSubs++
+}
+})
+}
+
+if(doneSubs === totalSubs){
+progress["day"+day] = true
+localStorage.setItem("progress", JSON.stringify(progress))
+
+// 🔥 TRIGGER EXAM
+}
+}
+
+function resetAll(){
+if(confirm("Reset semua progress?")){
+localStorage.clear()
+location.reload()
+}
+}
+
+function getFlower(score){
+
+if(!score) return "0.png"
+
+score = Number(score)
+
+// mapping sesuai nilai
+if(score >= 100) return "100.png"
+if(score >= 80) return "80.png"
+if(score >= 60) return "60.png"
+if(score >= 40) return "40.png"
+if(score >= 20) return "20.png"
+
+return "0.png"
+}
+
+let interval = null
+let time = 0
+let examStarted = false
+let currentExamType = "" // week / final
+
+function startExamTimer(){
+
+  if(examStarted) return
+
+  examStarted = true
+
+  document.getElementById("startBtn").style.display = "none"
+
+  interval = setInterval(()=>{
+
+    time--
+
+    let m = Math.floor(time/60)
+    let s = time % 60
+
+    document.getElementById("timer").innerText =
+      m + ":" + (s<10?"0"+s:s)
+
+    if(time <= 0){
+      clearInterval(interval)
+      alert("Waktu habis!")
+      submitExam()
+    }
+
+  },1000)
+}
+
+function goBack(){
+
+  if(!examStarted){
+    backDash()
+    return
+  }
+
+  alert("❌ Selesaikan ujian dulu!")
+}
+
+function clearHighlight(i){
+  let el = document.getElementById(`question-${i}`)
+  el.style.border = "none"
+  el.style.background = "white"
+}
+
+function openGrammar(){
+updateProgressUI()
+show("dash")
+}
+
+function openVocab(){
+alert("Vocabulary belum dibuat 😎 nanti isi sendiri")
+}
+
+function backToMenu(){
+show("menuPage")
 }
 
 </script>
