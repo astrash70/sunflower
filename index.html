@@ -3928,72 +3928,158 @@ let qs
 
 function startQuiz(){
 
-if(document.getElementById("review").value.trim()==""){
-alert("Isi dulu review materi kamu!")
-return
-}
+let key = "DAY"+currentDay+"_"+currentSub.toUpperCase()
+let questions = bankSoal[key]
 
-qs=makeQuestions(currentSub)
+if(!questions){
+  alert("Soal belum tersedia!")
+  return
+}
 
 let html="<div class='quiz'>"
 
-qs.forEach((q,i)=>{
+questions.forEach((q,i)=>{
 
-html+="<p><b>"+(i+1)+". "+q.q+"</b></p>"
+html+=`
+<div id="question-${i}" style="margin-bottom:20px; padding:15px; background:white; border-radius:10px; position:relative;">
+
+<span onclick="openNote(${i})" style="
+position:absolute;
+top:10px;
+right:10px;
+cursor:pointer;
+font-size:18px;
+">
+✏️
+</span>
+<p><b>${i+1}. ${q.q}</b></p>
+`
 
 q.options.forEach((op,j)=>{
-
-html+="<label><input type='radio' name='q"+i+"' value='"+j+"'> "+op+"</label><br>"
-
+html+=`
+<label>
+<input type="radio" name="q${i}" value="${j}">
+${op}
+</label><br>
+`
 })
 
+html+=`</div>`
 })
 
-html+="<br><button onclick='submitQuiz()'>Submit</button>"
+html+=`
+<button onclick="submitQuiz()">Submit</button>
+</div>
+`
 
-document.getElementById("quiz").innerHTML=html
+document.getElementById("quiz").innerHTML = html
 
 }
 
 function submitQuiz(){
 
-let score=0
+let key = "DAY"+currentDay+"_"+currentSub.toUpperCase()
+let questions = bankSoal[key]
 
-qs.forEach((q,i)=>{
+// 🔥 CEK ADA YANG BELUM DIJAWAB
+let firstUnanswered = -1
 
-let ans=document.querySelector('input[name="q'+i+'"]:checked')
+questions.forEach((q,i)=>{
+  let selected = document.querySelector(`input[name="q${i}"]:checked`)
+  if(!selected && firstUnanswered === -1){
+    firstUnanswered = i
+  }
+})
 
-if(ans && parseInt(ans.value)==q.a){
-score++
+if(firstUnanswered !== -1){
+
+  alert("Masih ada soal yang belum dijawab!")
+
+  let el = document.getElementById(`question-${firstUnanswered}`)
+
+  el.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  })
+
+  el.style.border = "3px solid red"
+  el.style.background = "#ffe6e6"
+
+  return
 }
+
+// 🔥 LANJUT KOREKSI
+let score = 0
+
+questions.forEach((q,i)=>{
+
+  let selected = document.querySelector(`input[name="q${i}"]:checked`)
+  let box = document.getElementById(`question-${i}`)
+
+  box.classList.remove("correct","wrong")
+
+  let correctAnswer = q.options[q.a]
+
+  if(parseInt(selected.value) === q.a){
+
+    score++
+    box.classList.add("correct")
+
+    box.innerHTML += `
+    <p style="color:green; font-weight:bold;">
+    ✔ Jawaban lo BENAR
+    </p>
+    `
+
+  }else{
+
+    box.classList.add("wrong")
+
+    let userAnswer = q.options[selected.value]
+
+    box.innerHTML += `
+    <p style="color:red; font-weight:bold;">
+    ❌ Salah<br>
+    Jawaban lo: ${userAnswer}<br>
+    Jawaban benar: ${correctAnswer}
+    </p>
+    `
+  }
+
+  // 🔒 disable semua pilihan
+  let allOptions = document.querySelectorAll(`input[name="q${i}"]`)
+
+  allOptions.forEach((opt,idx)=>{
+
+    opt.disabled = true
+
+    if(idx === q.a){
+      opt.parentElement.style.color = "green"
+      opt.parentElement.style.fontWeight = "bold"
+    }
+
+  })
 
 })
 
-let percent=(score/5)*100
+// 🔥 HITUNG SCORE
+let finalScore = Math.round((score/questions.length)*100)
 
-document.getElementById("scoreDisplay").innerText="Score: "+percent
+document.getElementById("scoreDisplay").innerText = "Score: " + finalScore
 
-let scoreKey="score_"+currentDay+"_"+currentSub
-localStorage.setItem(scoreKey,percent)
+let scoreKey = "score_"+currentDay+"_"+currentSub
+localStorage.setItem(scoreKey, finalScore)
 
-if(percent>=80){
-alert("Great! Kamu sudah paham materi ini 🌻")
-}else{
-alert("😢 Sayang sekali, kamu belum begitu paham materi ini. Coba pelajari lagi ya!")
-}
-
-// simpan progress sub
-progress["d"+currentDay+"s"+currentSub]=true
-localStorage.setItem("progress",JSON.stringify(progress))
-
-// 🔥 WAJIB DI SINI
-markDayComplete(currentDay)
-
-// update UI SEKALI AJA
+// 🔥 OPTIONAL (biar progress langsung update)
 updateProgressUI()
 drawGarden()
 
-openDay(currentDay)
+// 🔥 LOCK BUTTON
+let btn = document.querySelector("#quiz button")
+if(btn) btn.disabled = true
+
+// 🔥 MARK DAY COMPLETE
+markDayComplete(currentDay)
 
 }
 
@@ -4111,6 +4197,70 @@ alert("Vocabulary belum dibuat 😎 nanti isi sendiri")
 
 function backToMenu(){
 show("menuPage")
+}
+
+function openNote(index){
+
+let key = "note_"+currentDay+"_"+currentSub+"_"+index
+
+let saved = localStorage.getItem(key) || ""
+
+let popup = `
+<div id="notePopup" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+">
+
+  <div style="
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    width:400px;
+  ">
+
+    <h3>📝 Catatan Jawaban</h3>
+
+    <textarea id="noteInput" style="
+      width:100%;
+      height:150px;
+      margin-top:10px;
+    ">${saved}</textarea>
+
+    <br><br>
+
+    <button onclick="saveNote(${index})">💾 Save</button>
+    <button onclick="closeNote()">❌ Close</button>
+
+  </div>
+
+</div>
+`
+
+document.body.insertAdjacentHTML("beforeend", popup)
+}
+
+function saveNote(index){
+
+let key = "note_"+currentDay+"_"+currentSub+"_"+index
+
+let value = document.getElementById("noteInput").value
+
+localStorage.setItem(key, value)
+
+closeNote()
+}
+
+function closeNote(){
+let el = document.getElementById("notePopup")
+if(el) el.remove()
 }
 
 </script>
